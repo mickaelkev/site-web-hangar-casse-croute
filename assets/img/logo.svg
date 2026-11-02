@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Le Hangar Fumoir">
+  <!-- Toit de hangar arrondi + cheminée qui fume -->
+  <path d="M8 56V30C8 17 19 8 32 8s24 9 24 22v26" fill="none" stroke="#F3EADB" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M18 56V36h28v20" fill="none" stroke="#F3EADB" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M18 43h28M18 50h28" stroke="#F3EADB" stroke-width="3"/>
+  <path d="M4 56h56" stroke="#F3EADB" stroke-width="4" stroke-linecap="round"/>
+  <path d="M44 14V4" stroke="#E5642F" stroke-width="4" stroke-linecap="round"/>
+</svg>
