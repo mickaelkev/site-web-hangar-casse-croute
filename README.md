@@ -76,6 +76,17 @@ Les emplacements sans photo (brisket, burnt ends, sauces, grilled cheese) affich
 - [ ] **Minimum traiteur** : le formulaire exige 10 personnes (`assets/js/main.js`, chercher `>= 10`)
 - [ ] **Avis Google** : citations courtes avec prénom et initiale. Confirmer que le client est à l'aise de les afficher.
 - [ ] **Facebook du casse-croûte** : s'il existe, ajouter le lien
+- [ ] **Chili « au kg »** et **boulettes de brisket « (2) » vendues à la livre** : unités tirées du site actuel, probablement des erreurs (`assets/js/config.js`)
+- [ ] **Loi 25** : faire relire l'avis sous le formulaire et les pages `confidentialite.html` par le propriétaire (ce n'est pas un avis juridique)
+- [ ] **Même téléphone et même adresse pour les deux commerces** : risque de fusion des fiches Google ; une ligne distincte pour le casse-croûte serait idéale
+- [ ] **Coordonnées GPS** (latitude, longitude) à ajouter au JSON-LD des deux sites, relevées dans Google Maps
+- [ ] **Indexation** : les sites Netlify sont en `noindex` tant que l'ancien WordPress est en ligne (voir « Mettre en ligne »)
+
+## Prochaine session : publication Netlify
+
+1. Installer le connecteur Netlify sur claude.ai (Réglages → Connecteurs → Netlify).
+2. Ouvrir une nouvelle session : environnement **Projets**, dépôt **site-web-hangar-casse-croute**, branche **refonte-site-2026**.
+3. Demander : lancer `sh scripts/build.sh`, publier `dist/hangar` sous le nom **hangar-le-fumoir** et `dist/casse-croute` sous **casse-croute-hangar**, vérifier les deux sites en ligne et donner les liens.
 
 ## Formulaire traiteur
 
@@ -84,7 +95,7 @@ Pour un envoi direct, sans logiciel de courriel : créer un formulaire gratuit s
 
 ## Choix de design
 
-- Palette : charbon et crème « papier boucherie ». Une seule couleur d'accent, la braise (`#E5642F`).
+- Palette : charbon, crème et kraft. Accent : rouge du logo (`#D42A2A`) pour le Hangar, moutarde (`#F2B630`) pour le casse-croûte.
 - Typographies : Anton (titres d'affiche), Barlow Condensed (étiquettes), Barlow (texte).
 - Les animations sont désactivées automatiquement si le visiteur a choisi de réduire les animations.
 - Accessibilité : lien d'évitement, navigation au clavier dans le menu, contrastes AA, champs étiquetés.
