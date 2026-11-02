@@ -152,3 +152,4 @@
 @media (max-width: 400px) { .cc-hero .eyebrow { padding-right: 104px; } }
 .cc .brand__name { line-height: 1; }
 .cc .nav a.nav__tel { color: var(--braise); }
+.cc .cc-hero__title { line-height: 1.06; }

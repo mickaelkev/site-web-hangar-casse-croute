@@ -1,3 +1,12 @@
+/* Polices auto-hébergées (sous-ensemble latin, licence OFL) */
+@font-face { font-family: "Anton"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/anton-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "Rye"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/rye-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "Barlow"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/barlow-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "Barlow"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/barlow-600-latin.woff2") format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/barlow-condensed-500-latin.woff2") format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/barlow-condensed-600-latin.woff2") format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/barlow-condensed-700-latin.woff2") format("woff2"); }
+
 /* ==========================================================================
    Le Hangar Fumoir — feuille de styles
    Une seule couleur d'accent (braise). Le reste : neutres chauds.
@@ -672,3 +681,10 @@ a.promo:hover { background: var(--charbon-2); }
 .btn--block { white-space: normal; }
 .nav__tel { display: none; }
 @media (max-width: 900px) { .nav a.nav__tel { display: block; color: var(--braise-h); } }
+
+/* Façade de carte : l'iframe Google Maps n'est chargée qu'au clic */
+.map-facade {
+  display: grid; place-items: center; width: 100%; height: 100%; min-height: inherit;
+  background: var(--charbon-3) radial-gradient(circle at 50% 45%, rgba(212, 42, 42, .25), transparent 60%);
+  text-decoration: none;
+}

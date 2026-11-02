@@ -17,11 +17,25 @@ Sites statiques HTML/CSS/JS, sans dépendance ni étape de compilation. Les deux
 
 **Casse-Croûte du Hangar** : accueil moutarde avec photo animée, spéciaux de la semaine (celui du jour s'allume), galerie, résumé des avis, menu complet de 29 plats avec prix, passerelle de retour vers le Hangar, heures et carte.
 
-## Mettre en ligne
+## Mettre en ligne (Netlify, deux sites séparés)
 
-Il suffit de téléverser tout le dossier (`index.html` + `assets/`) chez n'importe quel hébergeur : l'hébergeur actuel, Netlify (glisser-déposer), GitHub Pages ou Cloudflare Pages.
+```sh
+sh scripts/build.sh
+```
 
-Pour le voir sur son ordinateur, on ouvre simplement `index.html` dans un navigateur.
+Le script crée deux dossiers autonomes :
+
+| Dossier | Site Netlify | Adresse |
+|---|---|---|
+| `dist/hangar` | hangar-le-fumoir | https://hangar-le-fumoir.netlify.app |
+| `dist/casse-croute` | casse-croute-hangar | https://casse-croute-hangar.netlify.app |
+
+Les liens entre les deux sites deviennent des adresses absolues. Chaque dossier contient ses en-têtes de sécurité et de cache (`_headers`), `robots.txt`, `sitemap.xml` et une page `404.html` (fichiers sources dans `netlify/`).
+
+**Le jour où le domaine `lehangarfumoir.ca` pointe vers Netlify :**
+- retirer `X-Robots-Tag: noindex` des deux `netlify/*/_headers` ;
+- remplacer les adresses `*.netlify.app` (canoniques, Open Graph, JSON-LD, robots, sitemap, `scripts/build.sh`) ;
+- activer les redirections des anciennes pages WordPress dans `netlify/hangar/_redirects`.
 
 ## Modifier le menu, les prix ou les heures
 

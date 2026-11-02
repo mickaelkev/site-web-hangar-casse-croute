@@ -404,6 +404,19 @@
 
   if ($("#hours")) setInterval(renderHours, 60000);
 
+  /* ---------- Façade Google Maps : l'iframe n'est créée qu'au clic ---------- */
+  $$(".map-facade").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      var f = document.createElement("iframe");
+      f.title = a.title;
+      f.src = a.dataset.embed;
+      f.referrerPolicy = "no-referrer-when-downgrade";
+      f.allowFullscreen = true;
+      a.replaceWith(f);
+    });
+  });
+
   /* ---------- Démarrage ---------- */
   $("#year").textContent = new Date().getFullYear();
   var urlLang = new URLSearchParams(location.search).get("lang");

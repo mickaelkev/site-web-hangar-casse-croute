@@ -21,9 +21,8 @@
   <meta property="og:locale" content="fr_CA">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rye&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/rye-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/barlow-condensed-600-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/texan.css">
 
@@ -68,7 +67,7 @@
   <header class="header" id="top">
     <div class="wrap header__inner">
       <a class="brand brand--logo" href="#top" aria-label="Le Hangar Fumoir — accueil">
-        <img src="assets/img/logo-hangar.png" alt="Le Hangar Fumoir" width="96" height="48">
+        <img src="assets/img/logo-hangar-192.png" alt="Le Hangar Fumoir" width="96" height="48">
       </a>
 
       <nav class="nav" id="nav" aria-label="Navigation principale" data-i18n-attr="aria-label:a11y.nav">
@@ -96,7 +95,7 @@
     <!-- ============ HÉRO ============ -->
     <section class="hero hero--photo">
       <div class="hero__bg" aria-hidden="true">
-        <img src="assets/img/photos/planche.jpg" alt="" fetchpriority="high">
+        <picture><source type="image/avif" srcset="assets/img/photos/planche-480.avif 480w, assets/img/photos/planche-768.avif 768w, assets/img/photos/planche-1100.avif 1100w" sizes="100vw"><source type="image/webp" srcset="assets/img/photos/planche-480.webp 480w, assets/img/photos/planche-768.webp 768w, assets/img/photos/planche-1100.webp 1100w" sizes="100vw"><img src="assets/img/photos/planche.jpg" alt="" width="1100" height="1467" fetchpriority="high"></picture>
       </div>
       <div class="hero__smoke" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="brand-stamp" aria-hidden="true">
@@ -176,7 +175,7 @@
         <div class="sig-grid">
           <article class="sig sig--xl">
             <figure class="shot shot--tall" data-ph="Ribs">
-              <img src="assets/img/photos/pitmaster.jpg" alt="Le pitmaster du Hangar Fumoir présente une côte levée fumée" loading="lazy" data-optional style="object-position:50% 35%">
+              <picture><source type="image/avif" srcset="assets/img/photos/pitmaster-480.avif 480w, assets/img/photos/pitmaster-800.avif 800w, assets/img/photos/pitmaster-1200.avif 1200w" sizes="(max-width: 900px) 100vw, 40vw"><source type="image/webp" srcset="assets/img/photos/pitmaster-480.webp 480w, assets/img/photos/pitmaster-800.webp 800w, assets/img/photos/pitmaster-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 40vw"><img src="assets/img/photos/pitmaster.jpg" alt="Le pitmaster du Hangar Fumoir présente une côte levée fumée" width="1200" height="1600" loading="lazy" decoding="async" data-optional style="object-position:50% 35%"></picture>
             </figure>
             <div class="sig__body">
               <span class="tag" data-i18n="sig.price1">Texan ou Master</span>
@@ -242,7 +241,7 @@
             <p class="section__lead" data-i18n="smoke.lead">Le BBQ texan, c'est du temps. On le prend pour toi, et on a trouvé une façon de te le livrer sans tourner les coins ronds.</p>
           </header>
           <figure class="shot shot--portrait reveal" data-ph="Boutique">
-            <img src="assets/img/photos/boutique.jpg" alt="Le comptoir de la boutique du Hangar Fumoir" loading="lazy" data-optional>
+            <picture><source type="image/avif" srcset="assets/img/photos/boutique-34-480.avif 480w, assets/img/photos/boutique-34-676.avif 676w" sizes="(max-width: 860px) min(100vw, 480px), 36vw"><source type="image/webp" srcset="assets/img/photos/boutique-34-480.webp 480w, assets/img/photos/boutique-34-676.webp 676w" sizes="(max-width: 860px) min(100vw, 480px), 36vw"><img src="assets/img/photos/boutique.jpg" alt="Le comptoir de la boutique du Hangar Fumoir" width="676" height="901" loading="lazy" decoding="async" data-optional></picture>
           </figure>
         </div>
 
@@ -442,8 +441,11 @@
 
         <div class="visit__media">
           <div class="visit__map">
-            <iframe title="Carte : Le Hangar Fumoir, Saint-Nicolas" data-i18n-attr="title:a11y.map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=1810+route+des+Rivi%C3%A8res,+L%C3%A9vis,+QC+G7A+2P6&output=embed"></iframe>
+            <a class="map-facade" title="Carte : Le Hangar Fumoir, Saint-Nicolas" data-i18n-attr="title:a11y.map"
+            href="https://www.google.com/maps/search/?api=1&amp;query=1810+route+des+Rivi%C3%A8res,+L%C3%A9vis,+QC+G7A+2P6"
+            data-embed="https://www.google.com/maps?q=1810+route+des+Rivi%C3%A8res,+L%C3%A9vis,+QC+G7A+2P6&amp;output=embed">
+            <span class="btn btn--primary" data-i18n="map.show">Afficher la carte</span>
+          </a>
           </div>
         </div>
       </div>

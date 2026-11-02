@@ -21,9 +21,8 @@
   <meta property="og:locale" content="fr_CA">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rye&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="../assets/fonts/anton-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="cc.css">
 
@@ -111,7 +110,7 @@
       </div>
 
       <figure class="cc-hero__photo" aria-hidden="true">
-        <img src="../assets/img/photos/cc-poutine.jpg" alt="" fetchpriority="high">
+        <picture><source type="image/avif" srcset="../assets/img/photos/cc-poutine-480.avif 480w, ../assets/img/photos/cc-poutine-768.avif 768w, ../assets/img/photos/cc-poutine-1067.avif 1067w" sizes="(max-width: 1080px) min(88vw, 460px), min(34vw, 480px)"><source type="image/webp" srcset="../assets/img/photos/cc-poutine-480.webp 480w, ../assets/img/photos/cc-poutine-768.webp 768w, ../assets/img/photos/cc-poutine-1067.webp 1067w" sizes="(max-width: 1080px) min(88vw, 460px), min(34vw, 480px)"><img src="../assets/img/photos/cc-poutine.jpg" alt="" width="1067" height="800" fetchpriority="high"></picture>
       </figure>
 
       <!-- Autocollant tournant -->
@@ -165,9 +164,9 @@
         </header>
       </div>
       <div class="gallery" tabindex="0" role="region" aria-label="Photos des plats" data-i18n-attr="aria-label:cc.a11y.gallery">
-        <figure class="shot tray" data-ph="Burger"><img src="../assets/img/photos/cc-burger.jpg" alt="Burger aux viandes effilochées et frites" loading="lazy" data-optional></figure>
-        <figure class="shot tray" data-ph="Mac &amp; cheese"><img src="../assets/img/photos/cc-mac-cheese.jpg" alt="Mac &amp; cheese garni de viande effilochée" loading="lazy" data-optional></figure>
-        <figure class="shot tray" data-ph="Fumoir"><img src="../assets/img/photos/planche.jpg" alt="Les viandes fumées du Hangar, servies au casse-croûte" loading="lazy" data-optional></figure>
+        <figure class="shot tray" data-ph="Burger"><picture><source type="image/avif" srcset="../assets/img/photos/cc-burger-45-400.avif 400w, ../assets/img/photos/cc-burger-45-640.avif 640w" sizes="(max-width: 800px) 240px, (max-width: 1200px) 30vw, 360px"><source type="image/webp" srcset="../assets/img/photos/cc-burger-45-400.webp 400w, ../assets/img/photos/cc-burger-45-640.webp 640w" sizes="(max-width: 800px) 240px, (max-width: 1200px) 30vw, 360px"><img src="../assets/img/photos/cc-burger.jpg" alt="Burger aux viandes effilochées et frites" width="640" height="800" loading="lazy" decoding="async" data-optional></picture></figure>
+        <figure class="shot tray" data-ph="Mac &amp; cheese"><picture><source type="image/avif" srcset="../assets/img/photos/cc-mac-cheese-45-400.avif 400w, ../assets/img/photos/cc-mac-cheese-45-640.avif 640w" sizes="(max-width: 800px) 240px, (max-width: 1200px) 30vw, 360px"><source type="image/webp" srcset="../assets/img/photos/cc-mac-cheese-45-400.webp 400w, ../assets/img/photos/cc-mac-cheese-45-640.webp 640w" sizes="(max-width: 800px) 240px, (max-width: 1200px) 30vw, 360px"><img src="../assets/img/photos/cc-mac-cheese.jpg" alt="Mac &amp; cheese garni de viande effilochée" width="640" height="800" loading="lazy" decoding="async" data-optional></picture></figure>
+        <figure class="shot tray" data-ph="Fumoir"><picture><source type="image/avif" srcset="../assets/img/photos/planche-45-400.avif 400w, ../assets/img/photos/planche-45-640.avif 640w" sizes="(max-width: 800px) 240px, (max-width: 1200px) 30vw, 360px"><source type="image/webp" srcset="../assets/img/photos/planche-45-400.webp 400w, ../assets/img/photos/planche-45-640.webp 640w" sizes="(max-width: 800px) 240px, (max-width: 1200px) 30vw, 360px"><img src="../assets/img/photos/planche.jpg" alt="Les viandes fumées du Hangar, servies au casse-croûte" width="640" height="800" loading="lazy" decoding="async" data-optional></picture></figure>
         <figure class="shot tray" data-ph="Grilled cheese"></figure>
       </div>
     </section>
@@ -256,8 +255,11 @@
         </div>
 
         <div class="visit__map">
-          <iframe title="Carte : Casse-Croûte du Hangar, Lévis" data-i18n-attr="title:cc.a11y.map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=1810+route+des+Rivi%C3%A8res,+L%C3%A9vis,+QC&output=embed"></iframe>
+          <a class="map-facade" title="Carte : Casse-Croûte du Hangar, Lévis" data-i18n-attr="title:cc.a11y.map"
+            href="https://www.google.com/maps/search/?api=1&amp;query=1810+route+des+Rivi%C3%A8res,+L%C3%A9vis,+QC"
+            data-embed="https://www.google.com/maps?q=1810+route+des+Rivi%C3%A8res,+L%C3%A9vis,+QC&amp;output=embed">
+            <span class="btn btn--primary" data-i18n="map.show">Afficher la carte</span>
+          </a>
         </div>
       </div>
     </section>

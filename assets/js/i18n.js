@@ -10,6 +10,7 @@ window.HANGAR_EN = {
   "a11y.nav": "Main navigation", "a11y.footer": "Footer", "a11y.tabs": "Product categories",
   "a11y.promos": "Promotions", "a11y.map": "Map: Le Hangar Fumoir, Saint-Nicolas",
   "a11y.pause": "Pause animations",
+  "map.show": "Show map",
   "tick.ribs": "Ribs", "tick.pork": "Pulled pork",
   "form.required": "All fields are required except phone, event type, meats and message.",
   "tx.stamp": "★ Texas-style BBQ ★ Maple-smoked ★ Saint-Nicolas, QC ",
