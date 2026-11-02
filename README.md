@@ -4,12 +4,12 @@ Deux sites liés pour deux commerces voisins appartenant au même propriétaire,
 
 | Site | Adresse web | Identité |
 |---|---|---|
-| **Le Hangar Fumoir** (local 502) | `/` | Charbon et braise : BBQ texan, fumoir |
+| **Le Hangar Fumoir** (local 502) | `/` | Texan : typo western Rye, rouge du logo, kraft et bois de grange, étoiles, sceau tournant |
 | **Casse-Croûte du Hangar** (local 503) | `/casse-croute/` | Moutarde et charbon : poutines, burgers |
 
 **Le lien entre les deux, « les 15 pas »** : sur le site du Hangar, la section « T'as faim, là, maintenant? » montre 15 empreintes de pas animées qui mènent au casse-croûte, avec le bouton « Faire les 15 pas ». Le casse-croûte fait le chemin inverse (« Le fumoir est à 15 pas »). Chaque en-tête et chaque pied de page a aussi un lien vers l'autre site. Le choix de langue FR/EN suit le visiteur d'un site à l'autre.
 
-Sites statiques HTML/CSS/JS, sans dépendance ni étape de compilation. Les deux partagent le même système de design (`assets/css/style.css`) ; le casse-croûte y ajoute une surcouche (`casse-croute/cc.css`).
+Sites statiques HTML/CSS/JS, sans dépendance ni étape de compilation. Les deux partagent le même système de design (`assets/css/style.css`) ; le Hangar y ajoute son habillage texan (`assets/css/texan.css`) et le casse-croûte sa surcouche moutarde (`casse-croute/cc.css`).
 
 ## Contenu des sites
 

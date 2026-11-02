@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Le Hangar Fumoir — habillage texan
+   Chargé uniquement sur le site du Hangar (classe .tx sur <html>).
+   Typo western (Rye, cousine des lettres du logo), étoiles de la Lone Star,
+   papier kraft, planches de grange, sceau de fer à marquer.
+   L'accent reste le rouge du logo.
+   ========================================================================== */
+
+.tx {
+  --f-western: "Rye", "Anton", Georgia, serif;
+  --kraft:   #E6D3B3;   /* papier boucherie / kraft */
+  --kraft-2: #DCC39C;
+  --cuir:    #3A2A1E;   /* cuir foncé pour les lignes */
+}
+
+/* ---------- Textures ---------- */
+.tx body { background: var(--kraft); }
+.tx .section,
+.tx .section--alt {
+  background-color: var(--kraft);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .23 0 0 0 0 .16 0 0 0 0 .1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.tx .section--alt { background-color: var(--kraft-2); }
+
+/* Planches de grange sur les fonds sombres */
+.tx .section--dark,
+.tx .faim,
+.tx .footer,
+.tx .promos {
+  background-color: var(--charbon);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0) 0 178px, rgba(0, 0, 0, .35) 178px 180px),
+    repeating-linear-gradient(90deg, rgba(243, 234, 219, .018) 0 2px, rgba(0, 0, 0, 0) 2px 9px);
+}
+
+/* ---------- Typographie western ---------- */
+.tx h2,
+.tx .hero__title,
+.tx .sig--xl h3,
+.tx .menu-group,
+.tx .step__num,
+.tx .pull p,
+.tx .promo strong,
+.tx .rating strong,
+.tx .themes strong,
+.tx .facts strong,
+.tx .ticker span,
+.tx .footer__big {
+  font-family: var(--f-western);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.tx h2 { font-size: clamp(2rem, 1.3rem + 2.8vw, 3.4rem); line-height: 1.08; max-width: 20ch; }
+.tx .hero__title { font-size: clamp(2.6rem, 1.2rem + 5.6vw, 6.4rem); line-height: 1; }
+.tx .hero__title-accent { color: var(--braise); -webkit-text-stroke: 0; }
+.tx .sig--xl h3 { font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem); }
+.tx .menu-group { font-size: var(--t-lg); display: flex; align-items: center; gap: var(--s4); }
+.tx .menu-group::after { content: ""; flex: 1; height: 0; border-top: 2px dashed rgba(58, 42, 30, .35); }
+.tx .step__num { -webkit-text-stroke: 0; color: var(--braise); font-size: var(--t-xl); }
+.tx .pull p { font-size: clamp(1.5rem, 1rem + 2vw, 2.4rem); line-height: 1.25; text-transform: none; }
+.tx .promo strong { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.2rem); }
+.tx .facts strong { font-size: var(--t-md); }
+.tx .ticker span { font-size: 1.25rem; }
+.tx .ticker span::after { content: "★"; font-size: .8em; }
+
+/* Étoiles autour des surtitres */
+.tx .eyebrow { color: var(--cuir); }
+.tx .eyebrow::before { content: "★"; color: var(--braise); margin-right: var(--s2); }
+.tx .hero .eyebrow, .tx .section--dark .eyebrow, .tx .faim .eyebrow { color: var(--gris-clair); }
+
+/* ---------- Boutons « estampés » ---------- */
+.tx .btn { font-family: var(--f-label); letter-spacing: .1em; }
+.tx .btn--primary { box-shadow: inset 0 0 0 2px var(--braise), inset 0 0 0 4px rgba(255, 248, 238, .55); }
+.tx .btn--primary:hover { box-shadow: inset 0 0 0 2px var(--braise-h), inset 0 0 0 4px rgba(255, 248, 238, .75); }
+
+/* ---------- Héro ---------- */
+.tx .hero__lead { max-width: 44ch; }
+.brand-stamp {
+  position: absolute; z-index: 2; right: clamp(16px, 7vw, 120px); top: calc(var(--header-h) + var(--s7));
+  width: clamp(130px, 15vw, 200px); aspect-ratio: 1;
+  color: var(--os); opacity: .9; display: grid; place-items: center;
+  animation: stamp-in .9s .6s cubic-bezier(.2, 1.6, .4, 1) both;
+}
+.brand-stamp svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 30s linear infinite; }
+.brand-stamp text { fill: currentColor; font-family: var(--f-label); font-weight: 700; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; }
+.brand-stamp__star { font-size: clamp(2.2rem, 4vw, 3.4rem); color: var(--braise); line-height: 1; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes stamp-in { from { opacity: 0; transform: scale(1.6) rotate(-20deg); } }
+@media (max-width: 760px) { .brand-stamp { width: 110px; top: calc(var(--header-h) + var(--s4)); right: var(--s4); } }
+
+/* ---------- Séparateur étoilé (façon ceinture de cowboy) ---------- */
+.tx-divider {
+  display: flex; justify-content: center; align-items: center; gap: var(--s4);
+  background: var(--charbon); color: var(--braise); padding: var(--s3) 0;
+  border-block: 3px double rgba(243, 234, 219, .35);
+}
+.tx-divider span { font-size: 1.125rem; line-height: 1; }
+.tx-divider span:nth-child(2) { font-size: 1.5rem; color: var(--os); }
+
+/* ---------- Cartes « affiches » ---------- */
+.tx .sig .shot { border: 6px solid var(--os); outline: 2px solid var(--cuir); outline-offset: -2px; }
+.tx .shot::before { font-family: var(--f-western); -webkit-text-stroke: 0; color: rgba(243, 234, 219, .16); text-transform: uppercase; }
+.tx .tag { border-color: var(--cuir); border-style: double; border-width: 3px; }
+.tx .sig__body p, .tx .themes span, .tx .item__desc, .tx .section__note { color: #5E4F43; }
+
+/* Menu : prix sur une étiquette */
+.tx .tab[aria-selected="true"] { background: var(--cuir); border-color: var(--cuir); }
+.tx .tab { border-color: rgba(58, 42, 30, .25); }
+.tx .item { border-bottom: 1px dashed rgba(58, 42, 30, .3); }
+.tx .badge { background: var(--cuir); }
+.tx .badge--hot { background: var(--braise); }
+
+/* Formulaire et avis sur papier */
+.tx .form, .tx .quote { background: #F6ECDA; border-color: rgba(58, 42, 30, .25); }
+.tx .quote { border-top: 4px solid var(--braise); }
+
+/* Points de passage des 15 pas : bottes plutôt que pas */
+.tx .steps15__end span { font-family: var(--f-western); text-transform: none; letter-spacing: 0; font-size: 1rem; }
+
+/* ---------- Pied de page ---------- */
+.footer__big--tx {
+  font-family: var(--f-western); -webkit-text-stroke: 0; color: var(--os);
+  font-size: clamp(2.2rem, 1rem + 5.5vw, 5.6rem); line-height: 1.05; text-transform: none;
+}
+.footer__big--tx em { font-style: normal; color: var(--braise); }
+
+/* ---------- Ajustements ---------- */
+.tx .hero__title-accent { text-shadow: 0 2px 24px rgba(26, 22, 19, .65); }
+.tx .shot::before { font-size: clamp(1.8rem, 3.4vw, 3rem); line-height: 1; }
+.tx .sig--xl .shot::before { font-size: clamp(2.6rem, 6vw, 5rem); }
+@media (max-width: 560px) { .brand-stamp { display: none; } }

@@ -7,6 +7,7 @@
 window.HANGAR_EN = {
   "meta.title": "Le Hangar Fumoir — Maple-smoked meats, ready in 20 minutes · Saint-Nicolas",
   "skip": "Skip to content",
+  "tx.stamp": "★ Texas-style BBQ ★ Maple-smoked ★ Saint-Nicolas, QC ",
   "nav.menu": "Products",
   "nav.smoke": "How it works",
   "nav.catering": "Catering",

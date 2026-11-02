@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="tx">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,8 +21,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Rye&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/texan.css">
 
   <script type="application/ld+json">
   {
@@ -91,6 +92,16 @@
         <img src="assets/img/photos/planche.jpg" alt="" fetchpriority="high">
       </div>
       <div class="hero__smoke" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="brand-stamp" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <defs><path id="stamp-circle" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs>
+          <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="3"/>
+          <circle cx="100" cy="100" r="88" fill="none" stroke="currentColor" stroke-width="1"/>
+          <circle cx="100" cy="100" r="54" fill="none" stroke="currentColor" stroke-width="1"/>
+          <text><textPath href="#stamp-circle" data-i18n="tx.stamp">★ BBQ style texan ★ Fumé à l'érable ★ Saint-Nicolas, QC </textPath></text>
+        </svg>
+        <span class="brand-stamp__star">★</span>
+      </div>
       <div class="wrap hero__inner">
         <p class="eyebrow" data-i18n="hero.eyebrow">Fumoir artisanal · Saint-Nicolas, Lévis</p>
         <h1 class="hero__title">
@@ -195,6 +206,8 @@
     </section>
 
     <!-- ============ PRODUITS ============ -->
+    <div class="tx-divider" aria-hidden="true"><span>★</span><span>★</span><span>★</span></div>
+
     <section class="section section--alt" id="produits" aria-labelledby="menu-title">
       <div class="wrap">
         <header class="reveal section__head section__head--split">
@@ -266,6 +279,8 @@
     </section>
 
     <!-- ============ AVIS ============ -->
+    <div class="tx-divider" aria-hidden="true"><span>★</span><span>★</span><span>★</span></div>
+
     <section class="section" id="avis" aria-labelledby="reviews-title">
       <div class="wrap">
         <header class="reveal section__head section__head--split">
@@ -422,7 +437,7 @@
   <footer class="footer">
     <div class="wrap footer__inner">
       <div class="footer__brand">
-        <span class="footer__big">Low &amp; slow.</span>
+        <span class="footer__big footer__big--tx">Time to eat, <em>y'all.</em></span>
         <p data-i18n="footer.tag">Fumoir artisanal à Saint-Nicolas. Viandes fumées à l'érable, faites au Québec.</p>
       </div>
       <nav class="footer__nav" aria-label="Pied de page">
