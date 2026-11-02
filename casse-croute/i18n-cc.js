@@ -7,6 +7,7 @@ Object.assign(window.HANGAR_EN, {
   "cc.nav.visit": "Find us",
   "cc.nav.back": "← The Smokehouse",
   "cc.call": "Call",
+  "cc.a11y.tabs": "Menu categories", "cc.a11y.gallery": "Food photos", "cc.a11y.map": "Map: Casse-Croûte du Hangar, Lévis",
 
   "cc.hero.eyebrow": "Snack bar · Lévis, Québec",
   "cc.hero.t1": "Poutines.",

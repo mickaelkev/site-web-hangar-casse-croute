@@ -56,7 +56,7 @@
         <span class="brand__name">Casse-Croûte<small>du Hangar</small></span>
       </a>
 
-      <nav class="nav" id="nav" aria-label="Navigation principale">
+      <nav class="nav" id="nav" aria-label="Navigation principale" data-i18n-attr="aria-label:a11y.nav">
         <a href="#menu" data-i18n="cc.nav.menu">Menu</a>
         <a href="#speciaux" data-i18n="cc.nav.specials">Spéciaux</a>
         <a href="#visiter" data-i18n="cc.nav.visit">Nous trouver</a>
@@ -64,11 +64,11 @@
       </nav>
 
       <div class="header__actions">
-        <button class="lang" type="button" id="lang-toggle" aria-label="Switch to English">EN</button>
+        <button class="lang" type="button" id="lang-toggle" lang="en">EN<span class="sr"> – English</span></button>
         <a class="btn btn--primary btn--sm header__cta" href="tel:+14188318288"><span data-i18n="cc.call">Appeler</span>&nbsp;418&nbsp;831-8288</a>
         <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav">
           <span></span><span></span>
-          <span class="sr" data-i18n="nav.open">Ouvrir le menu</span>
+          <span class="sr">Menu</span>
         </button>
       </div>
     </div>
@@ -147,10 +147,10 @@
           <h2 id="gal-title" data-i18n="cc.gal.title">Ça te donne faim?</h2>
         </header>
       </div>
-      <div class="gallery" tabindex="0" aria-label="Photos des plats">
-        <figure class="shot tray" data-ph="Burger"><img src="../assets/img/photos/cc-burger.jpg" alt="Burger aux viandes effilochées et frites" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="shot tray" data-ph="Mac &amp; cheese"><img src="../assets/img/photos/cc-mac-cheese.jpg" alt="Mac and cheese garni de viande effilochée" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="shot tray" data-ph="Fumoir"><img src="../assets/img/photos/planche.jpg" alt="Les viandes fumées du Hangar, servies au casse-croûte" loading="lazy" onerror="this.remove()"></figure>
+      <div class="gallery" tabindex="0" role="region" aria-label="Photos des plats" data-i18n-attr="aria-label:cc.a11y.gallery">
+        <figure class="shot tray" data-ph="Burger"><img src="../assets/img/photos/cc-burger.jpg" alt="Burger aux viandes effilochées et frites" loading="lazy" data-optional></figure>
+        <figure class="shot tray" data-ph="Mac &amp; cheese"><img src="../assets/img/photos/cc-mac-cheese.jpg" alt="Mac and cheese garni de viande effilochée" loading="lazy" data-optional></figure>
+        <figure class="shot tray" data-ph="Fumoir"><img src="../assets/img/photos/planche.jpg" alt="Les viandes fumées du Hangar, servies au casse-croûte" loading="lazy" data-optional></figure>
         <figure class="shot tray" data-ph="Grilled cheese"></figure>
       </div>
     </section>
@@ -183,8 +183,8 @@
           </div>
           <p class="section__note" data-i18n="cc.menu.note">Prix en vigueur en octobre 2026, sujets à changement. Le tableau du comptoir a toujours le dernier mot.</p>
         </header>
-        <div class="tabs" role="tablist" aria-label="Catégories du menu" id="menu-tabs"></div>
-        <div class="menu-list" id="menu-list" role="tabpanel" aria-live="polite"></div>
+        <div class="tabs" role="tablist" aria-label="Catégories du menu" data-i18n-attr="aria-label:cc.a11y.tabs" id="menu-tabs"></div>
+        <div class="menu-list" id="menu-list" role="tabpanel" tabindex="0"></div>
         <noscript><p class="section__note">Active JavaScript pour afficher le menu, ou appelle au 418 831-8288.</p></noscript>
       </div>
     </section>
@@ -239,7 +239,7 @@
         </div>
 
         <div class="visit__map">
-          <iframe title="Carte : Casse-Croûte du Hangar, Lévis" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          <iframe title="Carte : Casse-Croûte du Hangar, Lévis" data-i18n-attr="title:cc.a11y.map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps?q=1810+route+des+Rivi%C3%A8res,+L%C3%A9vis,+QC&output=embed"></iframe>
         </div>
       </div>
@@ -252,12 +252,14 @@
         <span class="footer__big">Bon appétit.</span>
         <p data-i18n="cc.footer.tag">Le casse-croûte voisin du Hangar Fumoir, à Lévis.</p>
       </div>
-      <nav class="footer__nav" aria-label="Pied de page">
+      <nav class="footer__nav" aria-label="Pied de page" data-i18n-attr="aria-label:a11y.footer">
         <a href="#menu" data-i18n="cc.nav.menu">Menu</a>
         <a href="#speciaux" data-i18n="cc.nav.specials">Spéciaux</a>
         <a href="#visiter" data-i18n="cc.nav.visit">Nous trouver</a>
         <a href="../" data-i18n="cc.nav.back">← Le Fumoir</a>
+        <a href="confidentialite.html" data-i18n="footer.privacy">Confidentialité</a>
       </nav>
+      <button class="motion-toggle" type="button" id="motion-toggle" aria-pressed="false" data-i18n="a11y.pause">Mettre les animations en pause</button>
       <p class="footer__legal">© <span id="year">2026</span> Casse-Croûte du Hangar. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
     </div>
   </footer>
@@ -266,14 +268,5 @@
   <script src="../assets/js/i18n.js"></script>
   <script src="i18n-cc.js"></script>
   <script src="../assets/js/main.js"></script>
-  <script>
-    /* Met en évidence le spécial du jour */
-    (function () {
-      var today = new Date().getDay();
-      document.querySelectorAll(".special").forEach(function (el) {
-        if (+el.dataset.day === today) el.classList.add("is-today");
-      });
-    })();
-  </script>
 </body>
 </html>

@@ -79,7 +79,7 @@
   position: absolute; z-index: 2; right: clamp(16px, 7vw, 120px); top: calc(var(--header-h) + var(--s7));
   width: clamp(130px, 15vw, 200px); aspect-ratio: 1;
   color: var(--os); opacity: .9; display: grid; place-items: center;
-  animation: stamp-in .9s .6s cubic-bezier(.2, 1.6, .4, 1) both;
+  animation: stamp-in .9s .8s cubic-bezier(.2, 1.6, .4, 1) both;
 }
 .brand-stamp svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 30s linear infinite; }
 .brand-stamp text { fill: currentColor; font-family: var(--f-label); font-weight: 700; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; }
@@ -204,3 +204,10 @@
   .tx .cat__intro h2 { font-size: clamp(2rem, 1.3rem + 1.8vw, 2.9rem); max-width: 16ch; }
 }
 .tx .sig__cta { display: inline-block; margin-top: var(--s5); }
+
+/* Accessibilité : rouge du héro éclairci (≥ 3:1 sur la photo voilée), gris et rouges plus foncés sur kraft */
+.tx .hero__title-accent { color: #F0524A; }
+.tx { --gris: #574A40; }
+.tx .item--out .item__price--ask { color: #9E1C1C; }
+.tx .promo__k { color: #FF7A6E; }
+.brand-stamp svg { animation-duration: 40s; }

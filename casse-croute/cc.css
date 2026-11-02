@@ -76,7 +76,7 @@
 }
 .special.is-today { background: var(--braise); }
 .special.is-today .special__day, .special.is-today p { color: var(--charbon-2); }
-.special.is-today .special__today { display: block; animation: pulse 1.8s ease-in-out infinite; }
+.special.is-today .special__today { display: block; animation: pulse 1.8s ease-in-out 3; }
 @keyframes pulse { 50% { transform: scale(1.06); } }
 @media (max-width: 700px) { .specials { grid-template-columns: 1fr; } }
 
@@ -106,7 +106,7 @@
   right: clamp(24px, 7vw, 120px); bottom: var(--s8);
   width: clamp(280px, 34vw, 500px); aspect-ratio: 4 / 3;
   border: 10px solid var(--os); border-radius: var(--radius);
-  transform: rotate(4deg); animation: float 6s ease-in-out infinite;
+  transform: rotate(4deg); animation: photo-in .8s .35s cubic-bezier(.3, 1.45, .5, 1) both, float 6s 1.2s ease-in-out infinite;
   box-shadow: 0 30px 60px -20px rgba(26, 22, 19, .45);
 }
 .cc-hero__photo img { width: 100%; height: 100%; object-fit: cover; }
@@ -137,3 +137,14 @@
 }
 .cc .faim h2 { font-family: "Rye", var(--f-display); font-weight: 400; letter-spacing: 0; line-height: 1.08; text-transform: uppercase; }
 .cc .faim .eyebrow::before { content: "★"; color: #D42A2A; margin-right: var(--s2); }
+
+/* Correctifs de l'audit animations */
+@keyframes photo-in { from { opacity: 0; transform: rotate(12deg) translateY(40px) scale(.94); } }
+.cc .hero__lead { animation-delay: 650ms; }
+.cc .hero__ctas { animation-delay: 760ms; }
+.sticker svg { animation-duration: 40s; }
+@media (hover: none) {
+  .special:hover { transform: none; }
+  .tray:nth-child(odd):hover  { transform: rotate(-2deg); }
+  .tray:nth-child(even):hover { transform: rotate(1.5deg) translateY(12px); }
+}

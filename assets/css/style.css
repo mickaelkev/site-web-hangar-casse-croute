@@ -582,3 +582,88 @@ a.promo:hover { background: var(--charbon-2); }
   .steps15 .foot { width: 6px; }
   .steps15__end span { font-size: .6875rem; }
 }
+
+/* Sécurité / Loi 25 */
+.hp { position: absolute !important; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+.form__privacy { font-size: .875rem; line-height: 1.5; color: var(--gris); }
+.form__privacy .link { margin-left: var(--s1); }
+
+/* ==========================================================================
+   Correctifs de l'audit accessibilité
+   ========================================================================== */
+:focus-visible { outline: 3px solid var(--focus, #1A1613); outline-offset: 3px; border-radius: 2px; }
+.tx .header, .header.is-solid, .hero, .section--dark, .faim, .promos, .footer, .tx-divider, .ticker { --focus: #F3EADB; }
+@media (max-width: 900px) {
+  .nav { --focus: #F3EADB; max-height: calc(100dvh - var(--header-h)); overflow-y: auto; overscroll-behavior: contain; }
+  .nav.is-open { transition: opacity .2s, transform .2s; }
+}
+.chip input:focus-visible + span { outline: 3px solid var(--focus, #1A1613); outline-offset: 2px; }
+.field input, .field select, .field textarea, .chip span { border-color: #8A7C6E; }
+.field.is-invalid input, .field.is-invalid select { border-color: #A63A12; }
+.tab small { opacity: 1; font-weight: 500; }
+.hero--photo .hero__bg::after {
+  background:
+    linear-gradient(90deg, rgba(26, 22, 19, .92) 0%, rgba(26, 22, 19, .85) 55%, rgba(26, 22, 19, .35) 100%),
+    linear-gradient(0deg, rgba(26, 22, 19, .95) 0%, rgba(26, 22, 19, 0) 55%);
+}
+@media (max-width: 760px) {
+  .hero--photo .hero__bg::after { background: linear-gradient(0deg, rgba(26, 22, 19, .97) 15%, rgba(26, 22, 19, .85) 60%, rgba(26, 22, 19, .75) 100%); }
+}
+.motion-toggle {
+  background: none; border: 1px solid var(--ligne-sombre); color: var(--gris-clair); border-radius: var(--radius);
+  min-height: 44px; padding: 0 var(--s4); font-family: var(--f-label); font-weight: 700; font-size: .875rem;
+  letter-spacing: .06em; text-transform: uppercase; justify-self: start;
+}
+.motion-toggle:hover { color: var(--os); border-color: var(--os); }
+.is-paused *, .is-paused *::before, .is-paused *::after { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) { .motion-toggle { display: none; } }
+
+/* ==========================================================================
+   Correctifs de l'audit animations (fluidité)
+   ========================================================================== */
+/* 1. Pas de grain en mode de fusion sur le héro photo (23 → 49 i/s) */
+.hero--photo::after { display: none; }
+/* 2. Fumée sans flou, une seule nappe sur mobile */
+.hero__smoke i {
+  filter: none;
+  background: radial-gradient(circle, rgba(243, 234, 219, .06) 0%, rgba(243, 234, 219, .03) 35%, rgba(243, 234, 219, 0) 70%);
+}
+@media (max-width: 760px) { .hero__smoke i:nth-child(n+2) { display: none; } }
+/* 3. Les 15 pas n'animent plus que l'opacité, 3 passages */
+.foot { fill: var(--braise); opacity: .14; }
+.steps15.is-in .foot { animation: step 3.6s calc(var(--i) * 140ms) ease-out 3; }
+@keyframes step { 0% { opacity: .14; } 6% { opacity: 1; } 40% { opacity: .6; } 85%, 100% { opacity: .14; } }
+/* 4. Apparitions par animation (ne bloque plus les survols), cascade entre frères */
+.js-reveal .reveal { opacity: 1; transform: none; transition: none; }
+.js-reveal .reveal:not(.is-in) { opacity: 0; }
+.js-reveal .reveal.is-in { animation: reveal .7s cubic-bezier(.2, .8, .2, 1) backwards; animation-delay: calc(var(--rd, 0) * 90ms); }
+@keyframes reveal { from { opacity: 0; transform: translateY(24px); } }
+:is(.steps, .quotes, .themes, .specials, .promos__inner) > .reveal:nth-child(2) { --rd: 1; }
+:is(.steps, .quotes, .themes, .specials, .promos__inner) > .reveal:nth-child(3) { --rd: 2; }
+@media print { .js-reveal .reveal { opacity: 1 !important; animation: none !important; } }
+/* 5. Ordre d'arrivée du héro : surtitre, titre, chapeau, boutons, faits */
+@keyframes rise-sm { from { opacity: 0; transform: translateY(16px); } }
+.hero .eyebrow, .hero__lead, .hero__ctas, .hero .facts, .cc-rating { animation: rise-sm .7s cubic-bezier(.2, .8, .2, 1) both; }
+.rise { animation-duration: .8s; animation-delay: calc(var(--d) * 120ms + 100ms); }
+.hero__lead { animation-delay: 450ms; }
+.hero__ctas { animation-delay: 560ms; }
+.hero .facts, .cc-rating { animation-delay: 680ms; }
+/* 6. Menu : pas d'apparition au changement de langue */
+.item--static { animation: none; }
+/* 7. Fondu au changement de langue */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .22s; animation-timing-function: ease; }
+/* 8. En-tête : couleurs en transition, sans flou d'arrière-plan */
+.header { transition: background-color .3s cubic-bezier(.2, .8, .2, 1), border-color .3s, color .3s; }
+.header.is-solid { background: rgba(26, 22, 19, .96); backdrop-filter: none; }
+.header .brand, .header .nav a, .header .lang, .header .burger { transition: color .3s, border-color .3s, opacity .2s; }
+.header .header__cta { transition: color .3s, background-color .3s, border-color .3s, transform .2s; }
+@media (max-width: 900px) {
+  .nav { transition: opacity .15s ease-in, transform .15s ease-in, visibility 0s .15s; }
+  .nav.is-open { transition: opacity .25s cubic-bezier(.2, .8, .2, 1), transform .25s cubic-bezier(.2, .8, .2, 1), visibility 0s; }
+}
+/* 10. Bandeau en pause au survol */
+.ticker:hover .ticker__track, .ticker:focus-within .ticker__track { animation-play-state: paused; }
+/* 11. Pas de survol collant sur écran tactile */
+@media (hover: none) { .sig:hover .shot img { transform: none; } }
+/* 12. Mouvement réduit : le chemin des 15 pas reste visible */
+@media (prefers-reduced-motion: reduce) { .foot { opacity: .45; } }

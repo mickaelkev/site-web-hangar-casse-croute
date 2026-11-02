@@ -9,6 +9,7 @@
   var FR_EXTRA = window.HANGAR_FR_EXTRA;
   var FR = {};               // textes FR d'origine, lus dans le HTML
   var lang = "fr";
+  var FR_ATTR = new WeakMap();
   var activeCat = (C.categories && C.categories[0]) ? C.categories[0].id : "all";
 
   function $(s, root) { return (root || document).querySelector(s); }
@@ -37,17 +38,33 @@
       var key = el.dataset.i18n;
       el.textContent = lang === "en" && EN[key] !== undefined ? EN[key] : FR[key];
     });
+    $$("[data-i18n-attr]").forEach(function (el) {
+      var saved = FR_ATTR.get(el) || {};
+      el.dataset.i18nAttr.split(";").forEach(function (pair) {
+        var p = pair.split(":"), attr = p[0].trim(), key = p[1].trim();
+        if (!(attr in saved)) saved[attr] = el.getAttribute(attr);
+        el.setAttribute(attr, lang === "en" && EN[key] !== undefined ? EN[key] : saved[attr]);
+      });
+      FR_ATTR.set(el, saved);
+    });
     var btn = $("#lang-toggle");
-    btn.textContent = lang === "en" ? "FR" : "EN";
-    btn.setAttribute("aria-label", lang === "en" ? "Passer en français" : "Switch to English");
+    btn.lang = lang === "en" ? "fr" : "en";
+    btn.innerHTML = lang === "en" ? 'FR<span class="sr"> – Français</span>' : 'EN<span class="sr"> – English</span>';
     document.title = lang === "en" && EN["meta.title"] ? EN["meta.title"] : FR_TITLE;
     storage("hangar-lang", lang);
-    if (tabsEl) { renderTabs(); renderMenu(); }
+    if (tabsEl) { renderTabs(); renderMenu(false); }
     if ($("#hours")) renderHours();
   }
   var FR_TITLE = document.title;
 
-  $("#lang-toggle").addEventListener("click", function () { applyLang(lang === "en" ? "fr" : "en"); });
+  $("#lang-toggle").addEventListener("click", function () {
+    var next = lang === "en" ? "fr" : "en";
+    if (document.startViewTransition && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.startViewTransition(function () { applyLang(next); });
+    } else {
+      applyLang(next);
+    }
+  });
 
   /* ---------- En-tête ---------- */
   var header = $(".header");
@@ -56,15 +73,33 @@
   onScroll();
 
   var burger = $("#burger"), nav = $("#nav");
-  function closeNav() { nav.classList.remove("is-open"); burger.setAttribute("aria-expanded", "false"); }
+  var mobile = window.matchMedia("(max-width: 900px)");
+  function isOpen() { return nav.classList.contains("is-open"); }
+  function closeNav(returnFocus) {
+    if (!isOpen()) return;
+    nav.classList.remove("is-open");
+    burger.setAttribute("aria-expanded", "false");
+    onScroll();
+    if (returnFocus) burger.focus();
+  }
   burger.addEventListener("click", function () {
-    var open = !nav.classList.contains("is-open");
+    var open = !isOpen();
     nav.classList.toggle("is-open", open);
     burger.setAttribute("aria-expanded", String(open));
     header.classList.add("is-solid");
+    if (open) $("a", nav).focus();
   });
-  $$("a", nav).forEach(function (a) { a.addEventListener("click", closeNav); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeNav(); });
+  $$("a", nav).forEach(function (a) { a.addEventListener("click", function () { closeNav(false); }); });
+  document.addEventListener("keydown", function (e) {
+    if (!isOpen() || !mobile.matches) return;
+    if (e.key === "Escape") { closeNav(true); return; }
+    if (e.key !== "Tab") return;
+    var items = $$("a", nav).concat(burger);          // boucle : liens du menu puis bouton
+    var i = items.indexOf(document.activeElement);
+    e.preventDefault();
+    items[(i + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+  });
+  mobile.addEventListener("change", function () { closeNav(false); });
 
   // Lien actif selon la section visible
   if ("IntersectionObserver" in window) {
@@ -86,10 +121,12 @@
     tabsEl.innerHTML = cats.map(function (c) {
       var n = c.id === "all" ? C.menu.length : C.menu.filter(function (m) { return m.cat === c.id; }).length;
       var sel = c.id === activeCat;
-      return '<button class="tab" role="tab" type="button" data-cat="' + c.id + '" aria-selected="' + sel + '" tabindex="' + (sel ? 0 : -1) + '">'
-        + esc(c[lang]) + "<small>" + n + "</small></button>";
+      return '<button class="tab" role="tab" type="button" id="tab-' + c.id + '" aria-controls="menu-list" data-cat="' + c.id + '" aria-selected="' + sel + '" tabindex="' + (sel ? 0 : -1) + '">'
+        + esc(c[lang]) + '<small aria-hidden="true">' + n + '</small><span class="sr"> (' + n + ')</span></button>';
     }).join("");
+    listEl.setAttribute("aria-labelledby", "tab-" + activeCat);
   }
+
 
   function money(n) {
     var str = n % 1 === 0 ? String(n) : n.toFixed(2);
@@ -107,17 +144,18 @@
     return '<span class="item__price">' + money(item.price) + unit + "</span>";
   }
 
-  function itemHtml(item, i) {
+  function itemHtml(item, i, animate) {
     var d = item[lang];
     var badge = item.badge === "hot" ? '<span class="badge badge--hot">' + esc(t("menu.hot")) + "</span>"
               : item.badge === "limited" ? '<span class="badge">' + esc(t("menu.limited")) + "</span>" : "";
-    return '<article class="item' + (item.stock === false ? " item--out" : "") + '" style="animation-delay:' + (i * 40) + 'ms">'
+    var anim = animate ? ' style="animation-delay:' + (Math.min(i, 8) * 30) + 'ms"' : "";
+    return '<article class="item' + (item.stock === false ? " item--out" : "") + (animate ? "" : " item--static") + '"' + anim + ">"
       + '<h3 class="item__name">' + esc(d.name) + badge + "</h3>"
       + price(item)
       + '<p class="item__desc">' + esc(d.desc) + "</p></article>";
   }
 
-  function renderMenu() {
+  function renderMenu(animate) {
     var html = "";
     if (activeCat === "all") {
       var i = 0;
@@ -125,27 +163,41 @@
         var items = C.menu.filter(function (m) { return m.cat === c.id; });
         if (!items.length) return;
         html += '<h3 class="menu-group">' + esc(c[lang]) + "</h3>";
-        items.forEach(function (m) { html += itemHtml(m, i++); });
+        items.forEach(function (m) { html += itemHtml(m, i++, animate); });
       });
     } else {
-      C.menu.filter(function (m) { return m.cat === activeCat; }).forEach(function (m, i) { html += itemHtml(m, i); });
+      C.menu.filter(function (m) { return m.cat === activeCat; }).forEach(function (m, i) { html += itemHtml(m, i, animate); });
     }
     listEl.innerHTML = html;
+  }
+
+  /* Met à jour les onglets sans les reconstruire : la transition joue */
+  function selectTab(cat) {
+    $$(".tab", tabsEl).forEach(function (b) {
+      var on = b.dataset.cat === cat;
+      b.setAttribute("aria-selected", String(on));
+      b.tabIndex = on ? 0 : -1;
+    });
+    listEl.setAttribute("aria-labelledby", "tab-" + cat);
   }
 
   if (tabsEl) {
   tabsEl.addEventListener("click", function (e) {
     var b = e.target.closest(".tab");
-    if (!b) return;
+    if (!b || b.dataset.cat === activeCat) { if (b) b.focus(); return; }
     activeCat = b.dataset.cat;
-    renderTabs(); renderMenu();
-    $('.tab[data-cat="' + activeCat + '"]', tabsEl).focus();
+    selectTab(activeCat);
+    renderMenu(true);
+    b.focus();
   });
   tabsEl.addEventListener("keydown", function (e) {
-    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-    var tabs = $$(".tab", tabsEl);
-    var idx = tabs.indexOf(document.activeElement);
-    var next = tabs[(idx + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+    var tabs = $$(".tab", tabsEl), idx = tabs.indexOf(document.activeElement), next;
+    if (e.key === "ArrowRight") next = tabs[(idx + 1) % tabs.length];
+    else if (e.key === "ArrowLeft") next = tabs[(idx - 1 + tabs.length) % tabs.length];
+    else if (e.key === "Home") next = tabs[0];
+    else if (e.key === "End") next = tabs[tabs.length - 1];
+    else return;
+    e.preventDefault();
     next.click();
   });
 
@@ -180,17 +232,27 @@
   if (form) {
   var status = $("#form-status");
   var dateInput = $("#f-date");
+  var LIMITS = { name: 100, email: 254, phone: 30, date: 10, guests: 4, type: 60, message: 1500 };
+  var MAX_GUESTS = 2000;
+  var ENDPOINT_OK = /^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+$/;
+  var loadedAt = Date.now();
+
+  function pad(n) { return ("0" + n).slice(-2); }
+  function isoLocal(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
   var tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
-  dateInput.min = tomorrow.toISOString().slice(0, 10);
+  dateInput.min = isoLocal(tomorrow);            // date locale, pas UTC
 
   function check(input) {
     var field = input.closest(".field"), ok = true, v = input.value.trim();
-    if (input.name === "name") ok = v.length > 1;
-    if (input.name === "email") ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
-    if (input.name === "date") ok = !!v && v >= dateInput.min;
-    if (input.name === "guests") ok = +v >= 10;
+    if (input.name === "name") ok = v.length > 1 && v.length <= LIMITS.name;
+    if (input.name === "email") ok = v.length <= LIMITS.email && /^[^\s@<>"(),;:]+@[^\s@<>"(),;:]+\.[^\s@<>"(),;:]{2,}$/.test(v);
+    if (input.name === "date") ok = /^\d{4}-\d{2}-\d{2}$/.test(v) && v >= dateInput.min;
+    if (input.name === "guests") ok = /^\d{1,4}$/.test(v) && +v >= 10 && +v <= MAX_GUESTS;
     field.classList.toggle("is-invalid", !ok);
     input.setAttribute("aria-invalid", String(!ok));
+    var help = $(".field__help", field), err = $(".field__err", field);
+    var ids = [help && help.id, !ok && err && err.id].filter(Boolean).join(" ");
+    if (ids) input.setAttribute("aria-describedby", ids); else input.removeAttribute("aria-describedby");
     return ok;
   }
   var required = $$("[required]", form);
@@ -203,44 +265,85 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+
+    // Anti-robot : champ piège rempli, ou envoi moins de 3 s après l'ouverture de la page.
+    var trap = form.elements["_gotcha"];
+    if ((trap && trap.value) || Date.now() - loadedAt < 3000) {
+      form.reset(); setStatus(t("form.ok"), "ok"); return;   // on fait semblant, sans rien envoyer
+    }
+
     var bad = required.filter(function (i) { return !check(i); });
     if (bad.length) { setStatus(t("form.fix"), "err"); bad[0].focus(); return; }
 
     var fd = new FormData(form);
-    var meats = fd.getAll("meats").join(", ") || "—";
+    function val(k) { return String(fd.get(k) || "").trim().slice(0, LIMITS[k] || 100); }
+    var meats = fd.getAll("meats").map(String).join(", ").slice(0, 200) || "—";
 
     if (!C.formEndpoint) {
       var body = [
-        "Nom : " + fd.get("name"),
-        "Courriel : " + fd.get("email"),
-        "Téléphone : " + (fd.get("phone") || "—"),
-        "Date : " + fd.get("date"),
-        "Personnes : " + fd.get("guests"),
-        "Événement : " + fd.get("type"),
+        "Nom : " + val("name"),
+        "Courriel : " + val("email"),
+        "Téléphone : " + (val("phone") || "—"),
+        "Date : " + val("date"),
+        "Personnes : " + val("guests"),
+        "Événement : " + val("type"),
         "Viandes : " + meats,
         "",
-        fd.get("message") || ""
+        val("message")
       ].join("\n");
-      var subject = "Demande de traiteur — " + fd.get("date") + " — " + fd.get("guests") + " pers.";
+      var subject = "Demande de traiteur — " + val("date") + " — " + val("guests") + " pers.";
+      // encodeURIComponent empêche toute injection d'en-têtes (CR/LF, &cc=, &bcc=)
       window.location.href = "mailto:" + C.contact.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-      setStatus(t("form.mailto"), "ok");
+      setStatus(t("form.mailto") + " " + t("form.mailto.alt") + " " + C.contact.email + ".", "ok");
+      return;
+    }
+
+    if (!ENDPOINT_OK.test(C.formEndpoint)) {      // garde-fou contre une erreur dans config.js
+      setStatus(t("form.fail") + " " + C.contact.email + ".", "err");
       return;
     }
 
     var btn = $("button[type=submit]", form);
+    if (btn.disabled) return;
     btn.disabled = true; setStatus(t("form.sending"));
-    fd.set("meats", meats);
-    fd.set("_subject", "Demande de traiteur — " + fd.get("date"));
-    fetch(C.formEndpoint, { method: "POST", body: fd, headers: { Accept: "application/json" } })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); setStatus(t("form.ok"), "ok"); })
+
+    // Liste blanche : seuls ces champs partent chez Formspree.
+    var out = new FormData();
+    ["name", "email", "phone", "date", "guests", "type", "message"].forEach(function (k) { out.append(k, val(k)); });
+    out.append("meats", meats);
+    out.append("_subject", "Demande de traiteur — " + val("date"));
+    out.append("_gotcha", "");
+
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 15000) : null;
+
+    fetch(C.formEndpoint, {
+      method: "POST", body: out, credentials: "omit", referrerPolicy: "strict-origin-when-cross-origin",
+      headers: { Accept: "application/json" }, signal: ctrl ? ctrl.signal : undefined
+    })
+      .then(function (r) { if (!r.ok) throw new Error(String(r.status)); form.reset(); setStatus(t("form.ok"), "ok"); })
       .catch(function () { setStatus(t("form.fail") + " " + C.contact.email + ".", "err"); })
-      .then(function () { btn.disabled = false; });
+      .then(function () { if (timer) clearTimeout(timer); btn.disabled = false; });
   });
 
   }
 
+  /* ---------- Photos facultatives : retirer l'image si elle ne charge pas ---------- */
+  $$("img[data-optional]").forEach(function (img) {
+    function drop() { if (img.parentNode) img.parentNode.removeChild(img); }
+    if (img.complete && img.naturalWidth === 0 && img.getAttribute("src")) { drop(); return; }
+    img.addEventListener("error", drop, { once: true });
+  });
+
+  /* ---------- Spécial du jour (casse-croûte) ---------- */
+  var todayNum = new Date().getDay();
+  $$(".special[data-day]").forEach(function (el) {
+    if (+el.dataset.day === todayNum) el.classList.add("is-today");
+  });
+
   /* ---------- Apparitions au défilement + animation des 15 pas ---------- */
-  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var mqReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var reduced = mqReduce.matches;
   $$("[data-count]").forEach(function (path) {
     var n = +path.dataset.count, html = "";
     for (var i = 0; i < n; i++) {
@@ -259,6 +362,20 @@
     revealEls.forEach(function (el) { ro.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add("is-in"); });
+  }
+  function showAll() { revealEls.forEach(function (el) { el.classList.add("is-in"); }); }
+  if (mqReduce.addEventListener) mqReduce.addEventListener("change", function (e) { if (e.matches) showAll(); });
+  /* Filet de sécurité : tout ce qui est déjà au-dessus du bas de l'écran après 3 s est montré */
+  setTimeout(function () {
+    revealEls.forEach(function (el) { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("is-in"); });
+  }, 3000);
+
+  /* ---------- Pause des animations (WCAG 2.2.2) ---------- */
+  var mt = $("#motion-toggle");
+  if (mt) {
+    var setPaused = function (on) { document.documentElement.classList.toggle("is-paused", on); mt.setAttribute("aria-pressed", String(on)); storage("hangar-paused", on ? "1" : "0"); };
+    setPaused(storage("hangar-paused") === "1");
+    mt.addEventListener("click", function () { setPaused(mt.getAttribute("aria-pressed") !== "true"); });
   }
 
   /* ---------- Démarrage ---------- */

@@ -65,7 +65,7 @@
         <img src="assets/img/logo-hangar.png" alt="Le Hangar Fumoir" width="96" height="48">
       </a>
 
-      <nav class="nav" id="nav" aria-label="Navigation principale">
+      <nav class="nav" id="nav" aria-label="Navigation principale" data-i18n-attr="aria-label:a11y.nav">
         <a href="#produits" data-i18n="nav.menu">Produits</a>
         <a href="#fumee" data-i18n="nav.smoke">Comment ça marche</a>
         <a href="#traiteur" data-i18n="nav.catering">Traiteur</a>
@@ -74,11 +74,11 @@
       </nav>
 
       <div class="header__actions">
-        <button class="lang" type="button" id="lang-toggle" aria-label="Switch to English">EN</button>
+        <button class="lang" type="button" id="lang-toggle" lang="en">EN<span class="sr"> – English</span></button>
         <a class="btn btn--primary btn--sm header__cta" href="tel:+14188318288">418&nbsp;831-8288</a>
         <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav">
           <span></span><span></span>
-          <span class="sr" data-i18n="nav.open">Ouvrir le menu</span>
+          <span class="sr">Menu</span>
         </button>
       </div>
     </div>
@@ -169,7 +169,7 @@
         <div class="sig-grid">
           <article class="sig sig--xl">
             <figure class="shot shot--tall" data-ph="Ribs">
-              <img src="assets/img/photos/pitmaster.jpg" alt="Le pitmaster du Hangar Fumoir présente une côte levée fumée" loading="lazy" onerror="this.remove()" style="object-position:50% 35%">
+              <img src="assets/img/photos/pitmaster.jpg" alt="Le pitmaster du Hangar Fumoir présente une côte levée fumée" loading="lazy" data-optional style="object-position:50% 35%">
             </figure>
             <div class="sig__body">
               <span class="tag" data-i18n="sig.price1">Texan ou Master</span>
@@ -219,8 +219,8 @@
           <p class="section__note" data-i18n="menu.note">Tout est fumé, scellé sous vide et congelé, prêt à réchauffer. Les prix peuvent changer : la boutique a toujours le dernier mot.</p>
         </header>
 
-        <div class="tabs" role="tablist" aria-label="Catégories de produits" id="menu-tabs"></div>
-        <div class="menu-list" id="menu-list" role="tabpanel" aria-live="polite"></div>
+        <div class="tabs" role="tablist" aria-label="Catégories de produits" data-i18n-attr="aria-label:a11y.tabs" id="menu-tabs"></div>
+        <div class="menu-list" id="menu-list" role="tabpanel" tabindex="0"></div>
         <noscript><p class="section__note">Active JavaScript pour afficher les produits, ou appelle-nous au 418 831-8288.</p></noscript>
       </div>
     </section>
@@ -235,7 +235,7 @@
             <p class="section__lead" data-i18n="smoke.lead">Le BBQ texan, c'est du temps. On le prend pour vous, et on a trouvé une façon de vous le livrer sans tourner les coins ronds.</p>
           </header>
           <figure class="shot shot--portrait reveal" data-ph="Boutique">
-            <img src="assets/img/photos/boutique.jpg" alt="Le comptoir de la boutique du Hangar Fumoir" loading="lazy" onerror="this.remove()">
+            <img src="assets/img/photos/boutique.jpg" alt="Le comptoir de la boutique du Hangar Fumoir" loading="lazy" data-optional>
           </figure>
         </div>
 
@@ -264,7 +264,7 @@
     </section>
 
     <!-- ============ PROMOS ============ -->
-    <section class="promos" aria-label="Promotions">
+    <section class="promos" aria-label="Promotions" data-i18n-attr="aria-label:a11y.promos">
       <div class="wrap promos__inner">
         <a class="promo reveal" href="casse-croute/#speciaux">
           <span class="promo__k" data-i18n="promo.1.k">Chaque jeudi</span>
@@ -293,15 +293,15 @@
         </header>
         <div class="quotes">
           <figure class="quote reveal">
-            <blockquote>Super service et qualité de viande incroyable. Propriétaire passionné! Ça vaut le détour!</blockquote>
+            <blockquote lang="fr">Super service et qualité de viande incroyable. Propriétaire passionné! Ça vaut le détour!</blockquote>
             <figcaption>Fannie C.</figcaption>
           </figure>
           <figure class="quote reveal">
-            <blockquote>La qualité, la diversité des produits de même que la quantité est un excellent rapport qualité prix. La préparation est tellement simple.</blockquote>
+            <blockquote lang="fr">La qualité, la diversité des produits de même que la quantité est un excellent rapport qualité prix. La préparation est tellement simple.</blockquote>
             <figcaption>Mai M.</figcaption>
           </figure>
           <figure class="quote reveal">
-            <blockquote>Repas absolument divin, digne d'un grand restaurant!</blockquote>
+            <blockquote lang="fr">Repas absolument divin, digne d'un grand restaurant!</blockquote>
             <figcaption>Julia P.</figcaption>
           </figure>
         </div>
@@ -323,36 +323,41 @@
           </ul>
         </div>
 
-        <form class="form" id="catering-form" novalidate>
+        <form class="form" id="catering-form" method="post" action="mailto:info@lehangarfumoir.ca?subject=Demande%20de%20traiteur" enctype="text/plain" novalidate>
+          <div class="hp" aria-hidden="true">
+            <label for="f-website">Laisser ce champ vide</label>
+            <input id="f-website" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="field__help" data-i18n="form.required">Tous les champs sont obligatoires, sauf le téléphone, le type d'événement, les viandes et le message.</p>
           <div class="form__row">
             <div class="field">
               <label for="f-name" data-i18n="form.name">Ton nom</label>
-              <input id="f-name" name="name" type="text" autocomplete="name" required>
-              <p class="field__err" data-i18n="form.err.name">Écris ton nom pour qu'on sache à qui répondre.</p>
+              <input id="f-name" name="name" type="text" autocomplete="name" maxlength="100" required>
+              <p class="field__err" id="f-name-err" data-i18n="form.err.name">Écris ton nom pour qu'on sache à qui répondre.</p>
             </div>
             <div class="field">
               <label for="f-phone" data-i18n="form.phone">Téléphone</label>
-              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
-              <p class="field__help" data-i18n="form.phone.help">Facultatif. Pratique si on a une question rapide sur ton menu.</p>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" aria-describedby="f-phone-help">
+              <p class="field__help" id="f-phone-help" data-i18n="form.phone.help">Facultatif. Pratique si on a une question rapide sur ton menu.</p>
             </div>
           </div>
 
           <div class="field">
             <label for="f-email" data-i18n="form.email">Courriel</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required>
-            <p class="field__err" data-i18n="form.err.email">Vérifie ton courriel : il manque un @ ou un domaine.</p>
+            <input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+            <p class="field__err" id="f-email-err" data-i18n="form.err.email">Vérifie ton courriel : il manque un @ ou un domaine.</p>
           </div>
 
           <div class="form__row">
             <div class="field">
               <label for="f-date" data-i18n="form.date">Date de l'événement</label>
               <input id="f-date" name="date" type="date" required>
-              <p class="field__err" data-i18n="form.err.date">Choisis une date à venir.</p>
+              <p class="field__err" id="f-date-err" data-i18n="form.err.date">Choisis une date à venir.</p>
             </div>
             <div class="field">
               <label for="f-guests" data-i18n="form.guests">Nombre de personnes</label>
-              <input id="f-guests" name="guests" type="number" min="10" step="1" inputmode="numeric" required>
-              <p class="field__err" data-i18n="form.err.guests">Le traiteur commence à 10 personnes.</p>
+              <input id="f-guests" name="guests" type="number" min="10" max="2000" step="1" inputmode="numeric" required>
+              <p class="field__err" id="f-guests-err" data-i18n="form.err.guests">Le traiteur commence à 10 personnes.</p>
             </div>
           </div>
 
@@ -378,12 +383,16 @@
 
           <div class="field">
             <label for="f-msg" data-i18n="form.msg">Autre chose à savoir?</label>
-            <textarea id="f-msg" name="message" rows="4"></textarea>
-            <p class="field__help" data-i18n="form.msg.help">Allergies, lieu, heure de service, budget : tout ce qui nous aide à bien te répondre.</p>
+            <textarea id="f-msg" name="message" rows="4" maxlength="1500" aria-describedby="f-msg-help"></textarea>
+            <p class="field__help" id="f-msg-help" data-i18n="form.msg.help">Lieu, heure de service, budget. Allergies : indique seulement ce qu'on doit savoir pour adapter le menu.</p>
           </div>
 
           <button class="btn btn--primary btn--block" type="submit" data-i18n="form.submit">Recevoir ma soumission</button>
           <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+          <p class="form__privacy">
+            <span data-i18n="form.privacy">Tes renseignements servent uniquement à préparer ta soumission et à faire le suivi de ton événement. Ils ne sont ni vendus ni utilisés pour de la publicité. Tu peux y accéder, les faire corriger ou supprimer en écrivant à info@lehangarfumoir.ca.</span>
+            <a class="link" href="confidentialite.html" data-i18n="form.privacy.link">Politique de confidentialité</a>
+          </p>
         </form>
       </div>
     </section>
@@ -426,7 +435,7 @@
 
         <div class="visit__media">
           <div class="visit__map">
-            <iframe title="Carte : Le Hangar Fumoir, Saint-Nicolas" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            <iframe title="Carte : Le Hangar Fumoir, Saint-Nicolas" data-i18n-attr="title:a11y.map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
               src="https://www.google.com/maps?q=1810+route+des+Rivi%C3%A8res,+L%C3%A9vis,+QC+G7A+2P6&output=embed"></iframe>
           </div>
         </div>
@@ -438,16 +447,18 @@
   <footer class="footer">
     <div class="wrap footer__inner">
       <div class="footer__brand">
-        <span class="footer__big footer__big--tx">Time to eat, <em>y'all.</em></span>
+        <span class="footer__big footer__big--tx" lang="en">Time to eat, <em>y'all.</em></span>
         <p data-i18n="footer.tag">Fumoir artisanal à Saint-Nicolas. Viandes fumées à l'érable, faites au Québec.</p>
       </div>
-      <nav class="footer__nav" aria-label="Pied de page">
+      <nav class="footer__nav" aria-label="Pied de page" data-i18n-attr="aria-label:a11y.footer">
         <a href="#produits" data-i18n="nav.menu">Produits</a>
         <a href="#traiteur" data-i18n="nav.catering">Traiteur</a>
         <a href="#visiter" data-i18n="nav.visit">Nous trouver</a>
         <a href="casse-croute/" data-i18n="nav.sister">Casse-croûte →</a>
         <a href="https://www.facebook.com/lehangarfumoir/" target="_blank" rel="noopener">Facebook</a>
+        <a href="confidentialite.html" data-i18n="footer.privacy">Confidentialité</a>
       </nav>
+      <button class="motion-toggle" type="button" id="motion-toggle" aria-pressed="false" data-i18n="a11y.pause">Mettre les animations en pause</button>
       <p class="footer__legal">© <span id="year">2026</span> Le Hangar Fumoir. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
     </div>
   </footer>
