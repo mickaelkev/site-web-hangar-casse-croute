@@ -688,3 +688,33 @@ a.promo:hover { background: var(--charbon-2); }
   background: var(--charbon-3) radial-gradient(circle at 50% 45%, rgba(212, 42, 42, .25), transparent 60%);
   text-decoration: none;
 }
+
+/* ==========================================================================
+   Bande d'avis Google : deux rangées qui défilent en sens inverse
+   ========================================================================== */
+.reviews { display: grid; gap: var(--s5); overflow: hidden; padding-block: var(--s2) var(--s6);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.reviews:focus-visible { outline-offset: -3px; }
+.rev-row { overflow: hidden; }
+.rev-track { display: flex; width: max-content; gap: var(--s5); animation: rev-scroll var(--dur, 90s) linear infinite; }
+.rev-dup { display: flex; gap: var(--s5); }
+.rev-row--rev .rev-track { animation-direction: reverse; }
+.reviews:hover .rev-track, .reviews:focus-within .rev-track, .reviews:active .rev-track { animation-play-state: paused; }
+@keyframes rev-scroll { to { transform: translateX(calc(-50% - var(--s5) / 2)); } }
+.rev {
+  margin: 0; flex: none; width: min(340px, 78vw); display: flex; flex-direction: column; gap: var(--s3);
+  padding: var(--s5); background: #FFFCF6; border: 1px solid var(--ligne-clair); border-top: 4px solid var(--braise);
+  border-radius: var(--radius);
+}
+.rev__stars { color: var(--braise); letter-spacing: .15em; font-size: 1rem; }
+.rev blockquote { margin: 0; font-size: 1rem; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+.rev figcaption { margin-top: auto; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s1) var(--s3); font-size: .875rem; color: var(--gris); }
+.rev figcaption strong { font-family: var(--f-label); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--encre); font-size: .9375rem; }
+.rev__g { margin-left: auto; font-family: var(--f-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: .75rem; }
+@media (prefers-reduced-motion: reduce) {
+  .reviews { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
+  .rev-row { overflow: visible; }
+  .rev-track { animation: none; }
+  .rev-dup { display: none; }
+}

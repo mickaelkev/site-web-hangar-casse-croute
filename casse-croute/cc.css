@@ -153,3 +153,6 @@
 .cc .brand__name { line-height: 1; }
 .cc .nav a.nav__tel { color: var(--braise); }
 .cc .cc-hero__title { line-height: 1.06; }
+.cc .rev { border-top-color: var(--braise); }
+.cc .rev__stars { color: #A87700; }
+.cc #avis .themes { margin-bottom: var(--s7); }

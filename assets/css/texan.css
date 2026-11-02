@@ -211,3 +211,5 @@
 .tx .item--out .item__price--ask { color: #9E1C1C; }
 .tx .promo__k { color: #FF7A6E; }
 .brand-stamp svg { animation-duration: 40s; }
+.tx .rev { background: #F6ECDA; border-color: rgba(58, 42, 30, .25); border-top-color: var(--braise); }
+.tx .rev__stars { color: var(--braise); }

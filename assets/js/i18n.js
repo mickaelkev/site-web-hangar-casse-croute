@@ -10,6 +10,7 @@ window.HANGAR_EN = {
   "a11y.nav": "Main navigation", "a11y.footer": "Footer", "a11y.tabs": "Product categories",
   "a11y.promos": "Promotions", "a11y.map": "Map: Le Hangar Fumoir, Saint-Nicolas",
   "a11y.pause": "Pause animations",
+  "rev.region": "Google reviews",
   "map.show": "Show map",
   "tick.ribs": "Ribs", "tick.pork": "Pulled pork",
   "form.required": "All fields are required except phone, event type, meats and message.",
@@ -84,7 +85,7 @@ window.HANGAR_EN = {
   "rev.eyebrow": "Google reviews",
   "rev.title": "“Worth the trip”",
   "rev.count": "based on 31 Google reviews",
-  "rev.note": "Reviews published on Google, quoted as written (in French).",
+  "rev.note": "Google reviews, quoted as written (in French). Hover or tap the strip to pause it.",
 
   "cat.eyebrow": "Catering",
   "cat.title": "Your party deserves better than crustless sandwiches",

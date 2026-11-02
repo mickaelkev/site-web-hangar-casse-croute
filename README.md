@@ -65,6 +65,7 @@ Les emplacements sans photo (brisket, burnt ends, sauces, grilled cheese) affich
 ## Sources du contenu
 
 - Hangar : lehangarfumoir.ca (accueil, menu, distribution), novembre 2026. Prix, heures, téléphone, points de vente et avis Google proviennent de là.
+- Avis Google : republiés sur Resto en ligne (pages « Évaluations », source Google) et widget de l'ancien site, novembre 2026. Un avis au nom d'utilisateur injurieux a été écarté.
 - Casse-croûte : menu Resto en ligne mis à jour le 5 octobre 2026 (prix), note 4,9 sur 49 évaluations et résumé des avis (Resto en ligne).
 
 ## À confirmer avec le client avant la mise en ligne
@@ -74,7 +75,7 @@ Les emplacements sans photo (brisket, burnt ends, sauces, grilled cheese) affich
 - [ ] **Vendredi côtes levées** au casse-croûte : vient du site de tourisme, à valider
 - [ ] **Jeudis poutine 17 h à 19 h** : annoncé sur le site du Hangar ; confirmer que ça se passe au casse-croûte
 - [ ] **Minimum traiteur** : le formulaire exige 10 personnes (`assets/js/main.js`, chercher `>= 10`)
-- [ ] **Avis Google** : citations courtes avec prénom et initiale. Confirmer que le client est à l'aise de les afficher.
+- [ ] **Avis Google** : tous les avis avec texte (18 pour le Hangar, 46 pour le casse-croûte) défilent dans une bande, avec prénom et initiale. Confirmer que le client est à l'aise de les afficher. Mise à jour : `assets/js/reviews.js` et `casse-croute/reviews.js`.
 - [ ] **Facebook du casse-croûte** : s'il existe, ajouter le lien
 - [ ] **Chili « au kg »** et **boulettes de brisket « (2) » vendues à la livre** : unités tirées du site actuel, probablement des erreurs (`assets/js/config.js`)
 - [ ] **Loi 25** : faire relire l'avis sous le formulaire et les pages `confidentialite.html` par le propriétaire (ce n'est pas un avis juridique)

@@ -417,6 +417,25 @@
     });
   });
 
+  /* ---------- Bande d'avis Google (défilement continu, deux rangées en sens inverse) ---------- */
+  var reviewsEl = $("[data-reviews]"), REV = window.HANGAR_REVIEWS || [];
+  if (reviewsEl && REV.length) {
+    var card = function (r) {
+      return '<figure class="rev">'
+        + '<blockquote lang="fr">' + esc(r.t) + "</blockquote>"
+        + '<figcaption><strong>' + esc(r.n) + "</strong>"
+        + (r.d ? '<span>' + esc(r.d) + "</span>" : "") + '<span class="rev__g">Google</span></figcaption></figure>';
+    };
+    var half = Math.ceil(REV.length / 2);
+    var rows = REV.length > 8 ? [REV.slice(0, half), REV.slice(half)] : [REV];
+    reviewsEl.innerHTML = rows.map(function (list, i) {
+      var html = list.map(card).join("");
+      var secs = Math.max(40, list.length * 9);
+      return '<div class="rev-row' + (i % 2 ? " rev-row--rev" : "") + '" style="--dur:' + secs + 's">'
+        + '<div class="rev-track">' + html + '<div class="rev-dup" aria-hidden="true">' + html + "</div></div></div>";
+    }).join("");
+  }
+
   /* ---------- Démarrage ---------- */
   $("#year").textContent = new Date().getFullYear();
   var urlLang = new URLSearchParams(location.search).get("lang");
