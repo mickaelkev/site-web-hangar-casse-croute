@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Le Hangar Fumoir — BBQ style texan fumé à l'érable · Lévis</title>
-  <meta name="description" content="Brisket, burnt ends, porc effiloché, côtes levées et poutines fumés à l'érable. BBQ style texan à Lévis (Saint-Nicolas). Sur place, pour emporter et traiteur.">
+  <title>Le Hangar Fumoir — Viandes fumées à l'érable, prêtes en 20 minutes · Saint-Nicolas</title>
+  <meta name="description" content="Fumoir artisanal à Saint-Nicolas (Lévis) : brisket, côtes levées, burnt ends, porc effiloché et sauces BBQ maison. Fumé à l'érable, scellé sous vide, prêt en 20 minutes. Boutique, points de vente et traiteur.">
   <meta name="theme-color" content="#1A1613">
   <link rel="canonical" href="https://lehangarfumoir.ca/">
   <link rel="alternate" hreflang="fr-CA" href="https://lehangarfumoir.ca/">
   <link rel="alternate" hreflang="en-CA" href="https://lehangarfumoir.ca/?lang=en">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
-  <meta property="og:type" content="restaurant">
-  <meta property="og:title" content="Le Hangar Fumoir — BBQ style texan à Lévis">
-  <meta property="og:description" content="Fumé lentement à l'érable. Servi en 20 minutes. Brisket, burnt ends, ribs, poutines et traiteur.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Le Hangar Fumoir — Du fumoir jusqu'à votre assiette">
+  <meta property="og:description" content="Viandes fumées à l'érable, scellées sous vide. 20 minutes dans l'eau bouillante et le BBQ texan est servi.">
   <meta property="og:url" content="https://lehangarfumoir.ca/">
   <meta property="og:image" content="https://lehangarfumoir.ca/assets/img/photos/og.jpg">
   <meta property="og:locale" content="fr_CA">
@@ -27,21 +27,27 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BarbecueRestaurant",
+    "@type": "Store",
     "name": "Le Hangar Fumoir",
-    "description": "BBQ authentique style texan, viandes fumées à l'érable.",
+    "description": "Fumoir artisanal : viandes fumées à l'érable, emballées sous vide et prêtes à manger.",
     "url": "https://lehangarfumoir.ca/",
-    "servesCuisine": ["Barbecue", "Texan", "Québécois"],
-    "priceRange": "$$",
+    "telephone": "+1-418-831-8288",
+    "image": "https://lehangarfumoir.ca/assets/img/photos/og.jpg",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "1810, route des Rivières, local 502",
-      "addressLocality": "Lévis",
+      "addressLocality": "Saint-Nicolas (Lévis)",
       "addressRegion": "QC",
+      "postalCode": "G7A 2P6",
       "addressCountry": "CA"
     },
-    "sameAs": ["https://www.facebook.com/lehangarfumoir/"],
-    "hasMenu": "https://lehangarfumoir.ca/#menu"
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday"], "opens": "10:00", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday","Friday"], "opens": "10:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "17:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "17:00" }
+    ],
+    "sameAs": ["https://www.facebook.com/lehangarfumoir/"]
   }
   </script>
 </head>
@@ -54,14 +60,13 @@
   <!-- ============ EN-TÊTE ============ -->
   <header class="header" id="top">
     <div class="wrap header__inner">
-      <a class="brand" href="#top" aria-label="Le Hangar Fumoir — accueil">
-        <img src="assets/img/logo.svg" alt="" width="36" height="36">
-        <span class="brand__name">Le Hangar<small>Fumoir</small></span>
+      <a class="brand brand--logo" href="#top" aria-label="Le Hangar Fumoir — accueil">
+        <img src="assets/img/logo-hangar.png" alt="Le Hangar Fumoir" width="96" height="48">
       </a>
 
       <nav class="nav" id="nav" aria-label="Navigation principale">
-        <a href="#menu" data-i18n="nav.menu">Menu</a>
-        <a href="#fumee" data-i18n="nav.smoke">Notre fumée</a>
+        <a href="#produits" data-i18n="nav.menu">Produits</a>
+        <a href="#fumee" data-i18n="nav.smoke">Comment ça marche</a>
         <a href="#traiteur" data-i18n="nav.catering">Traiteur</a>
         <a href="#visiter" data-i18n="nav.visit">Nous trouver</a>
         <a href="casse-croute/" class="nav__sister" data-i18n="nav.sister">Casse-croûte →</a>
@@ -69,7 +74,7 @@
 
       <div class="header__actions">
         <button class="lang" type="button" id="lang-toggle" aria-label="Switch to English">EN</button>
-        <a class="btn btn--primary btn--sm header__cta" href="#traiteur" data-i18n="nav.cta">Planifier un traiteur</a>
+        <a class="btn btn--primary btn--sm header__cta" href="tel:+14188318288">418&nbsp;831-8288</a>
         <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav">
           <span></span><span></span>
           <span class="sr" data-i18n="nav.open">Ouvrir le menu</span>
@@ -81,24 +86,27 @@
   <main id="contenu">
 
     <!-- ============ HÉRO ============ -->
-    <section class="hero">
+    <section class="hero hero--photo">
+      <div class="hero__bg" aria-hidden="true">
+        <img src="assets/img/photos/planche.jpg" alt="" fetchpriority="high">
+      </div>
       <div class="hero__smoke" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="wrap hero__inner">
-        <p class="eyebrow" data-i18n="hero.eyebrow">BBQ style texan · Lévis, Québec</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">Fumoir artisanal · Saint-Nicolas, Lévis</p>
         <h1 class="hero__title">
-          <span data-i18n="hero.t1">Fumé lentement.</span>
-          <span class="hero__title-accent" data-i18n="hero.t2">Servi vite.</span>
+          <span class="rise" style="--d:0" data-i18n="hero.t1">Du fumoir</span>
+          <span class="rise hero__title-accent" style="--d:1" data-i18n="hero.t2">à ton assiette.</span>
         </h1>
-        <p class="hero__lead" data-i18n="hero.lead">Brisket, burnt ends, côtes levées et porc effiloché fumés pendant des heures au bois d'érable. Toi, tu attends environ 20 minutes.</p>
+        <p class="hero__lead" data-i18n="hero.lead">Des viandes fumées à l'érable par un artisan passionné, scellées sous vide et congelées. Vingt minutes dans l'eau bouillante, et le BBQ texan est servi chez vous.</p>
         <div class="hero__ctas">
-          <a class="btn btn--primary" href="#menu" data-i18n="hero.cta1">Voir le menu</a>
-          <a class="btn btn--ghost" href="#visiter" data-i18n="hero.cta2">Heures et adresse</a>
+          <a class="btn btn--primary" href="#produits" data-i18n="hero.cta1">Voir les produits</a>
+          <a class="btn btn--ghost" href="#visiter" data-i18n="hero.cta2">Heures de la boutique</a>
         </div>
 
         <ul class="facts" role="list">
-          <li><strong data-i18n="facts.1a">Érable</strong><span data-i18n="facts.1b">le seul bois qu'on brûle</span></li>
-          <li><strong data-i18n="facts.2a">~20 min</strong><span data-i18n="facts.2b">de la commande à l'assiette</span></li>
-          <li><strong data-i18n="facts.3a">3 façons</strong><span data-i18n="facts.3b">sur place, pour emporter, traiteur</span></li>
+          <li><strong data-i18n="facts.1a">Érable</strong><span data-i18n="facts.1b">le bois qui donne le goût</span></li>
+          <li><strong data-i18n="facts.2a">20 min</strong><span data-i18n="facts.2b">dans l'eau bouillante, c'est prêt</span></li>
+          <li><strong data-i18n="facts.3a">Excellent</strong><span data-i18n="facts.3b">selon 31 avis Google</span></li>
         </ul>
       </div>
     </section>
@@ -106,8 +114,8 @@
     <!-- ============ BANDEAU ============ -->
     <div class="ticker" aria-hidden="true">
       <div class="ticker__track">
-        <span>Brisket</span><span>Burnt ends</span><span>Pulled pork</span><span>Ribs</span><span>Smoke burger</span><span>Poutines</span>
-        <span>Brisket</span><span>Burnt ends</span><span>Pulled pork</span><span>Ribs</span><span>Smoke burger</span><span>Poutines</span>
+        <span>Brisket</span><span>Burnt ends</span><span>Côtes levées</span><span>Porc effiloché</span><span>Jerky</span><span>Master Key</span>
+        <span>Brisket</span><span>Burnt ends</span><span>Côtes levées</span><span>Porc effiloché</span><span>Jerky</span><span>Master Key</span>
       </div>
     </div>
 
@@ -116,8 +124,8 @@
       <div class="wrap faim__inner">
         <div class="faim__text reveal">
           <p class="eyebrow" data-i18n="faim.eyebrow">Juste à côté</p>
-          <h2 id="faim-title"><span data-i18n="faim.t1">T'as faim, là, maintenant?</span></h2>
-          <p class="faim__lead" data-i18n="faim.lead">Le Casse-Croûte du Hangar est notre voisin de porte. Poutines, burgers et grilled cheese garnis de nos viandes fumées, prêts à manger sur place.</p>
+          <h2 id="faim-title" data-i18n="faim.t1">T'as faim, là, maintenant?</h2>
+          <p class="faim__lead" data-i18n="faim.lead">Pas envie d'attendre d'être à la maison? Le Casse-Croûte du Hangar, notre voisin de porte, sert nos viandes fumées en poutines, burgers et mac &amp; cheese, prêts à manger sur place.</p>
         </div>
 
         <div class="steps15" aria-hidden="true">
@@ -125,7 +133,7 @@
             <img src="assets/img/logo.svg" alt="" width="40" height="40">
             <span>Le Hangar</span>
           </div>
-          <div class="steps15__path" id="steps-path" data-count="15"></div>
+          <div class="steps15__path" data-count="15"></div>
           <div class="steps15__end steps15__end--cc">
             <img src="assets/img/logo-cc.svg" alt="" width="40" height="40">
             <span>Casse-croûte</span>
@@ -134,129 +142,154 @@
 
         <div class="faim__cta reveal">
           <a class="btn btn--primary" href="casse-croute/" data-i18n="faim.cta">Faire les 15 pas</a>
-          <span class="faim__hint" data-i18n="faim.hint">1810, route des Rivières, local 503 · la porte d'à côté</span>
+          <span class="faim__hint" data-i18n="faim.hint">Local 503 · la porte d'à côté</span>
         </div>
       </div>
     </section>
 
-    <!-- ============ COUPS DE CŒUR ============ -->
+    <!-- ============ INCONTOURNABLES ============ -->
     <section class="section" id="signatures" aria-labelledby="sig-title">
       <div class="wrap">
         <header class="reveal section__head">
           <p class="eyebrow" data-i18n="sig.eyebrow">Les incontournables</p>
-          <h2 id="sig-title" data-i18n="sig.title">Ce que tout le monde commande</h2>
+          <h2 id="sig-title" data-i18n="sig.title">Ce qui sort du fumoir</h2>
         </header>
 
         <div class="sig-grid">
           <article class="sig sig--xl">
-            <figure class="shot" data-ph="Brisket">
-              <img src="assets/img/photos/brisket.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <figure class="shot shot--tall" data-ph="Ribs">
+              <img src="assets/img/photos/pitmaster.jpg" alt="Le pitmaster du Hangar Fumoir présente une côte levée fumée" loading="lazy" onerror="this.remove()" style="object-position:50% 35%">
             </figure>
             <div class="sig__body">
-              <span class="tag" data-i18n="sig.limited">Quantité limitée</span>
+              <span class="tag" data-i18n="sig.price1">Texan ou Master</span>
+              <h3 data-i18n="sig.2.t">Côtes levées</h3>
+              <p data-i18n="sig.2.d">Fumées des heures à l'érable jusqu'à ce qu'elles se détachent de l'os toutes seules. En version Texan ou Master.</p>
+            </div>
+          </article>
+
+          <article class="sig">
+            <figure class="shot" data-ph="Brisket"></figure>
+            <div class="sig__body">
               <h3 data-i18n="sig.1.t">Le brisket</h3>
-              <p data-i18n="sig.1.d">Poitrine de bœuf frottée simplement, fumée toute la nuit. Écorce noire, cœur fondant, anneau de fumée rose. Quand il n'y en a plus, il n'y en a plus.</p>
+              <p data-i18n="sig.1.d">Poitrine de bœuf fumée longuement à l'érable, écorce noire et cœur fondant. 37 $ la livre.</p>
             </div>
           </article>
 
           <article class="sig">
-            <figure class="shot" data-ph="Burnt ends">
-              <img src="assets/img/photos/burnt-ends.jpg" alt="" loading="lazy" onerror="this.remove()">
-            </figure>
+            <figure class="shot" data-ph="Burnt ends"></figure>
             <div class="sig__body">
-              <h3 data-i18n="sig.2.t">Burnt ends</h3>
-              <p data-i18n="sig.2.d">Les pointes du brisket, recuites et caramélisées en sauce. Le bonbon du pitmaster.</p>
+              <h3 data-i18n="sig.3.t">Burnt ends</h3>
+              <p data-i18n="sig.3.d">Les pointes du brisket, caramélisées en sauce. Le bonbon du pitmaster.</p>
             </div>
           </article>
 
           <article class="sig">
-            <figure class="shot" data-ph="Smoke">
-              <img src="assets/img/photos/smoke-burger.jpg" alt="" loading="lazy" onerror="this.remove()">
-            </figure>
+            <figure class="shot" data-ph="Master Key"></figure>
             <div class="sig__body">
-              <h3 data-i18n="sig.3.t">Le Smoke burger</h3>
-              <p data-i18n="sig.3.d">Le burger maison du Hangar, garni de viande fumée. Celui dont on parle dans les avis.</p>
-            </div>
-          </article>
-
-          <article class="sig">
-            <figure class="shot" data-ph="Poutine">
-              <img src="assets/img/photos/poutine.jpg" alt="" loading="lazy" onerror="this.remove()">
-            </figure>
-            <div class="sig__body">
-              <h3 data-i18n="sig.4.t">Les poutines</h3>
-              <p data-i18n="sig.4.d">Frites, fromage en grains qui fait couic, et une généreuse portion de viande fumée par-dessus.</p>
+              <h3 data-i18n="sig.4.t">Les sauces maison</h3>
+              <p data-i18n="sig.4.d">Master Key, Liquid Gold et Deluxe, préparées maison. Avec des épices cajun et à steak pour ton BBQ.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ MENU ============ -->
-    <section class="section section--alt" id="menu" aria-labelledby="menu-title">
+    <!-- ============ PRODUITS ============ -->
+    <section class="section section--alt" id="produits" aria-labelledby="menu-title">
       <div class="wrap">
         <header class="reveal section__head section__head--split">
           <div>
-            <p class="eyebrow" data-i18n="menu.eyebrow">Le menu</p>
+            <p class="eyebrow" data-i18n="menu.eyebrow">Les produits</p>
             <h2 id="menu-title" data-i18n="menu.title">Choisis ta fumée</h2>
           </div>
-          <p class="section__note" data-i18n="menu.note">Les viandes sont vendues au poids ou en portion. Le menu bouge selon ce qui sort du fumoir : le tableau au comptoir a toujours le dernier mot.</p>
+          <p class="section__note" data-i18n="menu.note">Tout est fumé, scellé sous vide et congelé, prêt à réchauffer. Les prix peuvent changer : la boutique a toujours le dernier mot.</p>
         </header>
 
-        <div class="tabs" role="tablist" aria-label="Catégories du menu" id="menu-tabs"></div>
+        <div class="tabs" role="tablist" aria-label="Catégories de produits" id="menu-tabs"></div>
         <div class="menu-list" id="menu-list" role="tabpanel" aria-live="polite"></div>
-        <noscript><p class="section__note">Active JavaScript pour afficher le menu, ou appelle-nous.</p></noscript>
+        <noscript><p class="section__note">Active JavaScript pour afficher les produits, ou appelle-nous au 418 831-8288.</p></noscript>
       </div>
     </section>
 
-    <!-- ============ NOTRE FUMÉE ============ -->
+    <!-- ============ COMMENT ÇA MARCHE ============ -->
     <section class="section section--dark" id="fumee" aria-labelledby="smoke-title">
       <div class="wrap">
-        <header class="reveal section__head">
-          <p class="eyebrow" data-i18n="smoke.eyebrow">Notre fumée</p>
-          <h2 id="smoke-title" data-i18n="smoke.title">Douze heures de patience, vingt minutes d'attente</h2>
-          <p class="section__lead" data-i18n="smoke.lead">Le BBQ texan, c'est du temps. On le prend pour toi, et on a trouvé une façon de te servir vite sans tourner les coins ronds.</p>
-        </header>
+        <div class="smoke-intro">
+          <header class="reveal section__head">
+            <p class="eyebrow" data-i18n="smoke.eyebrow">Comment ça marche</p>
+            <h2 id="smoke-title" data-i18n="smoke.title">Des heures au fumoir, vingt minutes chez vous</h2>
+            <p class="section__lead" data-i18n="smoke.lead">Le BBQ texan, c'est du temps. On le prend pour vous, et on a trouvé une façon de vous le livrer sans tourner les coins ronds.</p>
+          </header>
+          <figure class="shot shot--portrait reveal" data-ph="Boutique">
+            <img src="assets/img/photos/boutique.jpg" alt="Le comptoir de la boutique du Hangar Fumoir" loading="lazy" onerror="this.remove()">
+          </figure>
+        </div>
 
         <ol class="steps" role="list">
-          <li class="step">
+          <li class="step reveal">
             <span class="step__num">01</span>
             <h3 data-i18n="smoke.1.t">On fume à l'érable</h3>
-            <p data-i18n="smoke.1.d">Basse température, bois d'érable du Québec, des heures de cuisson. C'est ce qui donne l'écorce et le goût.</p>
+            <p data-i18n="smoke.1.d">Basse température, bois d'érable, des heures de cuisson. C'est ce qui donne l'écorce et le goût.</p>
           </li>
-          <li class="step">
+          <li class="step reveal">
             <span class="step__num">02</span>
-            <h3 data-i18n="smoke.2.t">On scelle sous vide</h3>
-            <p data-i18n="smoke.2.d">Dès la sortie du fumoir, la viande est scellée. Le jus et la tendreté restent emprisonnés.</p>
+            <h3 data-i18n="smoke.2.t">On scelle et on congèle</h3>
+            <p data-i18n="smoke.2.d">Dès la sortie du fumoir, la viande est mise sous vide puis congelée. Le jus et la tendreté restent emprisonnés.</p>
           </li>
-          <li class="step">
+          <li class="step reveal">
             <span class="step__num">03</span>
-            <h3 data-i18n="smoke.3.t">On te sert chaud</h3>
-            <p data-i18n="smoke.3.d">Réchauffée doucement à la commande, ta viande est prête en environ 20 minutes, comme si elle sortait du fumoir.</p>
+            <h3 data-i18n="smoke.3.t">Vous la plongez 20 minutes</h3>
+            <p data-i18n="smoke.3.d">Le sachet congelé va directement dans l'eau bouillante. Vingt minutes plus tard, c'est comme si ça sortait du fumoir.</p>
           </li>
         </ol>
 
-        <blockquote class="pull">
-          <p data-i18n="smoke.quote">Un jeune pitmaster passionné, un fumoir, et une obsession : faire du vrai BBQ texan ici, à Lévis.</p>
+        <blockquote class="pull reveal">
+          <p data-i18n="smoke.quote">La passion d'un artisan qui vous offre une viande fumée de qualité, faite au Québec.</p>
         </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ PROMOS ============ -->
+    <section class="promos" aria-label="Promotions">
+      <div class="wrap promos__inner">
+        <a class="promo reveal" href="casse-croute/#speciaux">
+          <span class="promo__k" data-i18n="promo.1.k">Chaque jeudi</span>
+          <strong data-i18n="promo.1.t">Les jeudis poutine</strong>
+          <span data-i18n="promo.1.d">De 17 h à 19 h, au casse-croûte d'à côté.</span>
+        </a>
+        <div class="promo reveal">
+          <span class="promo__k" data-i18n="promo.2.k">Nouveau</span>
+          <strong data-i18n="promo.2.t">Brochettes pour le BBQ</strong>
+          <span data-i18n="promo.2.d">Poulet et porc, prêtes à griller chez vous.</span>
+        </div>
       </div>
     </section>
 
     <!-- ============ AVIS ============ -->
     <section class="section" id="avis" aria-labelledby="reviews-title">
       <div class="wrap">
-        <header class="reveal section__head">
-          <p class="eyebrow" data-i18n="rev.eyebrow">Ce que disent les clients</p>
-          <h2 id="reviews-title" data-i18n="rev.title">Ce qui revient dans les avis</h2>
+        <header class="reveal section__head section__head--split">
+          <div>
+            <p class="eyebrow" data-i18n="rev.eyebrow">Avis Google</p>
+            <h2 id="reviews-title" data-i18n="rev.title">« Ça vaut le détour »</h2>
+          </div>
+          <p class="rating"><strong data-i18n="facts.3a">Excellent</strong><span class="rating__stars" aria-hidden="true">★★★★★</span><span data-i18n="rev.count">selon 31 avis Google</span></p>
         </header>
-        <ul class="themes" role="list">
-          <li><strong data-i18n="rev.1.t">Le brisket</strong><span data-i18n="rev.1.d">Le plat le plus mentionné, suivi de près du porc effiloché et du Smoke burger.</span></li>
-          <li><strong data-i18n="rev.2.t">Le service</strong><span data-i18n="rev.2.d">Rapide, efficace et sympathique, sur place comme pour emporter.</span></li>
-          <li><strong data-i18n="rev.3.t">Le rapport qualité-prix</strong><span data-i18n="rev.3.d">Des portions généreuses pour le prix, autant en salle qu'en traiteur.</span></li>
-        </ul>
-        <p class="section__note">
-          <a class="link" href="https://www.facebook.com/lehangarfumoir/" target="_blank" rel="noopener" data-i18n="rev.cta">Lire les avis sur Facebook</a>
-        </p>
+        <div class="quotes">
+          <figure class="quote reveal">
+            <blockquote>Super service et qualité de viande incroyable. Propriétaire passionné! Ça vaut le détour!</blockquote>
+            <figcaption>Fannie C.</figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <blockquote>La qualité, la diversité des produits de même que la quantité est un excellent rapport qualité prix. La préparation est tellement simple.</blockquote>
+            <figcaption>Mai M.</figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <blockquote>Repas absolument divin, digne d'un grand restaurant!</blockquote>
+            <figcaption>Julia P.</figcaption>
+          </figure>
+        </div>
+        <p class="section__note" data-i18n="rev.note">Avis publiés sur Google, cités tels quels.</p>
       </div>
     </section>
 
@@ -266,11 +299,11 @@
         <div class="cat__intro">
           <p class="eyebrow" data-i18n="cat.eyebrow">Service traiteur</p>
           <h2 id="cat-title" data-i18n="cat.title">Ton party mérite mieux que des sandwichs pas de croûte</h2>
-          <p class="section__lead" data-i18n="cat.lead">Mariage, party de bureau, fête de famille ou fin de saison : on fume pour ton groupe. Dis-nous le monde et la date, on te revient avec une soumission.</p>
+          <p class="section__lead" data-i18n="cat.lead">Mariage, party de bureau, fête de famille ou fin de saison : le Hangar se déplace chez vous. Dis-nous le monde et la date, on te revient avec une soumission.</p>
           <ul class="checks" role="list">
             <li data-i18n="cat.b1">Brisket, porc effiloché, côtes levées et burnt ends en format partage</li>
-            <li data-i18n="cat.b2">Sauces maison incluses</li>
-            <li data-i18n="cat.b3">Pour emporter ou livré, selon ton événement</li>
+            <li data-i18n="cat.b2">Sauces BBQ maison : Master Key, Liquid Gold, Deluxe</li>
+            <li data-i18n="cat.b3">On se déplace chez vous</li>
           </ul>
         </div>
 
@@ -347,26 +380,39 @@
           <h2 id="visit-title" data-i18n="visit.title">Viens sentir la fumée</h2>
 
           <div class="visit__block">
-            <h3 data-i18n="visit.addr">Adresse</h3>
-            <address>1810, route des Rivières, local 502<br>Lévis (Saint-Nicolas), QC</address>
-            <a class="link" href="https://www.google.com/maps/search/?api=1&query=1810+route+des+Rivi%C3%A8res+L%C3%A9vis+QC" target="_blank" rel="noopener" data-i18n="visit.directions">Obtenir l'itinéraire</a>
+            <h3 data-i18n="visit.addr">La boutique</h3>
+            <address>1810, route des Rivières, local 502<br>Saint-Nicolas (Lévis), QC G7A 2P6</address>
+            <a class="link" href="https://www.google.com/maps/search/?api=1&query=Le+Hangar+Fumoir+1810+route+des+Rivi%C3%A8res+L%C3%A9vis" target="_blank" rel="noopener" data-i18n="visit.directions">Obtenir l'itinéraire</a>
           </div>
 
           <div class="visit__block">
-            <h3><span data-i18n="visit.hours">Heures d'ouverture</span> <span class="open-badge" id="open-badge"></span></h3>
+            <h3 data-i18n="visit.phone">Téléphone</h3>
+            <a class="link tel" href="tel:+14188318288">418 831-8288</a>
+          </div>
+
+          <div class="visit__block">
+            <h3><span data-i18n="visit.hours">Heures de la boutique</span> <span class="open-badge" id="open-badge"></span></h3>
             <table class="hours" id="hours"></table>
-            <p class="field__help" data-i18n="visit.brisket">Le brisket est en quantité limitée : passe tôt ou appelle avant.</p>
           </div>
 
           <div class="visit__block">
-            <h3 data-i18n="visit.follow">Suis le fumoir</h3>
-            <a class="link" href="https://www.facebook.com/lehangarfumoir/" target="_blank" rel="noopener" data-i18n="visit.fb">Facebook : retours du brisket et nouveautés</a>
+            <h3 data-i18n="visit.dist">Aussi en vente chez</h3>
+            <ul class="dist" role="list">
+              <li>Camping Lac-George</li>
+              <li>Boucherie JB Allard</li>
+              <li>Boucherie Solution chasseur</li>
+              <li>Les viandes PP Hallé</li>
+              <li>Boucherie Délecta</li>
+              <li>So-Cho Le Saucissier (Cap-Rouge)</li>
+            </ul>
           </div>
         </div>
 
-        <div class="visit__map">
-          <iframe title="Carte : Le Hangar Fumoir, Lévis" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=1810+route+des+Rivi%C3%A8res,+L%C3%A9vis,+QC&output=embed"></iframe>
+        <div class="visit__media">
+          <div class="visit__map">
+            <iframe title="Carte : Le Hangar Fumoir, Saint-Nicolas" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=1810+route+des+Rivi%C3%A8res,+L%C3%A9vis,+QC+G7A+2P6&output=embed"></iframe>
+          </div>
         </div>
       </div>
     </section>
@@ -377,10 +423,10 @@
     <div class="wrap footer__inner">
       <div class="footer__brand">
         <span class="footer__big">Low &amp; slow.</span>
-        <p data-i18n="footer.tag">BBQ authentique style texan, fumé à l'érable à Lévis.</p>
+        <p data-i18n="footer.tag">Fumoir artisanal à Saint-Nicolas. Viandes fumées à l'érable, faites au Québec.</p>
       </div>
       <nav class="footer__nav" aria-label="Pied de page">
-        <a href="#menu" data-i18n="nav.menu">Menu</a>
+        <a href="#produits" data-i18n="nav.menu">Produits</a>
         <a href="#traiteur" data-i18n="nav.catering">Traiteur</a>
         <a href="#visiter" data-i18n="nav.visit">Nous trouver</a>
         <a href="casse-croute/" data-i18n="nav.sister">Casse-croûte →</a>

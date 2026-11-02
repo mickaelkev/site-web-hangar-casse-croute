@@ -91,20 +91,27 @@
     }).join("");
   }
 
+  function money(n) {
+    var str = n % 1 === 0 ? String(n) : n.toFixed(2);
+    return lang === "en" ? "$" + str : str.replace(".", ",") + "\u00a0$";
+  }
+
   function price(item) {
+    if (item.stock === false) {
+      return '<span class="item__price item__price--ask">' + esc(t("menu.out")) + "</span>";
+    }
     if (item.price === null || item.price === undefined) {
       return '<span class="item__price item__price--ask">' + esc(t("menu.ask")) + "</span>";
     }
-    var p = lang === "en" ? "$" + item.price : item.price + " $";
     var unit = item[lang].unit ? "<small>" + esc(item[lang].unit) + "</small>" : "";
-    return '<span class="item__price">' + p + unit + "</span>";
+    return '<span class="item__price">' + money(item.price) + unit + "</span>";
   }
 
   function itemHtml(item, i) {
     var d = item[lang];
     var badge = item.badge === "hot" ? '<span class="badge badge--hot">' + esc(t("menu.hot")) + "</span>"
               : item.badge === "limited" ? '<span class="badge">' + esc(t("menu.limited")) + "</span>" : "";
-    return '<article class="item" style="animation-delay:' + (i * 40) + 'ms">'
+    return '<article class="item' + (item.stock === false ? " item--out" : "") + '" style="animation-delay:' + (i * 40) + 'ms">'
       + '<h3 class="item__name">' + esc(d.name) + badge + "</h3>"
       + price(item)
       + '<p class="item__desc">' + esc(d.desc) + "</p></article>";

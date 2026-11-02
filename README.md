@@ -11,18 +11,11 @@ Deux sites liés pour deux commerces voisins appartenant au même propriétaire,
 
 Sites statiques HTML/CSS/JS, sans dépendance ni étape de compilation. Les deux partagent le même système de design (`assets/css/style.css`) ; le casse-croûte y ajoute une surcouche (`casse-croute/cc.css`).
 
-## Contenu du site
+## Contenu des sites
 
-| Section | Ce qu'elle fait |
-|---|---|
-| Accueil | « Fumé lentement. Servi vite. », appels à l'action vers le menu et les heures |
-| Les incontournables | Brisket, burnt ends, Smoke burger, poutines |
-| Menu interactif | Filtres par catégorie, prix, badges « Coup de cœur » et « Limité » |
-| Notre fumée | Le procédé en 3 étapes : fumé à l'érable, scellé sous vide, servi en ~20 min |
-| Avis | Ce qui revient dans les avis des clients, avec un lien vers Facebook |
-| Traiteur | Formulaire de soumission avec validation et messages d'erreur rédigés |
-| Nous trouver | Adresse, carte, heures avec l'indicateur « Ouvert / Fermé » en direct |
-| FR / EN | Bouton de langue. Le choix est mémorisé, et `?lang=en` fonctionne aussi dans l'adresse |
+**Le Hangar Fumoir** (boutique de viandes fumées prêtes-à-manger) : accueil avec photo, passerelle « 15 pas », incontournables, catalogue de 26 produits avec prix et filtres, « Comment ça marche » (fumé, scellé, 20 min dans l'eau bouillante), promos, avis Google, formulaire traiteur, heures, points de vente et carte.
+
+**Casse-Croûte du Hangar** : accueil moutarde avec photo animée, spéciaux de la semaine (celui du jour s'allume), galerie, résumé des avis, menu complet de 29 plats avec prix, passerelle de retour vers le Hangar, heures et carte.
 
 ## Mettre en ligne
 
@@ -43,36 +36,32 @@ Les spéciaux de la semaine du casse-croûte (jeudi poutine, vendredi côtes lev
 
 ## Photos
 
-Le site est conçu pour fonctionner **sans photos** : chaque emplacement affiche le nom du plat en grand, sur fond de braise.
-Pour ajouter les vraies photos, déposer ces fichiers dans `assets/img/photos/` (format paysage, environ 1600 px de large, en JPG compressé) :
+Les photos actuelles viennent du site lehangarfumoir.ca et de la fiche Resto en ligne du casse-croûte (photos du commerce). Elles sont dans `assets/img/photos/` :
 
-- `brisket.jpg`
-- `burnt-ends.jpg`
-- `smoke-burger.jpg`
-- `poutine.jpg`
-- `og.jpg` (1200×630, l'image affichée quand on partage le lien sur Facebook)
+| Fichier | Contenu | Utilisé où |
+|---|---|---|
+| `planche.jpg` | Planche de viandes fumées | Accueil du Hangar, galerie du casse-croûte |
+| `pitmaster.jpg` | Le propriétaire avec une côte levée | Carte « Côtes levées » |
+| `boutique.jpg` | Comptoir de la boutique | « Comment ça marche » |
+| `cc-poutine.jpg`, `cc-burger.jpg`, `cc-mac-cheese.jpg` | Plats du casse-croûte | Accueil et galerie du casse-croûte |
+| `og.jpg`, `og-cc.jpg` | Images de partage (Facebook, textos) | Balises Open Graph |
 
-Pour le casse-croûte, dans le même dossier :
+Les emplacements sans photo (brisket, burnt ends, sauces, grilled cheese) affichent le nom du plat en grand. Pour en ajouter une, déposer l'image et ajouter une balise `<img>` dans la `<figure>` correspondante.
 
-- `cc-carnivore.jpg`, `cc-burger.jpg`, `cc-grilled-cheese.jpg`, `cc-mac-cheese.jpg`, `cc-rondelles.jpg`, `cc-poutine.jpg` (format portrait 4:5, environ 1000 px de large)
-- `og-cc.jpg` (1200×630)
+## Sources du contenu
 
-Elles apparaissent automatiquement.
+- Hangar : lehangarfumoir.ca (accueil, menu, distribution), novembre 2026. Prix, heures, téléphone, points de vente et avis Google proviennent de là.
+- Casse-croûte : menu Resto en ligne mis à jour le 5 octobre 2026 (prix), note 4,9 sur 49 évaluations et résumé des avis (Resto en ligne).
 
 ## À confirmer avec le client avant la mise en ligne
 
-Le contenu vient de sources publiques (fiches de restaurant, page Facebook). Ces points doivent être validés :
-
-- [ ] **Heures d'ouverture** : elles viennent d'une fiche publique et peuvent dater (`config.js` → `hours`)
-- [ ] **Courriel** qui reçoit les demandes de traiteur : `info@lehangarfumoir.ca` est un exemple provisoire (`config.js` → `contact.email`)
-- [ ] **Téléphone** (`config.js` → `contact.phone`)
-- [ ] **Prix** : brisket 35 $/lb, burnt ends 18 $/400 g et bouchées 16 $ viennent du menu en ligne. Les autres prix sont à ajouter.
-- [ ] **Menu complet** : n'y figurent que les plats mentionnés publiquement. Ajouter les accompagnements, sandwichs, boissons, etc.
-- [ ] **Minimum traiteur** : le formulaire exige 10 personnes (`main.js`, recherche `>= 10`, et le message d'erreur)
-- [ ] **Photos** des plats (les deux sites)
-- [ ] **Casse-croûte** : menu tiré d'une ancienne fiche Uber Eats, sans prix. Noms exacts des burgers et grilled cheese à fournir.
-- [ ] **Casse-croûte** : téléphone 418 831-8288 (fiche Resto en ligne) et spéciaux jeudi/vendredi (site de tourisme Chaudière-Appalaches)
-- [ ] **Heures** : la fiche publique trouvée concerne le casse-croûte. Celles du fumoir sont peut-être différentes.
+- [ ] **Courriel** qui reçoit les demandes de traiteur : `info@lehangarfumoir.ca` est provisoire (`assets/js/config.js` → `contact.email`)
+- [ ] **Heures du casse-croûte** : tirées d'une fiche publique (Chaudière-Appalaches), à valider (`casse-croute/config.js` → `hours`)
+- [ ] **Vendredi côtes levées** au casse-croûte : vient du site de tourisme, à valider
+- [ ] **Jeudis poutine 17 h à 19 h** : annoncé sur le site du Hangar ; confirmer que ça se passe au casse-croûte
+- [ ] **Minimum traiteur** : le formulaire exige 10 personnes (`assets/js/main.js`, chercher `>= 10`)
+- [ ] **Avis Google** : citations courtes avec prénom et initiale. Confirmer que le client est à l'aise de les afficher.
+- [ ] **Facebook du casse-croûte** : s'il existe, ajouter le lien
 
 ## Formulaire traiteur
 

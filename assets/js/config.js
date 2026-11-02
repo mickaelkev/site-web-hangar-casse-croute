@@ -1,108 +1,132 @@
 /* ==========================================================================
-   CONFIGURATION DU SITE — le seul fichier à modifier au quotidien.
-   Menu, prix, heures et coordonnées sont ici.
-   Prix : mettre null pour afficher « Au comptoir » au lieu d'un prix.
+   CONFIGURATION — Le Hangar Fumoir (boutique)
+   Le seul fichier à modifier au quotidien : produits, prix, heures, coordonnées.
+
+   Produit :
+     price : nombre (ex. 18.71)  |  null = « En boutique »
+     stock : false                = affiche « Rupture de stock »
+     badge : "hot" (coup de cœur) | "limited" | null
+     unit  : texte sous le prix (ex. « la livre »)
+   Source des prix : lehangarfumoir.ca/menu (novembre 2026)
    ========================================================================== */
 
 window.HANGAR = {
 
-  /* ---------- Coordonnées ---------- */
   contact: {
-    // À CONFIRMER avec le client : courriel qui reçoit les demandes de traiteur.
-    email: "info@lehangarfumoir.ca",
-    // À CONFIRMER : numéro de téléphone (format affiché).
-    phone: ""
+    email: "info@lehangarfumoir.ca",   // À CONFIRMER : courriel qui reçoit les demandes de traiteur
+    phone: "418 831-8288"
   },
 
-  /* ---------- Formulaire traiteur ----------
-     Option A (recommandée) : créer un formulaire gratuit sur https://formspree.io
-     et coller l'adresse ici, ex. "https://formspree.io/f/abcdwxyz".
-     Option B : laisser vide → le bouton ouvre le courriel du visiteur, déjà rempli. */
+  /* Formulaire traiteur : coller ici une adresse Formspree pour l'envoi direct.
+     Vide = le bouton ouvre le courriel du visiteur, déjà rempli. */
   formEndpoint: "",
 
-  /* ---------- Heures (0 = dimanche … 6 = samedi) ----------
-     Format 24 h. null = fermé.  À CONFIRMER : heures tirées d'une fiche publique. */
+  /* Heures de la boutique (0 = dimanche … 6 = samedi). null = fermé. */
   hours: {
-    0: ["11:30", "19:30"],
+    0: ["12:00", "17:00"],
     1: null,
-    2: ["11:30", "19:30"],
-    3: ["11:30", "19:30"],
-    4: ["11:30", "20:00"],
-    5: ["11:30", "20:00"],
-    6: ["11:30", "20:00"]
+    2: ["10:00", "18:00"],
+    3: ["10:00", "18:00"],
+    4: ["10:00", "19:00"],
+    5: ["10:00", "19:00"],
+    6: ["10:00", "17:00"]
   },
 
-  /* ---------- Menu ----------
-     cat : identifiant de catégorie (voir categories)
-     badge : "hot" (coup de cœur, accent) | "limited" (quantité limitée) | null */
   categories: [
-    { id: "fumoir",  fr: "Le fumoir",  en: "Smoked meats" },
-    { id: "bouchees", fr: "Bouchées",  en: "Bites" },
-    { id: "burgers", fr: "Burgers",    en: "Burgers" },
-    { id: "poutines", fr: "Poutines",  en: "Poutines" },
-    { id: "sauces",  fr: "Sauces",     en: "Sauces" }
+    { id: "viandes",  fr: "Viandes fumées",       en: "Smoked meats" },
+    { id: "bouchees", fr: "Bouchées & partage",   en: "Bites & sharing" },
+    { id: "jerky",    fr: "Jerky",                en: "Jerky" },
+    { id: "plats",    fr: "Plats & accompagnements", en: "Meals & sides" },
+    { id: "sauces",   fr: "Sauces & épices",      en: "Sauces & rubs" }
   ],
 
   menu: [
-    {
-      cat: "fumoir", badge: "limited",
-      fr: { name: "Brisket", desc: "Poitrine de bœuf fumée à l'érable toute la nuit. Écorce poivrée, cœur fondant.", unit: "la livre" },
-      en: { name: "Brisket", desc: "Beef brisket smoked overnight over maple. Peppery bark, melt-in-your-mouth center.", unit: "per lb" },
-      price: 35
-    },
-    {
-      cat: "fumoir", badge: null,
-      fr: { name: "Porc effiloché", desc: "Épaule de porc fumée longuement, effilochée à la main." },
-      en: { name: "Pulled pork", desc: "Slow-smoked pork shoulder, hand-pulled." },
-      price: null
-    },
-    {
-      cat: "fumoir", badge: null,
-      fr: { name: "Côtes levées", desc: "Ribs de porc fumés jusqu'à ce qu'ils se détachent tout seuls de l'os." },
-      en: { name: "Ribs", desc: "Pork ribs smoked until they pull clean off the bone." },
-      price: null
-    },
-    {
-      cat: "bouchees", badge: "hot",
+    /* ----- Viandes fumées ----- */
+    { cat: "viandes", badge: "hot", price: 37,
+      fr: { name: "Brisket", desc: "Poitrine de bœuf fumée longuement à l'érable. La pièce maîtresse du fumoir.", unit: "la livre" },
+      en: { name: "Brisket", desc: "Beef brisket, slow-smoked over maple. The smokehouse's centrepiece.", unit: "per lb" } },
+    { cat: "viandes", badge: null, price: 20.41,
+      fr: { name: "Côtes levées Texan", desc: "Ribs de porc fumés, assaisonnement texan.", unit: "la livre" },
+      en: { name: "Texan ribs", desc: "Smoked pork ribs, Texas-style rub.", unit: "per lb" } },
+    { cat: "viandes", badge: null, price: 21.77,
+      fr: { name: "Côtes levées Master", desc: "Ribs de porc fumés, recette Master.", unit: "la livre" },
+      en: { name: "Master ribs", desc: "Smoked pork ribs, Master recipe.", unit: "per lb" } },
+    { cat: "viandes", badge: null, price: 14.74,
+      fr: { name: "Porc effiloché", desc: "Épaule de porc fumée, effilochée et prête à garnir.", unit: "la livre" },
+      en: { name: "Pulled pork", desc: "Smoked pork shoulder, pulled and ready to pile on.", unit: "per lb" } },
+    { cat: "viandes", badge: null, price: 15.87,
+      fr: { name: "Filet de porc", desc: "Filet de porc fumé, tendre et maigre.", unit: "la livre" },
+      en: { name: "Pork tenderloin", desc: "Smoked pork tenderloin, lean and tender.", unit: "per lb" } },
+    { cat: "viandes", badge: null, price: 6.50,
+      fr: { name: "Smoked meat de porc", desc: "Smoked meat maison, version porc." },
+      en: { name: "Pork smoked meat", desc: "House smoked meat, pork version." } },
+    { cat: "viandes", badge: null, price: 7,
+      fr: { name: "Smoked meat de bœuf", desc: "Smoked meat maison, version bœuf." },
+      en: { name: "Beef smoked meat", desc: "House smoked meat, beef version." } },
+    { cat: "viandes", badge: null, price: null, stock: false,
+      fr: { name: "Bacon", desc: "Bacon fumé maison." },
+      en: { name: "Bacon", desc: "House-smoked bacon." } },
+
+    /* ----- Bouchées & partage ----- */
+    { cat: "bouchees", badge: "hot", price: 18,
       fr: { name: "Burnt ends", desc: "Les pointes du brisket, caramélisées en sauce.", unit: "400 g" },
-      en: { name: "Burnt ends", desc: "Brisket point cubes, caramelized in sauce.", unit: "400 g" },
-      price: 18
-    },
-    {
-      cat: "bouchees", badge: null,
-      fr: { name: "Bouchées de brisket", desc: "Le brisket en format grignotine, parfait pour partager." },
-      en: { name: "Brisket bites", desc: "Brisket in snackable bites, made for sharing." },
-      price: 16
-    },
-    {
-      cat: "bouchees", badge: null,
-      fr: { name: "Boulettes de brisket", desc: "Boulettes maison au brisket fumé." },
-      en: { name: "Brisket meatballs", desc: "House meatballs made with smoked brisket." },
-      price: null
-    },
-    {
-      cat: "burgers", badge: "hot",
-      fr: { name: "Le Smoke", desc: "Le burger signature du Hangar, garni de viande fumée." },
-      en: { name: "The Smoke", desc: "The Hangar's signature burger, loaded with smoked meat." },
-      price: null
-    },
-    {
-      cat: "poutines", badge: null,
-      fr: { name: "Poutine au brisket", desc: "Frites, fromage en grains, sauce et brisket fumé." },
-      en: { name: "Brisket poutine", desc: "Fries, cheese curds, gravy and smoked brisket." },
-      price: null
-    },
-    {
-      cat: "poutines", badge: null,
-      fr: { name: "Poutine au porc effiloché", desc: "Frites, fromage en grains, sauce et porc effiloché." },
-      en: { name: "Pulled pork poutine", desc: "Fries, cheese curds, gravy and pulled pork." },
-      price: null
-    },
-    {
-      cat: "sauces", badge: null,
-      fr: { name: "Sauces BBQ maison", desc: "Plusieurs sauces préparées sur place. Demande la sélection du jour." },
-      en: { name: "House BBQ sauces", desc: "Several sauces made in-house. Ask about today's lineup." },
-      price: null
-    }
+      en: { name: "Burnt ends", desc: "Brisket point cubes, caramelized in sauce.", unit: "400 g" } },
+    { cat: "bouchees", badge: null, price: 16,
+      fr: { name: "Bouchées de brisket", desc: "Le brisket en format bouchée, parfait pour partager." },
+      en: { name: "Brisket bites", desc: "Brisket in bite-size pieces, made for sharing." } },
+    { cat: "bouchees", badge: null, price: 17.24,
+      fr: { name: "Boulettes de brisket (2)", desc: "Boulettes maison au brisket fumé.", unit: "la livre" },
+      en: { name: "Brisket meatballs (2)", desc: "House meatballs made with smoked brisket.", unit: "per lb" } },
+    { cat: "bouchees", badge: null, price: 18.71,
+      fr: { name: "Bouchées de poulet", desc: "Bouchées de poulet fumé.", unit: "la livre" },
+      en: { name: "Chicken bites", desc: "Smoked chicken bites.", unit: "per lb" } },
+    { cat: "bouchees", badge: null, price: 14,
+      fr: { name: "Fondue parmesan au saumon fumé (4)", desc: "Croquettes de fondue parmesan au saumon fumé." },
+      en: { name: "Smoked salmon parmesan fondue (4)", desc: "Parmesan fondue bites with smoked salmon." } },
+    { cat: "bouchees", badge: null, price: 11,
+      fr: { name: "Fondue parmesan cajun (4)", desc: "Croquettes de fondue parmesan, touche cajun." },
+      en: { name: "Cajun parmesan fondue (4)", desc: "Parmesan fondue bites with a Cajun kick." } },
+
+    /* ----- Jerky ----- */
+    { cat: "jerky", badge: null, price: 15,
+      fr: { name: "Beef jerky", desc: "Bœuf séché et fumé, à grignoter.", unit: "100 g" },
+      en: { name: "Beef jerky", desc: "Smoked, dried beef for snacking.", unit: "100 g" } },
+    { cat: "jerky", badge: null, price: 10,
+      fr: { name: "Jerky de porc", desc: "Porc séché et fumé.", unit: "100 g" },
+      en: { name: "Pork jerky", desc: "Smoked, dried pork.", unit: "100 g" } },
+
+    /* ----- Plats & accompagnements ----- */
+    { cat: "plats", badge: null, price: 10,
+      fr: { name: "Mac & cheese", desc: "Macaroni au fromage, prêt à réchauffer." },
+      en: { name: "Mac & cheese", desc: "Macaroni and cheese, ready to reheat." } },
+    { cat: "plats", badge: null, price: 9.07,
+      fr: { name: "Patates farcies", desc: "Variétés fromagée, cajun et porc effiloché, selon l'arrivage.", unit: "la livre" },
+      en: { name: "Stuffed potatoes", desc: "Cheesy, Cajun and pulled pork varieties, depending on stock.", unit: "per lb" } },
+    { cat: "plats", badge: null, price: 8.62,
+      fr: { name: "Fèves au lard", desc: "Le classique, avec un goût de fumée.", unit: "la livre" },
+      en: { name: "Baked beans", desc: "The classic, with a smoky touch.", unit: "per lb" } },
+    { cat: "plats", badge: null, price: 10.58,
+      fr: { name: "Chili", desc: "Petite chaleur agréable, goût de fumée bien présent.", unit: "le kg" },
+      en: { name: "Chili", desc: "Pleasant gentle heat, with a clear smoky flavour.", unit: "per kg" } },
+    { cat: "plats", badge: null, price: 9.98,
+      fr: { name: "Sauce à spaghetti", desc: "Sauce à la viande maison. Une favorite des clients.", unit: "la livre" },
+      en: { name: "Spaghetti sauce", desc: "House meat sauce. A customer favourite.", unit: "per lb" } },
+
+    /* ----- Sauces & épices ----- */
+    { cat: "sauces", badge: "hot", price: 10,
+      fr: { name: "Sauce BBQ Master Key", desc: "La sauce signature du Hangar." },
+      en: { name: "Master Key BBQ sauce", desc: "The Hangar's signature sauce." } },
+    { cat: "sauces", badge: null, price: 11,
+      fr: { name: "Sauce BBQ Liquid Gold", desc: "Sauce BBQ maison." },
+      en: { name: "Liquid Gold BBQ sauce", desc: "House BBQ sauce." } },
+    { cat: "sauces", badge: null, price: 12,
+      fr: { name: "Sauce BBQ Deluxe", desc: "Sauce BBQ maison." },
+      en: { name: "Deluxe BBQ sauce", desc: "House BBQ sauce." } },
+    { cat: "sauces", badge: null, price: 10,
+      fr: { name: "Épices cajun", desc: "Le mélange maison pour ton BBQ." },
+      en: { name: "Cajun rub", desc: "The house blend for your grill." } },
+    { cat: "sauces", badge: null, price: 10,
+      fr: { name: "Épices à steak", desc: "Mélange maison à steak." },
+      en: { name: "Steak spice", desc: "House steak blend." } }
   ]
 };

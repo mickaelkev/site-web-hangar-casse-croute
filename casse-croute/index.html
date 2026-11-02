@@ -77,7 +77,7 @@
   <main id="contenu">
 
     <!-- ============ HÉRO ============ -->
-    <section class="hero cc-hero">
+    <section class="hero cc-hero cc-hero--photo">
       <div class="wrap hero__inner">
         <p class="eyebrow" data-i18n="cc.hero.eyebrow">Casse-croûte · Lévis, Québec</p>
         <h1 class="hero__title cc-hero__title">
@@ -90,7 +90,12 @@
           <a class="btn btn--dark" href="#menu" data-i18n="cc.hero.cta1">Voir le menu</a>
           <a class="btn btn--outline-dark" href="tel:+14188318288"><span data-i18n="cc.call">Appeler</span>&nbsp;418&nbsp;831-8288</a>
         </div>
+        <p class="cc-rating"><strong>4,9 ★</strong> <span data-i18n="cc.rating">49 évaluations sur Resto en ligne</span></p>
       </div>
+
+      <figure class="cc-hero__photo" aria-hidden="true">
+        <img src="../assets/img/photos/cc-poutine.jpg" alt="" fetchpriority="high">
+      </figure>
 
       <!-- Autocollant tournant -->
       <div class="sticker" aria-hidden="true">
@@ -105,8 +110,8 @@
 
     <div class="ticker" aria-hidden="true">
       <div class="ticker__track">
-        <span>Poutine</span><span>Burger</span><span>Grilled cheese</span><span>Mac &amp; cheese</span><span>Rondelles</span><span>Corn dog</span>
-        <span>Poutine</span><span>Burger</span><span>Grilled cheese</span><span>Mac &amp; cheese</span><span>Rondelles</span><span>Corn dog</span>
+        <span>Poutine</span><span>Burger</span><span>Mac &amp; cheese</span><span>Grilled cheese</span><span>Pogo</span><span>Filets de poulet</span>
+        <span>Poutine</span><span>Burger</span><span>Mac &amp; cheese</span><span>Grilled cheese</span><span>Pogo</span><span>Filets de poulet</span>
       </div>
     </div>
 
@@ -121,7 +126,7 @@
           <article class="special reveal" data-day="4">
             <span class="special__day" data-i18n="cc.sp.thursday">Jeudi</span>
             <h3>Poutine</h3>
-            <p data-i18n="cc.sp.thu.d">Le jour où la poutine prend toute la place.</p>
+            <p data-i18n="cc.sp.thu.d">De 17 h à 19 h, la poutine prend toute la place.</p>
             <span class="special__today" data-i18n="cc.sp.today">Aujourd'hui</span>
           </article>
           <article class="special reveal" data-day="5">
@@ -143,12 +148,28 @@
         </header>
       </div>
       <div class="gallery" tabindex="0" aria-label="Photos des plats">
-        <figure class="shot tray" data-ph="Carnivore"><img src="../assets/img/photos/cc-carnivore.jpg" alt="Poutine La Carnivore" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="shot tray" data-ph="Burger"><img src="../assets/img/photos/cc-burger.jpg" alt="Burger aux viandes fumées" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="shot tray" data-ph="Grilled cheese"><img src="../assets/img/photos/cc-grilled-cheese.jpg" alt="Grilled cheese" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="shot tray" data-ph="Mac &amp; cheese"><img src="../assets/img/photos/cc-mac-cheese.jpg" alt="Mac and cheese" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="shot tray" data-ph="Rondelles"><img src="../assets/img/photos/cc-rondelles.jpg" alt="Rondelles d'oignon" loading="lazy" onerror="this.remove()"></figure>
-        <figure class="shot tray" data-ph="Poutine"><img src="../assets/img/photos/cc-poutine.jpg" alt="Poutine classique" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="shot tray" data-ph="Burger"><img src="../assets/img/photos/cc-burger.jpg" alt="Burger aux viandes effilochées et frites" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="shot tray" data-ph="Mac &amp; cheese"><img src="../assets/img/photos/cc-mac-cheese.jpg" alt="Mac and cheese garni de viande effilochée" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="shot tray" data-ph="Fumoir"><img src="../assets/img/photos/planche.jpg" alt="Les viandes fumées du Hangar, servies au casse-croûte" loading="lazy" onerror="this.remove()"></figure>
+        <figure class="shot tray" data-ph="Grilled cheese"></figure>
+      </div>
+    </section>
+
+    <!-- ============ AVIS ============ -->
+    <section class="section" id="avis" aria-labelledby="rev-title">
+      <div class="wrap">
+        <header class="reveal section__head section__head--split">
+          <div>
+            <p class="eyebrow" data-i18n="cc.rev.eyebrow">Ce que disent les clients</p>
+            <h2 id="rev-title" data-i18n="cc.rev.title">Des portions qui ne niaisent pas</h2>
+          </div>
+          <p class="rating"><strong>4,9</strong><span class="rating__stars" aria-hidden="true">★★★★★</span><span data-i18n="cc.rating">49 évaluations sur Resto en ligne</span></p>
+        </header>
+        <ul class="themes" role="list">
+          <li class="reveal"><strong data-i18n="cc.rev.1.t">Les poutines</strong><span data-i18n="cc.rev.1.d">Surtout celles au brisket, au smoked meat et au porc effiloché, avec des portions généreuses.</span></li>
+          <li class="reveal"><strong data-i18n="cc.rev.2.t">L'accueil</strong><span data-i18n="cc.rev.2.d">Un service décrit comme chaleureux, courtois et attentionné.</span></li>
+          <li class="reveal"><strong data-i18n="cc.rev.3.t">Le rapport qualité-prix</strong><span data-i18n="cc.rev.3.d">Souligné dans de nombreux avis.</span></li>
+        </ul>
       </div>
     </section>
 
@@ -160,7 +181,7 @@
             <p class="eyebrow" data-i18n="cc.menu.eyebrow">Le menu</p>
             <h2 id="menu-title" data-i18n="cc.menu.title">Les frites d'abord, les questions après</h2>
           </div>
-          <p class="section__note" data-i18n="cc.menu.note">Les prix sont au tableau du comptoir. Le menu peut changer : appelle-nous si tu as une envie précise.</p>
+          <p class="section__note" data-i18n="cc.menu.note">Prix en vigueur en octobre 2026, sujets à changement. Le tableau du comptoir a toujours le dernier mot.</p>
         </header>
         <div class="tabs" role="tablist" aria-label="Catégories du menu" id="menu-tabs"></div>
         <div class="menu-list" id="menu-list" role="tabpanel" aria-live="polite"></div>

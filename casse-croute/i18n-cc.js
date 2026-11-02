@@ -21,7 +21,7 @@ Object.assign(window.HANGAR_EN, {
   "cc.sp.today": "Today",
   "cc.sp.thursday": "Thursday",
   "cc.sp.friday": "Friday",
-  "cc.sp.thu.d": "The day poutine takes over.",
+  "cc.sp.thu.d": "From 5 to 7 pm, poutine takes over.",
   "cc.sp.fri.t": "Ribs",
   "cc.sp.fri.d": "The Hangar's smoked ribs, to end the week right.",
 
@@ -30,7 +30,16 @@ Object.assign(window.HANGAR_EN, {
 
   "cc.menu.eyebrow": "The menu",
   "cc.menu.title": "Fries first, questions later",
-  "cc.menu.note": "Prices are on the board at the counter. The menu may change: call us if you're craving something specific.",
+  "cc.menu.note": "Prices as of October 2026, subject to change. The board at the counter always has the final say.",
+  "cc.rating": "49 reviews on Resto en ligne",
+  "cc.rev.eyebrow": "What customers say",
+  "cc.rev.title": "Portions that don't mess around",
+  "cc.rev.1.t": "The poutines",
+  "cc.rev.1.d": "Especially the brisket, smoked meat and pulled pork ones, with generous portions.",
+  "cc.rev.2.t": "The welcome",
+  "cc.rev.2.d": "Service described as warm, courteous and attentive.",
+  "cc.rev.3.t": "The value",
+  "cc.rev.3.d": "Highlighted in many reviews.",
 
   "cc.back.eyebrow": "Want to take some home?",
   "cc.back.title": "The smokehouse is 15 steps away",
