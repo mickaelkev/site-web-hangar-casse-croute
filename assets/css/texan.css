@@ -115,7 +115,7 @@
 .tx .quote { border-top: 4px solid var(--braise); }
 
 /* Points de passage des 15 pas : bottes plutôt que pas */
-.tx .steps15__end span { font-family: var(--f-western); text-transform: none; letter-spacing: 0; font-size: 1rem; }
+.tx .steps15__end span { font-family: var(--f-label); font-weight: 700; font-size: .875rem; letter-spacing: .12em; text-transform: uppercase; }
 
 /* ---------- Pied de page ---------- */
 .footer__big--tx {
@@ -129,3 +129,78 @@
 .tx .shot::before { font-size: clamp(1.8rem, 3.4vw, 3rem); line-height: 1; }
 .tx .sig--xl .shot::before { font-size: clamp(2.6rem, 6vw, 5rem); }
 @media (max-width: 560px) { .brand-stamp { display: none; } }
+
+
+/* ==========================================================================
+   Correctifs de l'audit design
+   ========================================================================== */
+/* 1. Sans photo : étiquette de boucher plutôt qu'un trou noir */
+.tx .shot:not(:has(img)) {
+  background-color: #F6ECDA;
+  background-image: repeating-linear-gradient(0deg, rgba(58, 42, 30, .06) 0 1px, transparent 1px 28px);
+  display: grid; place-items: center; text-align: center;
+}
+.tx .shot:not(:has(img))::before {
+  position: static; color: var(--cuir); -webkit-text-stroke: 0;
+  font-size: clamp(2rem, 1.4rem + 2vw, 3rem); line-height: 1.05;
+  padding: var(--s4) var(--s5); border-block: 3px double var(--cuir); max-width: 90%;
+}
+.tx .shot:not(:has(img))::after {
+  content: "★ Fumé à l'érable ★"; inset: auto 0 var(--s5); background: none;
+  font-family: var(--f-label); font-weight: 700; font-size: .8125rem;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--braise);
+}
+@media (max-width: 560px) { .tx .sig .shot:not(:has(img)) { aspect-ratio: 16 / 9; } }
+
+/* 3. Onglets collants sur kraft */
+.tx .tabs { background: var(--kraft-2); }
+
+/* 5. Rye seulement en grandes capitales */
+.tx .pull p { text-transform: uppercase; font-size: clamp(1.4rem, 1rem + 1.6vw, 2.1rem); line-height: 1.2; max-width: 30ch; }
+
+/* 6. Prix sur étiquettes de boucher, rouge pour les coups de cœur */
+.tx .item__price {
+  align-self: start; background: #F6ECDA; color: var(--cuir);
+  padding: 2px var(--s3) 2px var(--s5);
+  clip-path: polygon(12px 0, 100% 0, 100% 100%, 12px 100%, 0 50%);
+}
+.tx .item:has(.badge--hot) .item__price { background: var(--braise); color: var(--on-accent); }
+.tx .item:has(.badge--hot) .item__price small { color: inherit; opacity: .9; }
+.tx .item__price--ask { background: none; clip-path: none; padding: 0; }
+
+/* 4. Contrastes AA sur kraft et charbon */
+.tx { --gris: #574838; }
+.tx .sig__body p, .tx .themes span, .tx .item__desc, .tx .section__note, .tx .item__price small, .tx .rating span:last-child, .tx .quote figcaption, .tx .hours tr:not(.is-today) td, .tx .dist, .tx .field__help { color: var(--gris); }
+.tx .link { color: #9E1F1F; }
+.tx .section--dark .link, .tx .faim .link { color: #F07A7A; }
+.tx .item--out .item__price--ask { color: #9E1F1F; }
+.tx .promo__k { color: var(--kraft); }
+.tx .promo__k::before { content: "★ "; color: var(--braise); }
+
+/* 7. Bloc vedette éditorial, étiquette pleine */
+.tx .sig--xl { grid-template-columns: 1.1fr 1fr; align-items: end; gap: var(--s8); }
+.tx .sig--xl .sig__body { padding-bottom: var(--s6); border-bottom: 3px double var(--cuir); }
+.tx .sig--xl h3 { font-size: clamp(2.4rem, 1.4rem + 3vw, 4rem); line-height: 1; }
+.tx .tag { border: 0; background: var(--cuir); color: var(--kraft); padding: var(--s1) var(--s3); }
+@media (max-width: 900px) { .tx .sig--xl { grid-template-columns: 1fr; gap: var(--s5); } }
+
+/* 8. Lisibilité du héro et sceau plein */
+.tx .hero__title-accent { text-shadow: 0 2px 0 rgba(26, 22, 19, .9), 0 4px 30px rgba(26, 22, 19, .85); }
+@media (max-width: 760px) {
+  .tx .hero--photo .hero__bg::after { background: linear-gradient(0deg, rgba(26, 22, 19, .97) 20%, rgba(26, 22, 19, .8) 60%, rgba(26, 22, 19, .62) 100%); }
+}
+.brand-stamp::before { content: ""; position: absolute; inset: 3%; border-radius: 50%; background: rgba(26, 22, 19, .82); box-shadow: 0 12px 30px rgba(0, 0, 0, .45); }
+.brand-stamp__star { position: relative; }
+
+/* 9. « Comment ça marche » sans vide */
+.tx .smoke-intro { align-items: center; grid-template-columns: 1.2fr 1fr; }
+.tx .smoke-intro .shot--portrait { aspect-ratio: 4 / 3; border: 6px solid var(--os); }
+.tx .smoke-intro .shot--portrait img { object-position: 45% 50%; }
+@media (max-width: 860px) { .tx .smoke-intro { grid-template-columns: 1fr; } }
+
+/* 12. Traiteur : titre plus léger, colonne gauche collante */
+@media (min-width: 901px) {
+  .tx .cat__intro { position: sticky; top: calc(var(--header-h) + var(--s6)); }
+  .tx .cat__intro h2 { font-size: clamp(2rem, 1.3rem + 1.8vw, 2.9rem); max-width: 16ch; }
+}
+.tx .sig__cta { display: inline-block; margin-top: var(--s5); }

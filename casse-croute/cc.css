@@ -96,7 +96,7 @@
 
 /* ---------- Divers ---------- */
 .cc-phone { font-size: var(--t-md); font-variant-numeric: tabular-nums; }
-.cc .link { color: #9A6A00; }               /* moutarde foncée : lisible sur fond crème (contraste AA) */
+.cc .link { color: #7A5400; }               /* moutarde foncée : lisible sur fond crème (contraste AA) */
 .cc .section--dark .link, .cc .faim .link { color: var(--braise); }
 
 /* ---------- Héro avec photo (carte inclinée qui flotte) ---------- */
@@ -120,4 +120,20 @@
   .cc-hero__photo { position: relative; right: auto; bottom: auto; width: min(88%, 480px); margin: var(--s7) auto 0; }
   .cc-hero--photo .sticker { top: calc(var(--header-h) + var(--s4)); bottom: auto; right: var(--s4); width: 96px; }
 }
-.cc .rating__stars { color: #C98F00; }
+.cc .rating__stars { color: #A87700; }
+
+
+/* ---------- Correctifs de l'audit design ---------- */
+.cc .shot:not(:has(img)) { background: var(--braise); display: grid; place-items: center; }
+.cc .shot:not(:has(img))::before { position: static; color: var(--charbon); -webkit-text-stroke: 0; text-align: center; }
+.cc .shot:not(:has(img))::after { display: none; }
+.cc-hero__title { line-height: 1; }
+.cc .ticker span::after { content: "★"; }
+/* Le couloir vers le fumoir parle texan */
+.cc .faim {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(0,0,0,0) 0 178px, rgba(0,0,0,.35) 178px 180px),
+    repeating-linear-gradient(90deg, rgba(243,234,219,.018) 0 2px, rgba(0,0,0,0) 2px 9px);
+}
+.cc .faim h2 { font-family: "Rye", var(--f-display); font-weight: 400; letter-spacing: 0; line-height: 1.08; text-transform: uppercase; }
+.cc .faim .eyebrow::before { content: "★"; color: #D42A2A; margin-right: var(--s2); }

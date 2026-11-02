@@ -564,3 +564,21 @@ a.promo:hover { background: var(--charbon-2); }
 .tel { font-size: var(--t-md); font-variant-numeric: tabular-nums; }
 .link { color: #B32222; }
 .section--dark .link, .faim .link { color: var(--braise-h); }
+
+
+/* ==========================================================================
+   Correctifs de l'audit design
+   ========================================================================== */
+.nav a, .btn { white-space: nowrap; }
+@media (min-width: 901px) and (max-width: 1180px) {
+  .header__inner { gap: var(--s5); }
+  .nav { gap: var(--s5); }
+  .nav a { font-size: 1rem; letter-spacing: .04em; }
+  .header__cta { display: none; }
+}
+.tabs { position: sticky; top: var(--header-h); z-index: 5; padding-block: var(--s3); background: var(--os-2); }
+@media (max-width: 560px) {
+  .hero__ctas .btn { flex: 1 1 100%; }
+  .steps15 .foot { width: 6px; }
+  .steps15__end span { font-size: .6875rem; }
+}

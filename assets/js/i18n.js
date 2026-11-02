@@ -41,6 +41,7 @@ window.HANGAR_EN = {
   "sig.1.t": "The brisket",
   "sig.1.d": "Beef brisket slow-smoked over maple, black bark and melt-in-your-mouth center. $37 per lb.",
   "sig.2.t": "Ribs",
+  "sig.2.cta": "See prices per pound",
   "sig.2.d": "Smoked for hours over maple until they fall right off the bone. Texan or Master style.",
   "sig.3.t": "Burnt ends",
   "sig.3.d": "Brisket points, caramelized in sauce. The pitmaster's candy.",

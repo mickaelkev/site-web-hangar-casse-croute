@@ -9,7 +9,7 @@
   var FR_EXTRA = window.HANGAR_FR_EXTRA;
   var FR = {};               // textes FR d'origine, lus dans le HTML
   var lang = "fr";
-  var activeCat = "all";
+  var activeCat = (C.categories && C.categories[0]) ? C.categories[0].id : "all";
 
   function $(s, root) { return (root || document).querySelector(s); }
   function $$(s, root) { return Array.prototype.slice.call((root || document).querySelectorAll(s)); }
