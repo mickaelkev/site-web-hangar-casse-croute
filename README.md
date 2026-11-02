@@ -1,6 +1,15 @@
-# Le Hangar Fumoir — site web
+# Le Hangar Fumoir + Casse-Croûte du Hangar — sites web
 
-Nouveau site vitrine du Hangar Fumoir (BBQ style texan, Lévis). Site statique HTML/CSS/JS, sans dépendance ni étape de compilation.
+Deux sites liés pour deux commerces voisins appartenant au même propriétaire, au 1810, route des Rivières à Lévis :
+
+| Site | Adresse web | Identité |
+|---|---|---|
+| **Le Hangar Fumoir** (local 502) | `/` | Charbon et braise : BBQ texan, fumoir |
+| **Casse-Croûte du Hangar** (local 503) | `/casse-croute/` | Moutarde et charbon : poutines, burgers |
+
+**Le lien entre les deux, « les 15 pas »** : sur le site du Hangar, la section « T'as faim, là, maintenant? » montre 15 empreintes de pas animées qui mènent au casse-croûte, avec le bouton « Faire les 15 pas ». Le casse-croûte fait le chemin inverse (« Le fumoir est à 15 pas »). Chaque en-tête et chaque pied de page a aussi un lien vers l'autre site. Le choix de langue FR/EN suit le visiteur d'un site à l'autre.
+
+Sites statiques HTML/CSS/JS, sans dépendance ni étape de compilation. Les deux partagent le même système de design (`assets/css/style.css`) ; le casse-croûte y ajoute une surcouche (`casse-croute/cc.css`).
 
 ## Contenu du site
 
@@ -23,13 +32,14 @@ Pour le voir sur son ordinateur, on ouvre simplement `index.html` dans un naviga
 
 ## Modifier le menu, les prix ou les heures
 
-Tout se trouve dans **`assets/js/config.js`**. Aucune autre connaissance n'est nécessaire.
+Tout se trouve dans **`assets/js/config.js`** (Hangar) et **`casse-croute/config.js`** (casse-croûte). Aucune autre connaissance n'est nécessaire.
 
 - Prix : mettre un nombre (`35`). Avec `null`, le site affiche « Au comptoir ».
 - Badge : `"hot"` (Coup de cœur), `"limited"` (Limité) ou `null`.
 - Heures : `["11:30", "20:00"]`, ou `null` pour un jour fermé.
 
-Les textes de la page sont dans `index.html` (français) et `assets/js/i18n.js` (anglais).
+Les textes sont dans les fichiers `index.html` (français), `assets/js/i18n.js` et `casse-croute/i18n-cc.js` (anglais).
+Les spéciaux de la semaine du casse-croûte (jeudi poutine, vendredi côtes levées) sont dans `casse-croute/index.html`. Le spécial du jour est mis en évidence automatiquement.
 
 ## Photos
 
@@ -41,6 +51,11 @@ Pour ajouter les vraies photos, déposer ces fichiers dans `assets/img/photos/` 
 - `smoke-burger.jpg`
 - `poutine.jpg`
 - `og.jpg` (1200×630, l'image affichée quand on partage le lien sur Facebook)
+
+Pour le casse-croûte, dans le même dossier :
+
+- `cc-carnivore.jpg`, `cc-burger.jpg`, `cc-grilled-cheese.jpg`, `cc-mac-cheese.jpg`, `cc-rondelles.jpg`, `cc-poutine.jpg` (format portrait 4:5, environ 1000 px de large)
+- `og-cc.jpg` (1200×630)
 
 Elles apparaissent automatiquement.
 
@@ -54,7 +69,10 @@ Le contenu vient de sources publiques (fiches de restaurant, page Facebook). Ces
 - [ ] **Prix** : brisket 35 $/lb, burnt ends 18 $/400 g et bouchées 16 $ viennent du menu en ligne. Les autres prix sont à ajouter.
 - [ ] **Menu complet** : n'y figurent que les plats mentionnés publiquement. Ajouter les accompagnements, sandwichs, boissons, etc.
 - [ ] **Minimum traiteur** : le formulaire exige 10 personnes (`main.js`, recherche `>= 10`, et le message d'erreur)
-- [ ] **Photos** des plats
+- [ ] **Photos** des plats (les deux sites)
+- [ ] **Casse-croûte** : menu tiré d'une ancienne fiche Uber Eats, sans prix. Noms exacts des burgers et grilled cheese à fournir.
+- [ ] **Casse-croûte** : téléphone 418 831-8288 (fiche Resto en ligne) et spéciaux jeudi/vendredi (site de tourisme Chaudière-Appalaches)
+- [ ] **Heures** : la fiche publique trouvée concerne le casse-croûte. Celles du fumoir sont peut-être différentes.
 
 ## Formulaire traiteur
 

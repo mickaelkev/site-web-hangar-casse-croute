@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Casse-Croûte du Hangar">
+  <!-- Cornet de frites -->
+  <path d="M22 26l-2-16M28 26l-1-20M34 26l1-18M40 26l3-15" stroke="#F2B630" stroke-width="4" stroke-linecap="round"/>
+  <path d="M14 24h36l-5 34H19z" fill="none" stroke="#F3EADB" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M17 34c5 4 10 4 15 0s10-4 15 0" fill="none" stroke="#F3EADB" stroke-width="3"/>
+</svg>

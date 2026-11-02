@@ -40,14 +40,12 @@
     var btn = $("#lang-toggle");
     btn.textContent = lang === "en" ? "FR" : "EN";
     btn.setAttribute("aria-label", lang === "en" ? "Passer en français" : "Switch to English");
-    document.title = lang === "en"
-      ? "Le Hangar Fumoir — Maple-smoked Texas-style BBQ · Lévis"
-      : "Le Hangar Fumoir — BBQ style texan fumé à l'érable · Lévis";
+    document.title = lang === "en" && EN["meta.title"] ? EN["meta.title"] : FR_TITLE;
     storage("hangar-lang", lang);
-    renderTabs();
-    renderMenu();
-    renderHours();
+    if (tabsEl) { renderTabs(); renderMenu(); }
+    if ($("#hours")) renderHours();
   }
+  var FR_TITLE = document.title;
 
   $("#lang-toggle").addEventListener("click", function () { applyLang(lang === "en" ? "fr" : "en"); });
 
@@ -128,6 +126,7 @@
     listEl.innerHTML = html;
   }
 
+  if (tabsEl) {
   tabsEl.addEventListener("click", function (e) {
     var b = e.target.closest(".tab");
     if (!b) return;
@@ -143,6 +142,7 @@
     next.click();
   });
 
+  }
   /* ---------- Heures ---------- */
   function fmt(hhmm) {
     if (lang === "fr") return hhmm.replace(":", " h ");
@@ -169,7 +169,9 @@
   }
 
   /* ---------- Formulaire traiteur ---------- */
-  var form = $("#catering-form"), status = $("#form-status");
+  var form = $("#catering-form");
+  if (form) {
+  var status = $("#form-status");
   var dateInput = $("#f-date");
   var tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
   dateInput.min = tomorrow.toISOString().slice(0, 10);
@@ -227,6 +229,30 @@
       .catch(function () { setStatus(t("form.fail") + " " + C.contact.email + ".", "err"); })
       .then(function () { btn.disabled = false; });
   });
+
+  }
+
+  /* ---------- Apparitions au défilement + animation des 15 pas ---------- */
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  $$("[data-count]").forEach(function (path) {
+    var n = +path.dataset.count, html = "";
+    for (var i = 0; i < n; i++) {
+      html += '<svg class="foot' + (i % 2 ? " foot--r" : "") + '" style="--i:' + i + '" viewBox="0 0 20 36"><use href="#footprint"/></svg>';
+    }
+    path.innerHTML = html;
+  });
+  var revealEls = $$(".reveal, .steps15");
+  if (!reduced && "IntersectionObserver" in window) {
+    document.documentElement.classList.add("js-reveal");
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("is-in"); ro.unobserve(en.target); }
+      });
+    }, { threshold: 0, rootMargin: "0px 0px -10% 0px" });
+    revealEls.forEach(function (el) { ro.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("is-in"); });
+  }
 
   /* ---------- Démarrage ---------- */
   $("#year").textContent = new Date().getFullYear();

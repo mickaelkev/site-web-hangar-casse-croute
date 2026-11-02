@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Casse-Croûte du Hangar — surcouche de thème
+   Même système que le Hangar (typos, espacements, composants),
+   mais l'accent passe de la braise à la moutarde. Une seule couleur d'accent.
+   ========================================================================== */
+
+.cc {
+  --braise:   #F2B630;   /* moutarde = accent du casse-croûte */
+  --braise-h: #F7C651;
+}
+
+/* ---------- Héro moutarde ---------- */
+.cc-hero { background: var(--braise); color: var(--charbon); min-height: min(92svh, 860px); }
+.cc-hero::before { background: radial-gradient(ellipse at 50% 100%, rgba(26, 22, 19, .14), rgba(26, 22, 19, 0) 65%); }
+.cc-hero::after { opacity: .1; }
+.cc-hero .eyebrow { color: var(--charbon); opacity: .75; }
+.cc-hero .hero__lead { color: var(--charbon-2); }
+.cc-hero .hero__title-accent { -webkit-text-stroke-color: var(--charbon); }
+.cc-hero__title { margin-bottom: var(--s6); }
+
+.cc .header:not(.is-solid) { color: var(--charbon); }
+.cc .header:not(.is-solid) .brand,
+.cc .header:not(.is-solid) .nav a,
+.cc .header:not(.is-solid) .lang,
+.cc .header:not(.is-solid) .burger { color: var(--charbon); }
+.cc .header:not(.is-solid) .lang { border-color: rgba(26, 22, 19, .3); }
+.cc .header:not(.is-solid) .brand__name small { color: var(--charbon-3); }
+.cc .header:not(.is-solid) .nav a.is-active::after { background: var(--charbon); }
+.cc .header:not(.is-solid) .header__cta { background: var(--charbon); color: var(--braise); }
+.cc .nav a.nav__sister { color: #E5642F; }
+.cc .header:not(.is-solid) .nav a.nav__sister { color: var(--charbon); text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 900px) {
+  .cc .header:not(.is-solid) .nav a { color: var(--os); }
+}
+
+.btn--dark { background: var(--charbon); color: var(--braise); }
+.btn--dark:hover { background: var(--charbon-3); }
+.btn--outline-dark { border-color: var(--charbon); color: var(--charbon); }
+.btn--outline-dark:hover { background: var(--charbon); color: var(--braise); }
+
+/* Les mots du titre tombent un à un */
+.cc-word { display: inline-block; animation: drop .7s calc(var(--d) * 140ms + 150ms) cubic-bezier(.2, 1.4, .4, 1) both; transform-origin: left bottom; }
+@keyframes drop { from { opacity: 0; transform: translateY(-40px) rotate(-4deg); } }
+
+/* ---------- Autocollant tournant ---------- */
+.sticker {
+  position: absolute; right: clamp(16px, 6vw, 96px); top: calc(var(--header-h) + var(--s7));
+  width: clamp(120px, 16vw, 200px); aspect-ratio: 1; z-index: 2;
+  display: grid; place-items: center;
+}
+.sticker svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 18s linear infinite; }
+.sticker text { fill: var(--braise); font-family: var(--f-label); font-weight: 700; font-size: 17px; letter-spacing: .16em; text-transform: uppercase; }
+.sticker img { width: 38%; height: auto; position: relative; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 640px) { .sticker { top: calc(var(--header-h) + var(--s4)); right: var(--s4); width: 92px; } }
+
+/* ---------- Bandeau : inversé (charbon sur moutarde) ---------- */
+.cc .ticker { background: var(--charbon); color: var(--braise); border-color: var(--charbon); }
+
+/* ---------- Spéciaux ---------- */
+.specials { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5); }
+.special {
+  position: relative; border: 2px solid var(--charbon); border-radius: var(--radius);
+  padding: var(--s6); display: grid; gap: var(--s3); align-content: start;
+  transition: transform .25s, background-color .25s;
+}
+.special:hover { transform: translateY(-4px) rotate(-.5deg); }
+.special__day { font-family: var(--f-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); }
+.special h3 { font-family: var(--f-display); font-weight: 400; font-size: var(--t-2xl); line-height: 1; }
+.special p { color: var(--gris); max-width: 36ch; }
+.special__today {
+  display: none; position: absolute; top: calc(-1 * var(--s4)); right: var(--s5);
+  background: var(--charbon); color: var(--braise); padding: var(--s1) var(--s3); border-radius: var(--radius);
+  font-family: var(--f-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .875rem;
+}
+.special.is-today { background: var(--braise); }
+.special.is-today .special__day, .special.is-today p { color: var(--charbon-2); }
+.special.is-today .special__today { display: block; animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 50% { transform: scale(1.06); } }
+@media (max-width: 700px) { .specials { grid-template-columns: 1fr; } }
+
+/* ---------- Galerie « cabaret » ---------- */
+.gallery-sec .section__head { margin-bottom: var(--s7); }
+.gallery {
+  display: flex; gap: var(--s5); overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: var(--s5) max(var(--s5), calc((100vw - var(--wrap)) / 2 + var(--s5))) var(--s6);
+  scrollbar-width: thin; scrollbar-color: var(--charbon-3) transparent;
+}
+.tray { flex: none; width: clamp(240px, 30vw, 360px); aspect-ratio: 4 / 5; scroll-snap-align: center; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.tray:nth-child(odd)  { transform: rotate(-2deg); }
+.tray:nth-child(even) { transform: rotate(1.5deg) translateY(12px); }
+.tray:hover { transform: rotate(0) translateY(-6px) scale(1.02); }
+.tray::before { font-size: clamp(2.6rem, 6vw, 4.4rem); }
+.cc .shot::after { background: radial-gradient(ellipse at 80% 110%, rgba(242, 182, 48, .5), rgba(242, 182, 48, 0) 60%); }
+
+/* ---------- Divers ---------- */
+.cc-phone { font-size: var(--t-md); font-variant-numeric: tabular-nums; }
+.cc .link { color: #9A6A00; }               /* moutarde foncée : lisible sur fond crème (contraste AA) */
+.cc .section--dark .link, .cc .faim .link { color: var(--braise); }

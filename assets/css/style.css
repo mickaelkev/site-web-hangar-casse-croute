@@ -446,3 +446,41 @@ address { font-style: normal; font-size: var(--t-md); line-height: 1.45; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ==========================================================================
+   Apparitions au défilement (titres de section seulement, discret)
+   ========================================================================== */
+.js-reveal .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.js-reveal .reveal.is-in { opacity: 1; transform: none; }
+
+/* ==========================================================================
+   « T'as faim? » — passerelle vers le casse-croûte (les 15 pas)
+   ========================================================================== */
+.faim { background: var(--charbon-2); color: var(--os); padding: var(--s9) 0; overflow: hidden; }
+.faim__inner { display: grid; gap: var(--s7); }
+.faim .eyebrow { color: var(--gris-clair); }
+.faim h2 { max-width: 14ch; }
+.faim__lead { max-width: 52ch; margin-top: var(--s5); font-size: var(--t-md); line-height: 1.55; color: var(--os-2); }
+.faim__cta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s5); }
+.faim__hint { color: var(--gris-clair); font-size: 1rem; }
+
+.steps15 { display: flex; align-items: center; gap: var(--s4); }
+.steps15__end { flex: none; display: flex; flex-direction: column; align-items: center; gap: var(--s2); font-family: var(--f-label); font-weight: 700; font-size: .875rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gris-clair); }
+.steps15__end img { width: 48px; height: 48px; }
+.steps15__end--cc { color: #F2B630; }
+.steps15__path { flex: 1; display: flex; justify-content: space-between; align-items: center; height: 64px; min-width: 0; }
+.foot { width: clamp(9px, 2.2vw, 18px); height: auto; fill: var(--os); opacity: .12; transform: translateY(-10px) rotate(78deg); }
+.foot--r { transform: translateY(10px) rotate(102deg); }
+.steps15.is-in .foot { animation: step 3.6s calc(var(--i) * 140ms) ease-out infinite; }
+@keyframes step {
+  0%   { opacity: .12; fill: var(--os); }
+  6%   { opacity: 1;   fill: var(--braise); }
+  40%  { opacity: .75; fill: var(--os); }
+  85%, 100% { opacity: .12; fill: var(--os); }
+}
+.nav a.nav__sister { color: #F2B630; opacity: 1; }
+@media (max-width: 560px) {
+  .steps15 { gap: var(--s2); }
+  .steps15__end img { width: 36px; height: 36px; }
+  .steps15__end span { font-size: .6875rem; }
+}

@@ -46,6 +46,9 @@
   </script>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="footprint" viewBox="0 0 20 36"><ellipse cx="10" cy="12" rx="7.5" ry="11"/><ellipse cx="10" cy="30" rx="5.5" ry="5"/></symbol>
+  </svg>
   <a class="skip" href="#contenu" data-i18n="skip">Aller au contenu</a>
 
   <!-- ============ EN-TÊTE ============ -->
@@ -61,6 +64,7 @@
         <a href="#fumee" data-i18n="nav.smoke">Notre fumée</a>
         <a href="#traiteur" data-i18n="nav.catering">Traiteur</a>
         <a href="#visiter" data-i18n="nav.visit">Nous trouver</a>
+        <a href="casse-croute/" class="nav__sister" data-i18n="nav.sister">Casse-croûte →</a>
       </nav>
 
       <div class="header__actions">
@@ -107,10 +111,38 @@
       </div>
     </div>
 
+    <!-- ============ T'AS FAIM? → CASSE-CROÛTE ============ -->
+    <section class="faim" id="faim" aria-labelledby="faim-title">
+      <div class="wrap faim__inner">
+        <div class="faim__text reveal">
+          <p class="eyebrow" data-i18n="faim.eyebrow">Juste à côté</p>
+          <h2 id="faim-title"><span data-i18n="faim.t1">T'as faim, là, maintenant?</span></h2>
+          <p class="faim__lead" data-i18n="faim.lead">Le Casse-Croûte du Hangar est notre voisin de porte. Poutines, burgers et grilled cheese garnis de nos viandes fumées, prêts à manger sur place.</p>
+        </div>
+
+        <div class="steps15" aria-hidden="true">
+          <div class="steps15__end">
+            <img src="assets/img/logo.svg" alt="" width="40" height="40">
+            <span>Le Hangar</span>
+          </div>
+          <div class="steps15__path" id="steps-path" data-count="15"></div>
+          <div class="steps15__end steps15__end--cc">
+            <img src="assets/img/logo-cc.svg" alt="" width="40" height="40">
+            <span>Casse-croûte</span>
+          </div>
+        </div>
+
+        <div class="faim__cta reveal">
+          <a class="btn btn--primary" href="casse-croute/" data-i18n="faim.cta">Faire les 15 pas</a>
+          <span class="faim__hint" data-i18n="faim.hint">1810, route des Rivières, local 503 · la porte d'à côté</span>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ COUPS DE CŒUR ============ -->
     <section class="section" id="signatures" aria-labelledby="sig-title">
       <div class="wrap">
-        <header class="section__head">
+        <header class="reveal section__head">
           <p class="eyebrow" data-i18n="sig.eyebrow">Les incontournables</p>
           <h2 id="sig-title" data-i18n="sig.title">Ce que tout le monde commande</h2>
         </header>
@@ -163,7 +195,7 @@
     <!-- ============ MENU ============ -->
     <section class="section section--alt" id="menu" aria-labelledby="menu-title">
       <div class="wrap">
-        <header class="section__head section__head--split">
+        <header class="reveal section__head section__head--split">
           <div>
             <p class="eyebrow" data-i18n="menu.eyebrow">Le menu</p>
             <h2 id="menu-title" data-i18n="menu.title">Choisis ta fumée</h2>
@@ -180,7 +212,7 @@
     <!-- ============ NOTRE FUMÉE ============ -->
     <section class="section section--dark" id="fumee" aria-labelledby="smoke-title">
       <div class="wrap">
-        <header class="section__head">
+        <header class="reveal section__head">
           <p class="eyebrow" data-i18n="smoke.eyebrow">Notre fumée</p>
           <h2 id="smoke-title" data-i18n="smoke.title">Douze heures de patience, vingt minutes d'attente</h2>
           <p class="section__lead" data-i18n="smoke.lead">Le BBQ texan, c'est du temps. On le prend pour toi, et on a trouvé une façon de te servir vite sans tourner les coins ronds.</p>
@@ -213,7 +245,7 @@
     <!-- ============ AVIS ============ -->
     <section class="section" id="avis" aria-labelledby="reviews-title">
       <div class="wrap">
-        <header class="section__head">
+        <header class="reveal section__head">
           <p class="eyebrow" data-i18n="rev.eyebrow">Ce que disent les clients</p>
           <h2 id="reviews-title" data-i18n="rev.title">Ce qui revient dans les avis</h2>
         </header>
@@ -351,6 +383,7 @@
         <a href="#menu" data-i18n="nav.menu">Menu</a>
         <a href="#traiteur" data-i18n="nav.catering">Traiteur</a>
         <a href="#visiter" data-i18n="nav.visit">Nous trouver</a>
+        <a href="casse-croute/" data-i18n="nav.sister">Casse-croûte →</a>
         <a href="https://www.facebook.com/lehangarfumoir/" target="_blank" rel="noopener">Facebook</a>
       </nav>
       <p class="footer__legal">© <span id="year">2026</span> Le Hangar Fumoir. <span data-i18n="footer.rights">Tous droits réservés.</span></p>

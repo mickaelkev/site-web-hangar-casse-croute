@@ -11,6 +11,14 @@ window.HANGAR_EN = {
   "nav.visit": "Find us",
   "nav.cta": "Plan your catering",
   "nav.open": "Open menu",
+  "nav.sister": "Snack bar →",
+  "meta.title": "Le Hangar Fumoir — Maple-smoked Texas-style BBQ · Lévis",
+
+  "faim.eyebrow": "Right next door",
+  "faim.t1": "Hungry? Like, right now?",
+  "faim.lead": "Casse-Croûte du Hangar is our next-door neighbour. Poutines, burgers and grilled cheeses loaded with our smoked meats, ready to eat on the spot.",
+  "faim.cta": "Take the 15 steps",
+  "faim.hint": "1810 route des Rivières, unit 503 · the door next to ours",
 
   "hero.eyebrow": "Texas-style BBQ · Lévis, Québec",
   "hero.t1": "Smoked slow.",
