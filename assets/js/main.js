@@ -52,6 +52,18 @@
     btn.innerHTML = lang === "en" ? 'FR<span class="sr"> – Français</span>' : 'EN<span class="sr"> – English</span>';
     document.title = lang === "en" && EN["meta.title"] ? EN["meta.title"] : FR_TITLE;
     storage("hangar-lang", lang);
+    // Transmettre la langue à l'autre site (le stockage local ne traverse pas les domaines)
+    $$("a[data-sister]").forEach(function (a) {
+      if (!a.dataset.base) a.dataset.base = a.getAttribute("href");
+      var u = new URL(a.dataset.base, location.href);
+      if (lang === "en") u.searchParams.set("lang", "en"); else u.searchParams.delete("lang");
+      a.href = u.toString();
+    });
+    if (new URLSearchParams(location.search).has("lang") && window.history && history.replaceState) {
+      var here = new URL(location.href);
+      here.searchParams.set("lang", lang);
+      history.replaceState(null, "", here);
+    }
     if (tabsEl) { renderTabs(); renderMenu(false); }
     if ($("#hours")) renderHours();
   }
@@ -204,15 +216,28 @@
   }
   /* ---------- Heures ---------- */
   function fmt(hhmm) {
-    if (lang === "fr") return hhmm.replace(":", " h ");
+    if (lang === "fr") { var q = hhmm.split(":"); return +q[0] + "\u00a0h" + (q[1] !== "00" ? "\u00a0" + q[1] : ""); }
     var p = hhmm.split(":"), h = +p[0], ap = h >= 12 ? "pm" : "am";
     h = h % 12 || 12;
     return h + (p[1] !== "00" ? ":" + p[1] : "") + " " + ap;
   }
   function toMin(hhmm) { var p = hhmm.split(":"); return +p[0] * 60 + +p[1]; }
 
+  /* Heure et jour à Lévis, quel que soit le fuseau de l'appareil */
+  function levisNow() {
+    try {
+      var parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "America/Toronto", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+      }).formatToParts(new Date());
+      var get = function (k) { for (var i = 0; i < parts.length; i++) if (parts[i].type === k) return parts[i].value; };
+      return { day: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(get("weekday")), mins: +get("hour") * 60 + +get("minute") };
+    } catch (e) {
+      var d = new Date(); return { day: d.getDay(), mins: d.getHours() * 60 + d.getMinutes() };
+    }
+  }
+
   function renderHours() {
-    var days = t("days"), now = new Date(), today = now.getDay();
+    var days = t("days"), L = levisNow(), today = L.day;
     var order = [1, 2, 3, 4, 5, 6, 0]; // lundi en premier
     $("#hours").innerHTML = "<tbody>" + order.map(function (d) {
       var h = C.hours[d];
@@ -220,7 +245,7 @@
       return '<tr class="' + (d === today ? "is-today" : "") + '"><td>' + days[d] + "</td><td>" + val + "</td></tr>";
     }).join("") + "</tbody>";
 
-    var h = C.hours[today], mins = now.getHours() * 60 + now.getMinutes();
+    var h = C.hours[today], mins = L.mins;
     var open = !!h && mins >= toMin(h[0]) && mins < toMin(h[1]);
     var badge = $("#open-badge");
     badge.textContent = open ? t("visit.open") : t("visit.closed");
@@ -235,7 +260,6 @@
   var LIMITS = { name: 100, email: 254, phone: 30, date: 10, guests: 4, type: 60, message: 1500 };
   var MAX_GUESTS = 2000;
   var ENDPOINT_OK = /^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+$/;
-  var loadedAt = Date.now();
 
   function pad(n) { return ("0" + n).slice(-2); }
   function isoLocal(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
@@ -266,9 +290,9 @@
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Anti-robot : champ piège rempli, ou envoi moins de 3 s après l'ouverture de la page.
+    // Anti-robot : champ piège rempli (invisible pour les humains).
     var trap = form.elements["_gotcha"];
-    if ((trap && trap.value) || Date.now() - loadedAt < 3000) {
+    if (trap && trap.value) {
       form.reset(); setStatus(t("form.ok"), "ok"); return;   // on fait semblant, sans rien envoyer
     }
 
@@ -336,7 +360,7 @@
   });
 
   /* ---------- Spécial du jour (casse-croûte) ---------- */
-  var todayNum = new Date().getDay();
+  var todayNum = levisNow().day;
   $$(".special[data-day]").forEach(function (el) {
     if (+el.dataset.day === todayNum) el.classList.add("is-today");
   });
@@ -377,6 +401,8 @@
     setPaused(storage("hangar-paused") === "1");
     mt.addEventListener("click", function () { setPaused(mt.getAttribute("aria-pressed") !== "true"); });
   }
+
+  if ($("#hours")) setInterval(renderHours, 60000);
 
   /* ---------- Démarrage ---------- */
   $("#year").textContent = new Date().getFullYear();

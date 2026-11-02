@@ -7,13 +7,16 @@ Object.assign(window.HANGAR_EN, {
   "cc.nav.visit": "Find us",
   "cc.nav.back": "← The Smokehouse",
   "cc.call": "Call",
+  "cc.visit.addr": "Address",
+  "cc.visit.hours": "Opening hours",
+  "cc.tick.fillets": "Chicken fingers",
   "cc.a11y.tabs": "Menu categories", "cc.a11y.gallery": "Food photos", "cc.a11y.map": "Map: Casse-Croûte du Hangar, Lévis",
 
   "cc.hero.eyebrow": "Snack bar · Lévis, Québec",
   "cc.hero.t1": "Poutines.",
   "cc.hero.t2": "Burgers.",
   "cc.hero.t3": "Smoke.",
-  "cc.hero.lead": "The snack bar next door to Le Hangar Fumoir. Everything you love about a Québec casse-croûte, loaded with meats smoked on site.",
+  "cc.hero.lead": "The snack bar next door to Le Hangar Fumoir. Everything you love about a Québec casse-croûte, loaded with meats smoked right next door, at the Hangar.",
   "cc.hero.cta1": "See the menu",
   "cc.sticker": "Smoked next door · Served here · Smoked next door ·",
 

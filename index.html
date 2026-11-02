@@ -6,18 +6,20 @@
   <title>Le Hangar Fumoir — Viandes fumées à l'érable, prêtes en 20 minutes · Saint-Nicolas</title>
   <meta name="description" content="Fumoir artisanal à Saint-Nicolas (Lévis) : brisket, côtes levées, burnt ends, porc effiloché et sauces BBQ maison. Fumé à l'érable, scellé sous vide, prêt en 20 minutes. Boutique, points de vente et traiteur.">
   <meta name="theme-color" content="#1A1613">
-  <link rel="canonical" href="https://lehangarfumoir.ca/">
-  <link rel="alternate" hreflang="fr-CA" href="https://lehangarfumoir.ca/">
-  <link rel="alternate" hreflang="en-CA" href="https://lehangarfumoir.ca/?lang=en">
+  <link rel="canonical" href="https://hangar-le-fumoir.netlify.app/">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Le Hangar Fumoir — Du fumoir jusqu'à votre assiette">
+  <meta property="og:site_name" content="Le Hangar Fumoir">
+  <meta property="og:title" content="Le Hangar Fumoir · Du fumoir à ton assiette">
   <meta property="og:description" content="Viandes fumées à l'érable, scellées sous vide. 20 minutes dans l'eau bouillante et le BBQ texan est servi.">
-  <meta property="og:url" content="https://lehangarfumoir.ca/">
-  <meta property="og:image" content="https://lehangarfumoir.ca/assets/img/photos/og.jpg">
+  <meta property="og:url" content="https://hangar-le-fumoir.netlify.app/">
+  <meta property="og:image" content="https://hangar-le-fumoir.netlify.app/assets/img/photos/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Le pitmaster du Hangar Fumoir devant la boutique">
   <meta property="og:locale" content="fr_CA">
-  <meta property="og:locale:alternate" content="en_CA">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,19 +31,23 @@
   {
     "@context": "https://schema.org",
     "@type": "Store",
+    "@id": "https://hangar-le-fumoir.netlify.app/#commerce",
     "name": "Le Hangar Fumoir",
-    "description": "Fumoir artisanal : viandes fumées à l'érable, emballées sous vide et prêtes à manger.",
-    "url": "https://lehangarfumoir.ca/",
+    "description": "Fumoir artisanal : viandes fumées à l'érable, emballées sous vide et prêtes à manger en 20 minutes. Boutique et service traiteur.",
+    "url": "https://hangar-le-fumoir.netlify.app/",
     "telephone": "+1-418-831-8288",
-    "image": "https://lehangarfumoir.ca/assets/img/photos/og.jpg",
+    "image": ["https://hangar-le-fumoir.netlify.app/assets/img/photos/og.jpg", "https://hangar-le-fumoir.netlify.app/assets/img/photos/planche.jpg"],
+    "logo": "https://hangar-le-fumoir.netlify.app/assets/img/logo-hangar.png",
+    "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "1810, route des Rivières, local 502",
-      "addressLocality": "Saint-Nicolas (Lévis)",
+      "addressLocality": "Lévis",
       "addressRegion": "QC",
       "postalCode": "G7A 2P6",
       "addressCountry": "CA"
     },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Le+Hangar+Fumoir+1810+route+des+Rivi%C3%A8res+L%C3%A9vis",
     "openingHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday"], "opens": "10:00", "closes": "18:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday","Friday"], "opens": "10:00", "closes": "19:00" },
@@ -70,7 +76,8 @@
         <a href="#fumee" data-i18n="nav.smoke">Comment ça marche</a>
         <a href="#traiteur" data-i18n="nav.catering">Traiteur</a>
         <a href="#visiter" data-i18n="nav.visit">Nous trouver</a>
-        <a href="casse-croute/" class="nav__sister" data-i18n="nav.sister">Casse-croûte →</a>
+        <a data-sister href="casse-croute/" class="nav__sister" data-i18n="nav.sister">Casse-croûte →</a>
+        <a href="tel:+14188318288" class="nav__tel">418 831-8288</a>
       </nav>
 
       <div class="header__actions">
@@ -108,7 +115,7 @@
           <span class="rise" style="--d:0" data-i18n="hero.t1">Du fumoir</span>
           <span class="rise hero__title-accent" style="--d:1" data-i18n="hero.t2">à ton assiette.</span>
         </h1>
-        <p class="hero__lead" data-i18n="hero.lead">Des viandes fumées à l'érable par un artisan passionné, scellées sous vide et congelées. Vingt minutes dans l'eau bouillante, et le BBQ texan est servi chez vous.</p>
+        <p class="hero__lead" data-i18n="hero.lead">Des viandes fumées à l'érable par un artisan passionné, scellées sous vide et congelées. Vingt minutes dans l'eau bouillante, et le BBQ texan est servi chez toi.</p>
         <div class="hero__ctas">
           <a class="btn btn--primary" href="#produits" data-i18n="hero.cta1">Voir les produits</a>
           <a class="btn btn--ghost" href="#visiter" data-i18n="hero.cta2">Heures de la boutique</a>
@@ -125,8 +132,8 @@
     <!-- ============ BANDEAU ============ -->
     <div class="ticker" aria-hidden="true">
       <div class="ticker__track">
-        <span>Brisket</span><span>Burnt ends</span><span>Côtes levées</span><span>Porc effiloché</span><span>Jerky</span><span>Master Key</span>
-        <span>Brisket</span><span>Burnt ends</span><span>Côtes levées</span><span>Porc effiloché</span><span>Jerky</span><span>Master Key</span>
+        <span>Brisket</span><span>Burnt ends</span><span data-i18n="tick.ribs">Côtes levées</span><span data-i18n="tick.pork">Porc effiloché</span><span>Jerky</span><span>Master Key</span>
+        <span>Brisket</span><span>Burnt ends</span><span data-i18n="tick.ribs">Côtes levées</span><span data-i18n="tick.pork">Porc effiloché</span><span>Jerky</span><span>Master Key</span>
       </div>
     </div>
 
@@ -152,7 +159,7 @@
         </div>
 
         <div class="faim__cta reveal">
-          <a class="btn btn--primary" href="casse-croute/" data-i18n="faim.cta">Faire les 15 pas</a>
+          <a class="btn btn--primary" data-sister href="casse-croute/" data-i18n="faim.cta">Faire les 15 pas</a>
           <span class="faim__hint" data-i18n="faim.hint">Local 503 · la porte d'à côté</span>
         </div>
       </div>
@@ -231,8 +238,8 @@
         <div class="smoke-intro">
           <header class="reveal section__head">
             <p class="eyebrow" data-i18n="smoke.eyebrow">Comment ça marche</p>
-            <h2 id="smoke-title" data-i18n="smoke.title">Des heures au fumoir, vingt minutes chez vous</h2>
-            <p class="section__lead" data-i18n="smoke.lead">Le BBQ texan, c'est du temps. On le prend pour vous, et on a trouvé une façon de vous le livrer sans tourner les coins ronds.</p>
+            <h2 id="smoke-title" data-i18n="smoke.title">Des heures au fumoir, vingt minutes chez toi</h2>
+            <p class="section__lead" data-i18n="smoke.lead">Le BBQ texan, c'est du temps. On le prend pour toi, et on a trouvé une façon de te le livrer sans tourner les coins ronds.</p>
           </header>
           <figure class="shot shot--portrait reveal" data-ph="Boutique">
             <img src="assets/img/photos/boutique.jpg" alt="Le comptoir de la boutique du Hangar Fumoir" loading="lazy" data-optional>
@@ -252,13 +259,13 @@
           </li>
           <li class="step reveal">
             <span class="step__num">03</span>
-            <h3 data-i18n="smoke.3.t">Vous la plongez 20 minutes</h3>
+            <h3 data-i18n="smoke.3.t">Tu la plonges 20 minutes</h3>
             <p data-i18n="smoke.3.d">Le sachet congelé va directement dans l'eau bouillante. Vingt minutes plus tard, c'est comme si ça sortait du fumoir.</p>
           </li>
         </ol>
 
         <blockquote class="pull reveal">
-          <p data-i18n="smoke.quote">La passion d'un artisan qui vous offre une viande fumée de qualité, faite au Québec.</p>
+          <p data-i18n="smoke.quote">La passion d'un artisan qui t'offre une viande fumée de qualité, faite au Québec.</p>
         </blockquote>
       </div>
     </section>
@@ -266,15 +273,15 @@
     <!-- ============ PROMOS ============ -->
     <section class="promos" aria-label="Promotions" data-i18n-attr="aria-label:a11y.promos">
       <div class="wrap promos__inner">
-        <a class="promo reveal" href="casse-croute/#speciaux">
+        <a class="promo reveal" data-sister href="casse-croute/#speciaux">
           <span class="promo__k" data-i18n="promo.1.k">Chaque jeudi</span>
           <strong data-i18n="promo.1.t">Les jeudis poutine</strong>
-          <span data-i18n="promo.1.d">De 17 h à 19 h, au casse-croûte d'à côté.</span>
+          <span data-i18n="promo.1.d">De 17&nbsp;h à 19&nbsp;h, au casse-croûte d'à côté.</span>
         </a>
         <div class="promo reveal">
           <span class="promo__k" data-i18n="promo.2.k">Nouveau</span>
           <strong data-i18n="promo.2.t">Brochettes pour le BBQ</strong>
-          <span data-i18n="promo.2.d">Poulet et porc, prêtes à griller chez vous.</span>
+          <span data-i18n="promo.2.d">Poulet et porc, prêtes à griller chez toi.</span>
         </div>
       </div>
     </section>
@@ -315,11 +322,11 @@
         <div class="cat__intro">
           <p class="eyebrow" data-i18n="cat.eyebrow">Service traiteur</p>
           <h2 id="cat-title" data-i18n="cat.title">Ton party mérite mieux que des sandwichs pas de croûte</h2>
-          <p class="section__lead" data-i18n="cat.lead">Mariage, party de bureau, fête de famille ou fin de saison : le Hangar se déplace chez vous. Dis-nous le monde et la date, on te revient avec une soumission.</p>
+          <p class="section__lead" data-i18n="cat.lead">Mariage, party de bureau, fête de famille ou fin de saison : le Hangar se déplace chez toi. Dis-nous le monde et la date, on te revient avec une soumission.</p>
           <ul class="checks" role="list">
             <li data-i18n="cat.b1">Brisket, porc effiloché, côtes levées et burnt ends en format partage</li>
             <li data-i18n="cat.b2">Sauces BBQ maison : Master Key, Liquid Gold, Deluxe</li>
-            <li data-i18n="cat.b3">On se déplace chez vous</li>
+            <li data-i18n="cat.b3">On se déplace chez toi</li>
           </ul>
         </div>
 
@@ -454,7 +461,7 @@
         <a href="#produits" data-i18n="nav.menu">Produits</a>
         <a href="#traiteur" data-i18n="nav.catering">Traiteur</a>
         <a href="#visiter" data-i18n="nav.visit">Nous trouver</a>
-        <a href="casse-croute/" data-i18n="nav.sister">Casse-croûte →</a>
+        <a data-sister href="casse-croute/" data-i18n="nav.sister">Casse-croûte →</a>
         <a href="https://www.facebook.com/lehangarfumoir/" target="_blank" rel="noopener">Facebook</a>
         <a href="confidentialite.html" data-i18n="footer.privacy">Confidentialité</a>
       </nav>

@@ -4,17 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Casse-Croûte du Hangar — Poutines, burgers et viandes fumées · Lévis</title>
-  <meta name="description" content="Le casse-croûte voisin du Hangar Fumoir à Lévis : poutines, burgers, grilled cheese et mac & cheese garnis de viandes fumées sur place. Jeudi poutine, vendredi côtes levées.">
+  <meta name="description" content="Le casse-croûte voisin du Hangar Fumoir à Lévis : poutines, burgers, grilled cheese et mac & cheese garnis de viandes fumées juste à côté, au Hangar. Jeudi poutine, vendredi côtes levées.">
   <meta name="theme-color" content="#F2B630">
-  <link rel="canonical" href="https://lehangarfumoir.ca/casse-croute/">
+  <link rel="canonical" href="https://casse-croute-hangar.netlify.app/">
   <link rel="icon" href="../assets/img/favicon-cc.svg" type="image/svg+xml">
 
-  <meta property="og:type" content="restaurant">
-  <meta property="og:title" content="Casse-Croûte du Hangar — Lévis">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Casse-Croûte du Hangar">
+  <meta property="og:title" content="Casse-Croûte du Hangar · Saint-Nicolas, Lévis">
   <meta property="og:description" content="Poutines, burgers et grilled cheese aux viandes fumées du Hangar, juste à côté.">
-  <meta property="og:url" content="https://lehangarfumoir.ca/casse-croute/">
-  <meta property="og:image" content="https://lehangarfumoir.ca/assets/img/photos/og-cc.jpg">
+  <meta property="og:url" content="https://casse-croute-hangar.netlify.app/">
+  <meta property="og:image" content="https://casse-croute-hangar.netlify.app/assets/img/photos/og-cc.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Poutine garnie de viandes fumées du Casse-Croûte du Hangar">
   <meta property="og:locale" content="fr_CA">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,19 +31,30 @@
   {
     "@context": "https://schema.org",
     "@type": "FastFoodRestaurant",
+    "@id": "https://casse-croute-hangar.netlify.app/#restaurant",
     "name": "Casse-Croûte du Hangar",
-    "url": "https://lehangarfumoir.ca/casse-croute/",
+    "description": "Casse-croûte québécois voisin du Hangar Fumoir : poutines, burgers, mac & cheese et grilled cheese garnis de viandes fumées à l'érable.",
+    "url": "https://casse-croute-hangar.netlify.app/",
     "telephone": "+1-418-831-8288",
-    "servesCuisine": ["Poutine", "Burgers", "Québécois"],
+    "image": ["https://casse-croute-hangar.netlify.app/assets/img/photos/og-cc.jpg", "https://casse-croute-hangar.netlify.app/assets/img/photos/cc-poutine.jpg"],
+    "logo": "https://casse-croute-hangar.netlify.app/assets/img/logo-cc.svg",
+    "servesCuisine": ["Poutine", "Burgers", "Cuisine québécoise", "BBQ fumé"],
     "priceRange": "$",
+    "acceptsReservations": false,
+    "hasMenu": "https://casse-croute-hangar.netlify.app/#menu",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "1810, route des Rivières, local 503",
       "addressLocality": "Lévis",
       "addressRegion": "QC",
+      "postalCode": "G7A 2P6",
       "addressCountry": "CA"
     },
-    "hasMenu": "https://lehangarfumoir.ca/casse-croute/#menu"
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Casse-Cro%C3%BBte+du+Hangar+1810+route+des+Rivi%C3%A8res+L%C3%A9vis",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday","Tuesday","Wednesday"], "opens": "11:30", "closes": "19:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday","Friday","Saturday"], "opens": "11:30", "closes": "20:00" }
+    ]
   }
   </script>
 </head>
@@ -60,7 +76,8 @@
         <a href="#menu" data-i18n="cc.nav.menu">Menu</a>
         <a href="#speciaux" data-i18n="cc.nav.specials">Spéciaux</a>
         <a href="#visiter" data-i18n="cc.nav.visit">Nous trouver</a>
-        <a href="../" class="nav__sister" data-i18n="cc.nav.back">← Le Fumoir</a>
+        <a data-sister href="../" class="nav__sister" data-i18n="cc.nav.back">← Le Fumoir</a>
+        <a href="tel:+14188318288" class="nav__tel">418 831-8288</a>
       </nav>
 
       <div class="header__actions">
@@ -85,7 +102,7 @@
           <span class="cc-word" style="--d:1" data-i18n="cc.hero.t2">Burgers.</span>
           <span class="cc-word hero__title-accent" style="--d:2" data-i18n="cc.hero.t3">Fumée.</span>
         </h1>
-        <p class="hero__lead" data-i18n="cc.hero.lead">Le casse-croûte d'à côté du Hangar Fumoir. Tout ce que tu aimes d'un casse-croûte québécois, garni des viandes fumées sur place.</p>
+        <p class="hero__lead" data-i18n="cc.hero.lead">Le casse-croûte d'à côté du Hangar Fumoir. Tout ce que tu aimes d'un casse-croûte québécois, garni des viandes fumées juste à côté, au Hangar.</p>
         <div class="hero__ctas">
           <a class="btn btn--dark" href="#menu" data-i18n="cc.hero.cta1">Voir le menu</a>
           <a class="btn btn--outline-dark" href="tel:+14188318288"><span data-i18n="cc.call">Appeler</span>&nbsp;418&nbsp;831-8288</a>
@@ -110,8 +127,8 @@
 
     <div class="ticker" aria-hidden="true">
       <div class="ticker__track">
-        <span>Poutine</span><span>Burger</span><span>Mac &amp; cheese</span><span>Grilled cheese</span><span>Pogo</span><span>Filets de poulet</span>
-        <span>Poutine</span><span>Burger</span><span>Mac &amp; cheese</span><span>Grilled cheese</span><span>Pogo</span><span>Filets de poulet</span>
+        <span>Poutine</span><span>Burger</span><span>Mac &amp; cheese</span><span>Grilled cheese</span><span>Pogo</span><span data-i18n="cc.tick.fillets">Filets de poulet</span>
+        <span>Poutine</span><span>Burger</span><span>Mac &amp; cheese</span><span>Grilled cheese</span><span>Pogo</span><span data-i18n="cc.tick.fillets">Filets de poulet</span>
       </div>
     </div>
 
@@ -126,13 +143,13 @@
           <article class="special reveal" data-day="4">
             <span class="special__day" data-i18n="cc.sp.thursday">Jeudi</span>
             <h3>Poutine</h3>
-            <p data-i18n="cc.sp.thu.d">De 17 h à 19 h, la poutine prend toute la place.</p>
+            <p data-i18n="cc.sp.thu.d">De 17&nbsp;h à 19&nbsp;h, la poutine prend toute la place.</p>
             <span class="special__today" data-i18n="cc.sp.today">Aujourd'hui</span>
           </article>
           <article class="special reveal" data-day="5">
             <span class="special__day" data-i18n="cc.sp.friday">Vendredi</span>
             <h3 data-i18n="cc.sp.fri.t">Côtes levées</h3>
-            <p data-i18n="cc.sp.fri.d">Les ribs fumés du Hangar, pour finir la semaine comme il faut.</p>
+            <p data-i18n="cc.sp.fri.d">Les côtes levées fumées du Hangar, pour finir la semaine comme il faut.</p>
             <span class="special__today" data-i18n="cc.sp.today">Aujourd'hui</span>
           </article>
         </div>
@@ -149,7 +166,7 @@
       </div>
       <div class="gallery" tabindex="0" role="region" aria-label="Photos des plats" data-i18n-attr="aria-label:cc.a11y.gallery">
         <figure class="shot tray" data-ph="Burger"><img src="../assets/img/photos/cc-burger.jpg" alt="Burger aux viandes effilochées et frites" loading="lazy" data-optional></figure>
-        <figure class="shot tray" data-ph="Mac &amp; cheese"><img src="../assets/img/photos/cc-mac-cheese.jpg" alt="Mac and cheese garni de viande effilochée" loading="lazy" data-optional></figure>
+        <figure class="shot tray" data-ph="Mac &amp; cheese"><img src="../assets/img/photos/cc-mac-cheese.jpg" alt="Mac &amp; cheese garni de viande effilochée" loading="lazy" data-optional></figure>
         <figure class="shot tray" data-ph="Fumoir"><img src="../assets/img/photos/planche.jpg" alt="Les viandes fumées du Hangar, servies au casse-croûte" loading="lazy" data-optional></figure>
         <figure class="shot tray" data-ph="Grilled cheese"></figure>
       </div>
@@ -209,7 +226,7 @@
           </div>
         </div>
         <div class="faim__cta reveal">
-          <a class="btn btn--primary" href="../" data-i18n="cc.back.cta">Retourner au Hangar</a>
+          <a class="btn btn--primary" data-sister href="../" data-i18n="cc.back.cta">Retourner au Hangar</a>
         </div>
       </div>
     </section>
@@ -222,8 +239,8 @@
           <h2 id="visit-title" data-i18n="cc.visit.title">Viens t'asseoir</h2>
 
           <div class="visit__block">
-            <h3 data-i18n="visit.addr">Adresse</h3>
-            <address>1810, route des Rivières, local 503<br>Lévis (Saint-Nicolas), QC</address>
+            <h3 data-i18n="cc.visit.addr">Adresse</h3>
+            <address>1810, route des Rivières, local 503<br>Saint-Nicolas (Lévis), QC G7A 2P6</address>
             <a class="link" href="https://www.google.com/maps/search/?api=1&query=Casse-Cro%C3%BBte+du+Hangar+1810+route+des+Rivi%C3%A8res+L%C3%A9vis" target="_blank" rel="noopener" data-i18n="visit.directions">Obtenir l'itinéraire</a>
           </div>
 
@@ -233,7 +250,7 @@
           </div>
 
           <div class="visit__block">
-            <h3><span data-i18n="visit.hours">Heures d'ouverture</span> <span class="open-badge" id="open-badge"></span></h3>
+            <h3><span data-i18n="cc.visit.hours">Heures d'ouverture</span> <span class="open-badge" id="open-badge"></span></h3>
             <table class="hours" id="hours"></table>
           </div>
         </div>
@@ -256,7 +273,7 @@
         <a href="#menu" data-i18n="cc.nav.menu">Menu</a>
         <a href="#speciaux" data-i18n="cc.nav.specials">Spéciaux</a>
         <a href="#visiter" data-i18n="cc.nav.visit">Nous trouver</a>
-        <a href="../" data-i18n="cc.nav.back">← Le Fumoir</a>
+        <a data-sister href="../" data-i18n="cc.nav.back">← Le Fumoir</a>
         <a href="confidentialite.html" data-i18n="footer.privacy">Confidentialité</a>
       </nav>
       <button class="motion-toggle" type="button" id="motion-toggle" aria-pressed="false" data-i18n="a11y.pause">Mettre les animations en pause</button>

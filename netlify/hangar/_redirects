@@ -1,0 +1,7 @@
+# Ancienne adresse du casse-croûte sous le Hangar
+/casse-croute      https://casse-croute-hangar.netlify.app/        301!
+/casse-croute/*    https://casse-croute-hangar.netlify.app/:splat  301!
+
+# Anciennes pages WordPress : à activer le jour où lehangarfumoir.ca pointe vers Netlify
+# /menu/          /    301
+# /distribution/  /    301

@@ -667,3 +667,8 @@ a.promo:hover { background: var(--charbon-2); }
 @media (hover: none) { .sig:hover .shot img { transform: none; } }
 /* 12. Mouvement réduit : le chemin des 15 pas reste visible */
 @media (prefers-reduced-motion: reduce) { .foot { opacity: .45; } }
+
+/* Correctifs de l'audit SEO/QA */
+.btn--block { white-space: normal; }
+.nav__tel { display: none; }
+@media (max-width: 900px) { .nav a.nav__tel { display: block; color: var(--braise-h); } }

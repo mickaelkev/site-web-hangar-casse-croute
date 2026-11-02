@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://casse-croute-hangar.netlify.app/sitemap.xml
