@@ -25,7 +25,7 @@ Object.assign(window.HANGAR_EN, {
   "cc.sp.today": "Today",
   "cc.sp.thursday": "Thursday · 5 to 7 pm",
   "cc.sp.thu.t": "The special poutine",
-  "cc.sp.thu.tip": "This week's poutine is announced on our Facebook.",
+  "cc.sp.thu.tip": "See this week's poutine and past specials on Facebook →",
   "cc.sp.friday": "Friday",
   "cc.sp.thu.d": "A creation you won't find on the menu, different from week to week. Customers still talk about the General Tao one and the one with ribs.",
   "cc.sp.fri.t": "Ribs",

@@ -158,3 +158,4 @@
 .cc #avis .themes { margin-bottom: var(--s7); }
 .cc .brand > img { width: 44px; height: 44px; }
 .special__tip { font-size: .9375rem; font-weight: 600; color: var(--encre) !important; }
+.special__tip { display: inline-block; margin-top: var(--s2); }
