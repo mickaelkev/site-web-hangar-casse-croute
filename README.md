@@ -73,7 +73,7 @@ Les emplacements sans photo (brisket, burnt ends, sauces, grilled cheese) affich
 - [ ] **Courriel** qui reçoit les demandes de traiteur : `info@lehangarfumoir.ca` est provisoire (`assets/js/config.js` → `contact.email`)
 - [ ] **Heures du casse-croûte** : tirées d'une fiche publique (Chaudière-Appalaches), à valider (`casse-croute/config.js` → `hours`)
 - [ ] **Vendredi côtes levées** au casse-croûte : vient du site de tourisme, à valider
-- [ ] **Jeudis poutine 17 h à 19 h** : annoncé sur le site du Hangar ; confirmer que ça se passe au casse-croûte
+- [ ] **Poutine spéciale du jeudi (17 h à 19 h)** : présentée comme une création hors menu qui change chaque semaine (Général Tao et côtes levées citées dans les avis). Confirmer, et fournir photos et noms des poutines passées pour enrichir la carte.
 - [ ] **Minimum traiteur** : le formulaire exige 10 personnes (`assets/js/main.js`, chercher `>= 10`)
 - [ ] **Avis Google** : tous les avis avec texte (18 pour le Hangar, 46 pour le casse-croûte) défilent dans une bande, avec prénom et initiale. Confirmer que le client est à l'aise de les afficher. Mise à jour : `assets/js/reviews.js` et `casse-croute/reviews.js`.
 - [x] **Facebook du casse-croûte** : lien ajouté (facebook.com/profile.php?id=61584387865504)

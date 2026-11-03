@@ -76,8 +76,8 @@ window.HANGAR_EN = {
   "smoke.quote": "A craftsman's passion, bringing you quality smoked meat made in Québec.",
 
   "promo.1.k": "Every Thursday",
-  "promo.1.t": "Poutine Thursdays",
-  "promo.1.d": "5 to 7 pm, at the snack bar next door.",
+  "promo.1.t": "Thursday special poutine",
+  "promo.1.d": "An off-menu creation every week, 5 to 7 pm, at the snack bar next door.",
   "promo.2.k": "New",
   "promo.2.t": "BBQ skewers",
   "promo.2.d": "Chicken and pork, ready for your grill.",
