@@ -76,7 +76,7 @@ Les emplacements sans photo (brisket, burnt ends, sauces, grilled cheese) affich
 - [ ] **Jeudis poutine 17 h à 19 h** : annoncé sur le site du Hangar ; confirmer que ça se passe au casse-croûte
 - [ ] **Minimum traiteur** : le formulaire exige 10 personnes (`assets/js/main.js`, chercher `>= 10`)
 - [ ] **Avis Google** : tous les avis avec texte (18 pour le Hangar, 46 pour le casse-croûte) défilent dans une bande, avec prénom et initiale. Confirmer que le client est à l'aise de les afficher. Mise à jour : `assets/js/reviews.js` et `casse-croute/reviews.js`.
-- [ ] **Facebook du casse-croûte** : s'il existe, ajouter le lien
+- [x] **Facebook du casse-croûte** : lien ajouté (facebook.com/profile.php?id=61584387865504)
 - [ ] **Chili « au kg »** et **boulettes de brisket « (2) » vendues à la livre** : unités tirées du site actuel, probablement des erreurs (`assets/js/config.js`)
 - [ ] **Loi 25** : faire relire l'avis sous le formulaire et les pages `confidentialite.html` par le propriétaire (ce n'est pas un avis juridique)
 - [ ] **Même téléphone et même adresse pour les deux commerces** : risque de fusion des fiches Google ; une ligne distincte pour le casse-croûte serait idéale

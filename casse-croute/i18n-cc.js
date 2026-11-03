@@ -52,6 +52,8 @@ Object.assign(window.HANGAR_EN, {
 
   "cc.visit.title": "Pull up a seat",
   "cc.visit.phone": "Phone",
+  "cc.visit.follow": "Follow the snack bar",
+  "cc.visit.fb": "Facebook: specials and news",
   "cc.footer.tag": "The snack bar next door to Le Hangar Fumoir, in Lévis."
 });
 
