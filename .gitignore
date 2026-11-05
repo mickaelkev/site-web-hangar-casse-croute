@@ -147,3 +147,6 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Archives zip prêtes à déposer sur Netlify (régénérées depuis dist/)
+livraison/
