@@ -1,43 +1,45 @@
 /* ==========================================================================
    Casse-Croûte du Hangar — surcouche de thème
    Même système que le Hangar (typos, espacements, composants),
-   mais l'accent passe de la braise à la moutarde. Une seule couleur d'accent.
+   habillé aux couleurs du logo : rouge vif, blanc, charbon.
+   Rouge sur fond sombre → --rouge-clair (contraste AA).
    ========================================================================== */
 
 .cc {
-  --braise:   #F2B630;   /* moutarde = accent du casse-croûte */
-  --braise-h: #F7C651;
-  --on-accent: #1A1613;
+  --braise:   #E31E26;   /* rouge du logo (blanc dessus : contraste 5,9:1) */
+  --braise-h: #C8141C;
+  --on-accent: #FFFFFF;
+  --rouge-clair: #FF6B6F; /* rouge lisible sur charbon (5,7:1) */
 }
 
-/* ---------- Héro moutarde ---------- */
-.cc-hero { background: var(--braise); color: var(--charbon); min-height: min(92svh, 860px); }
-.cc-hero::before { background: radial-gradient(ellipse at 50% 100%, rgba(26, 22, 19, .14), rgba(26, 22, 19, 0) 65%); }
-.cc-hero::after { opacity: .1; }
-.cc-hero .eyebrow { color: var(--charbon); opacity: .75; }
-.cc-hero .hero__lead { color: var(--charbon-2); }
-.cc-hero .hero__title-accent { -webkit-text-stroke-color: var(--charbon); }
+/* ---------- Héro rouge (fond du logo) ---------- */
+.cc-hero { background: var(--braise); color: #fff; min-height: min(92svh, 860px); }
+.cc-hero::before { background: radial-gradient(ellipse at 50% 100%, rgba(26, 22, 19, .28), rgba(26, 22, 19, 0) 65%); }
+.cc-hero::after { opacity: .14; }
+.cc-hero .eyebrow { color: #fff; opacity: .9; }
+.cc-hero .hero__lead { color: #fff; }
+.cc-hero .hero__title-accent { -webkit-text-stroke-color: #fff; }
 .cc-hero__title { margin-bottom: var(--s6); }
 
-.cc .header:not(.is-solid) { color: var(--charbon); }
+.cc .header:not(.is-solid) { color: #fff; }
 .cc .header:not(.is-solid) .brand,
 .cc .header:not(.is-solid) .nav a,
 .cc .header:not(.is-solid) .lang,
-.cc .header:not(.is-solid) .burger { color: var(--charbon); }
-.cc .header:not(.is-solid) .lang { border-color: rgba(26, 22, 19, .3); }
-.cc .header:not(.is-solid) .brand__name small { color: var(--charbon-3); }
-.cc .header:not(.is-solid) .nav a.is-active::after { background: var(--charbon); }
-.cc .header:not(.is-solid) .header__cta { background: var(--charbon); color: var(--braise); }
-.cc .nav a.nav__sister { color: #E5642F; }
-.cc .header:not(.is-solid) .nav a.nav__sister { color: var(--charbon); text-decoration: underline; text-underline-offset: 4px; }
+.cc .header:not(.is-solid) .burger { color: #fff; }
+.cc .header:not(.is-solid) .lang { border-color: rgba(255, 255, 255, .45); }
+.cc .header:not(.is-solid) .brand__name small { color: #fff; opacity: .85; }
+.cc .header:not(.is-solid) .nav a.is-active::after { background: #fff; }
+.cc .header:not(.is-solid) .header__cta { background: var(--charbon); color: #fff; }
+.cc .nav a.nav__sister { color: var(--rouge-clair); }
+.cc .header:not(.is-solid) .nav a.nav__sister { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 900px) {
   .cc .header:not(.is-solid) .nav a { color: var(--os); }
 }
 
-.btn--dark { background: var(--charbon); color: var(--braise); }
+.btn--dark { background: var(--charbon); color: #fff; }
 .btn--dark:hover { background: var(--charbon-3); }
-.btn--outline-dark { border-color: var(--charbon); color: var(--charbon); }
-.btn--outline-dark:hover { background: var(--charbon); color: var(--braise); }
+.cc-hero .btn--outline-dark { border-color: #fff; color: #fff; }
+.cc-hero .btn--outline-dark:hover { background: #fff; color: var(--braise-h); }
 
 /* Les mots du titre tombent un à un */
 .cc-word { display: inline-block; animation: drop .7s calc(var(--d) * 140ms + 150ms) cubic-bezier(.2, 1.4, .4, 1) both; transform-origin: left bottom; }
@@ -50,13 +52,14 @@
   display: grid; place-items: center;
 }
 .sticker svg { position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 18s linear infinite; }
-.sticker text { fill: var(--braise); font-family: var(--f-label); font-weight: 700; font-size: 17px; letter-spacing: .16em; text-transform: uppercase; }
-.sticker img { width: 38%; height: auto; position: relative; }
+.sticker text { fill: #fff; font-family: var(--f-label); font-weight: 700; font-size: 17px; letter-spacing: .16em; text-transform: uppercase; }
+.sticker img { width: 17%; height: auto; height: auto; position: relative; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (max-width: 640px) { .sticker { top: calc(var(--header-h) + var(--s4)); right: var(--s4); width: 92px; } }
 
-/* ---------- Bandeau : inversé (charbon sur moutarde) ---------- */
-.cc .ticker { background: var(--charbon); color: var(--braise); border-color: var(--charbon); }
+/* ---------- Bandeau : charbon, texte blanc, étoiles rouges ---------- */
+.cc .ticker { background: var(--charbon); color: #fff; border-color: var(--charbon); }
+.cc .ticker span::after { color: var(--rouge-clair); }
 
 /* ---------- Spéciaux ---------- */
 .specials { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5); }
@@ -71,11 +74,11 @@
 .special p { color: var(--gris); max-width: 36ch; }
 .special__today {
   display: none; position: absolute; top: calc(-1 * var(--s4)); right: var(--s5);
-  background: var(--charbon); color: var(--braise); padding: var(--s1) var(--s3); border-radius: var(--radius);
+  background: var(--charbon); color: #fff; padding: var(--s1) var(--s3); border-radius: var(--radius);
   font-family: var(--f-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .875rem;
 }
-.special.is-today { background: var(--braise); }
-.special.is-today .special__day, .special.is-today p { color: var(--charbon-2); }
+.special.is-today { background: var(--braise); color: #fff; border-color: var(--braise); }
+.special.is-today .special__day, .special.is-today p { color: #fff; }
 .special.is-today .special__today { display: block; animation: pulse 1.8s ease-in-out 3; }
 @keyframes pulse { 50% { transform: scale(1.06); } }
 @media (max-width: 700px) { .specials { grid-template-columns: 1fr; } }
@@ -92,12 +95,12 @@
 .tray:nth-child(even) { transform: rotate(1.5deg) translateY(12px); }
 .tray:hover { transform: rotate(0) translateY(-6px) scale(1.02); }
 .tray::before { font-size: clamp(2.6rem, 6vw, 4.4rem); }
-.cc .shot::after { background: radial-gradient(ellipse at 80% 110%, rgba(242, 182, 48, .5), rgba(242, 182, 48, 0) 60%); }
+.cc .shot::after { background: radial-gradient(ellipse at 80% 110%, rgba(227, 30, 38, .45), rgba(227, 30, 38, 0) 60%); }
 
 /* ---------- Divers ---------- */
 .cc-phone { font-size: var(--t-md); font-variant-numeric: tabular-nums; }
-.cc .link { color: #7A5400; }               /* moutarde foncée : lisible sur fond crème (contraste AA) */
-.cc .section--dark .link, .cc .faim .link { color: var(--braise); }
+.cc .link { color: #C8141C; }               /* rouge foncé : lisible sur fond crème (contraste AA) */
+.cc .section--dark .link, .cc .faim .link { color: var(--rouge-clair); }
 
 /* ---------- Héro avec photo (carte inclinée qui flotte) ---------- */
 .cc-hero--photo .hero__inner { max-width: var(--wrap); }
@@ -120,12 +123,12 @@
   .cc-hero__photo { position: relative; right: auto; bottom: auto; width: min(88%, 480px); margin: var(--s7) auto 0; }
   .cc-hero--photo .sticker { top: calc(var(--header-h) + var(--s4)); bottom: auto; right: var(--s4); width: 96px; }
 }
-.cc .rating__stars { color: #A87700; }
+.cc .rating__stars { color: var(--braise); }
 
 
 /* ---------- Correctifs de l'audit design ---------- */
 .cc .shot:not(:has(img)) { background: var(--braise); display: grid; place-items: center; }
-.cc .shot:not(:has(img))::before { position: static; color: var(--charbon); -webkit-text-stroke: 0; text-align: center; }
+.cc .shot:not(:has(img))::before { position: static; color: #fff; -webkit-text-stroke: 0; text-align: center; }
 .cc .shot:not(:has(img))::after { display: none; }
 .cc-hero__title { line-height: 1; }
 .cc .ticker span::after { content: "★"; }
@@ -151,11 +154,35 @@
 
 @media (max-width: 400px) { .cc-hero .eyebrow { padding-right: 104px; } }
 .cc .brand__name { line-height: 1; }
-.cc .nav a.nav__tel { color: var(--braise); }
+.cc .nav a.nav__tel { color: var(--rouge-clair); }
 .cc .cc-hero__title { line-height: 1.06; }
 .cc .rev { border-top-color: var(--braise); }
-.cc .rev__stars { color: #A87700; }
+.cc .rev__stars { color: var(--braise); }
 .cc #avis .themes { margin-bottom: var(--s7); }
-.cc .brand > img { width: 44px; height: 44px; }
+.cc .brand > img { width: auto; height: 46px; }
 .special__tip { font-size: .9375rem; font-weight: 600; color: var(--encre) !important; }
 .special__tip { display: inline-block; margin-top: var(--s2); }
+
+/* ==========================================================================
+   Logo officiel : flamme + « CASSE-CROUTE HANGAR »
+   ========================================================================== */
+/* Flamme blanche sur le héro rouge, flamme rouge une fois l'en-tête sombre */
+.cc .brand__flamme--rouge { display: none; }
+.cc .header.is-solid .brand__flamme--blanche { display: none; }
+.cc .header.is-solid .brand__flamme--rouge { display: block; }
+.cc .brand__name small { letter-spacing: .28em; }
+
+.cc-hero__logo { width: min(100%, 560px); height: auto; margin-bottom: var(--s6); animation: rise-sm .7s .05s cubic-bezier(.2, .8, .2, 1) both; }
+@media (max-width: 640px) {
+  .cc-hero__logo { width: min(100%, 400px); margin-bottom: var(--s5); }
+  .cc-hero .sticker { display: none; }
+  .cc-hero .eyebrow { padding-right: 0; }
+}
+.cc-hero .cc-rating strong { color: #fff; }
+.cc-hero__photo { box-shadow: 0 30px 60px -20px rgba(26, 22, 19, .6); }
+.sticker circle { fill: var(--charbon); }
+
+.cc .eyebrow::before { background: currentColor; }
+.cc .section:not(.section--dark) .eyebrow { color: var(--braise-h); }
+.cc .faim .eyebrow::before { content: none; }
+.steps15__end img { object-fit: contain; }

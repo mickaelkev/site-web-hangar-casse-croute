@@ -21,7 +21,7 @@ cp "$SRC/index.html" "$SRC/confidentialite.html" "$H/"
 cp "$SRC"/netlify/hangar/* "$H/"
 cp "$SRC/assets/css/style.css" "$SRC/assets/css/texan.css" "$H/assets/css/"
 cp "$SRC/assets/js/config.js" "$SRC/assets/js/i18n.js" "$SRC/assets/js/main.js" "$SRC/assets/js/reviews.js" "$H/assets/js/"
-cp "$SRC/assets/img/logo-hangar.png" "$SRC/assets/img/logo-hangar-192.png" "$SRC/assets/img/logo.svg" "$SRC/assets/img/logo-cc-v3.svg" "$SRC/assets/img/favicon.svg" "$H/assets/img/"
+cp "$SRC/assets/img/logo-hangar.png" "$SRC/assets/img/logo-hangar-192.png" "$SRC/assets/img/logo.svg" "$SRC/assets/img/flamme-cc.svg" "$SRC/assets/img/favicon.svg" "$H/assets/img/"
 cp "$SRC/assets/img/photos/og.jpg" "$H/assets/img/photos/"
 for n in planche pitmaster boutique; do cp "$SRC"/assets/img/photos/$n* "$H/assets/img/photos/"; done
 sed -i "s#href=\"casse-croute/#href=\"$CC_URL/#g" "$H/index.html"
@@ -32,7 +32,7 @@ cp "$SRC/casse-croute/index.html" "$SRC/casse-croute/confidentialite.html" \
 cp "$SRC"/netlify/casse-croute/* "$C/"
 cp "$SRC/assets/css/style.css" "$C/assets/css/"
 cp "$SRC/assets/js/i18n.js" "$SRC/assets/js/main.js" "$C/assets/js/"
-cp "$SRC/assets/img/logo-cc-v3.svg" "$SRC/assets/img/logo.svg" "$SRC/assets/img/favicon-cc-v2.svg" "$C/assets/img/"
+cp "$SRC/assets/img/flamme-cc.svg" "$SRC/assets/img/flamme-cc-blanche.svg" "$SRC/assets/img/logo-cc-complet.svg" "$SRC/assets/img/logo.svg" "$SRC/assets/img/favicon-cc-v3.svg" "$C/assets/img/"
 cp "$SRC/assets/img/photos/og-cc.jpg" "$SRC/assets/img/photos/planche.jpg" "$C/assets/img/photos/"
 for n in cc-poutine cc-burger cc-mac-cheese planche-45; do cp "$SRC"/assets/img/photos/$n* "$C/assets/img/photos/"; done
 for f in "$C/index.html" "$C/confidentialite.html"; do

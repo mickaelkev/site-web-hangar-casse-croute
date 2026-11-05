@@ -477,7 +477,7 @@ address { font-style: normal; font-size: var(--t-md); line-height: 1.45; }
 .steps15 { display: flex; align-items: center; gap: var(--s4); }
 .steps15__end { flex: none; display: flex; flex-direction: column; align-items: center; gap: var(--s2); font-family: var(--f-label); font-weight: 700; font-size: .875rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gris-clair); }
 .steps15__end img { width: 48px; height: 48px; }
-.steps15__end--cc { color: #F2B630; }
+.steps15__end--cc { color: #FF6B6F; }
 .steps15__path { flex: 1; display: flex; justify-content: space-between; align-items: center; height: 64px; min-width: 0; }
 .foot { width: clamp(9px, 2.2vw, 18px); height: auto; fill: var(--os); opacity: .12; transform: translateY(-10px) rotate(78deg); }
 .foot--r { transform: translateY(10px) rotate(102deg); }
@@ -488,7 +488,7 @@ address { font-style: normal; font-size: var(--t-md); line-height: 1.45; }
   40%  { opacity: .75; fill: var(--os); }
   85%, 100% { opacity: .12; fill: var(--os); }
 }
-.nav a.nav__sister { color: #F2B630; opacity: 1; }
+.nav a.nav__sister { color: #FF6B6F; opacity: 1; }
 @media (max-width: 560px) {
   .steps15 { gap: var(--s2); }
   .steps15__end img { width: 36px; height: 36px; }
